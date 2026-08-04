@@ -26,8 +26,22 @@ const groups=['All','Aerial','Ground','Vehicle'];
 const filters=document.querySelector('#filters');
 filters.innerHTML=groups.map((x,i)=>`<button class="filter ${i===0?'active':''}" data-filter="${x}">${x}</button>`).join('');
 const grid=document.querySelector('#dataset-grid');
+// Partition N cards into rows of 3 or 2 so EVERY row is exactly full — a lone card
+// on the final row looked abrupt. Rows of 2 alternate 8+4 / 4+8 for visual rhythm.
+function rowPlan(n){
+  if(n<=0)return[];
+  if(n===1)return[[12]];
+  const rows=[];let rest=n;
+  while(rest>3){rows.push(3);rest-=3}
+  if(rest===1){const i=rows.length-1;rows[i]=2;rows.push(2)}          // 3+1 -> 2+2
+  else if(rest>0)rows.push(rest);
+  let two=0;
+  return rows.map(size=>size===3?[4,4,4]:size===2?(two++%2===0?[8,4]:[4,8]):[12]);
+}
 function renderCards(group='All'){
-  grid.innerHTML=types.filter(x=>group==='All'?x.featured:x.group===group).map((x,i)=>`<article class="data-card ${x.wide?'wide':''} reveal visible" data-case="${x.media}" tabindex="0" role="button" aria-label="Open ${x.name} case study"><div class="card-media" style="--ca:${x.a};--cb:${x.b}"><video src="assets/videos/${x.media}.mp4" poster="assets/images/${x.media}.jpg" autoplay muted loop playsinline preload="metadata"></video><span class="media-type">${x.group}</span><span class="inspect">View case ↗</span></div><div class="card-body"><div><h3>${x.name}</h3><small>Video · Pose · Caption</small></div><p>${x.desc}</p></div></article>`).join('')
+  const list=types.filter(x=>group==='All'?x.featured:x.group===group);
+  const spans=rowPlan(list.length).flat();
+  grid.innerHTML=list.map((x,i)=>{const s=spans[i]||4;return `<article class="data-card reveal visible" data-case="${x.media}" data-span="${s}" style="grid-column:span ${s}" tabindex="0" role="button" aria-label="Open ${x.name} case study"><div class="card-media" style="--ca:${x.a};--cb:${x.b}"><video src="assets/videos/${x.media}.mp4" poster="assets/images/${x.media}.jpg" autoplay muted loop playsinline preload="metadata"></video><span class="media-type">${x.group}</span><span class="inspect">View case ↗</span></div><div class="card-body"><div><h3>${x.name}</h3><small>Video · Pose · Caption</small></div><p>${x.desc}</p></div></article>`}).join('')
 }
 renderCards();filters.addEventListener('click',e=>{if(!e.target.matches('.filter'))return;filters.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');renderCards(e.target.dataset.filter)});
 // Structured-semantics demo — driven from a real case (coastal-highway drive):
@@ -70,11 +84,11 @@ reconstructionFilters.addEventListener('click',e=>{if(!e.target.matches('button'
 
 let caseData={},panoPoseViewer=null,activePanoCase=null;
 const panoShowcases=[
-  ['Serpentine','panorama-serpentine','A winding campus route demonstrates continuous 360° context through repeated changes of heading.'],
-  ['Switchback','panorama-switchback','A residential route repeatedly turns back on itself while preserving surrounding spatial evidence.'],
-  ['Meander','panorama-meander','A long mall-side traversal combines gentle bends with revisitation and broad peripheral coverage.']
+  ['Serpentine','panorama-serpentine','A winding campus route demonstrates continuous 360° context through repeated changes of heading.','Winding campus route · repeated changes of heading'],
+  ['Switchback','panorama-switchback','A residential route repeatedly turns back on itself while preserving surrounding spatial evidence.','Residential route · repeatedly turns back on itself'],
+  ['Meander','panorama-meander','A long mall-side traversal combines gentle bends with revisitation and broad peripheral coverage.','Long mall-side traversal · gentle bends and revisitation']
 ];
-function loadPanoShowcase(key){const item=caseData[key];if(!item)return;activePanoCase=item;const choice=panoShowcases.find(x=>x[1]===key);document.querySelector('#pano-case-title').textContent=choice[0]+' through a complete 360° field';document.querySelector('#pano-case-copy').textContent=choice[2];document.querySelectorAll('#pano-case-tabs button').forEach(x=>x.classList.toggle('active',x.dataset.case===key));const video=document.querySelector('#pano-case-video');video.src=item.video;video.poster=item.poster;video.load();video.play().catch(()=>{});if(!panoPoseViewer){panoPoseViewer=new PoseViewer(document.querySelector('#pano-pose-viewer'));panoPoseViewer.init()}panoPoseViewer.loadTrajectory(item.pose3d);panoPoseViewer.setShowFrustums(false);panoPoseViewer.setFollowMode(false);panoPoseViewer.setProgressHighlight(false);panoPoseViewer.setShowDirection(false);panoPoseViewer.setCurrentFrame(poseFrameAtTime(item,item.preview_start_s));panoPoseViewer._onResize()}
+function loadPanoShowcase(key){const item=caseData[key];if(!item)return;activePanoCase=item;const choice=panoShowcases.find(x=>x[1]===key);document.querySelector('#pano-case-title').textContent=choice[0];document.querySelector('#pano-case-copy').textContent=choice[3]||choice[2];document.querySelectorAll('#pano-case-tabs button').forEach(x=>x.classList.toggle('active',x.dataset.case===key));const video=document.querySelector('#pano-case-video');video.src=item.video;video.poster=item.poster;video.load();video.play().catch(()=>{});if(!panoPoseViewer){panoPoseViewer=new PoseViewer(document.querySelector('#pano-pose-viewer'));panoPoseViewer.init()}panoPoseViewer.loadTrajectory(item.pose3d);panoPoseViewer.setShowFrustums(false);panoPoseViewer.setFollowMode(false);panoPoseViewer.setProgressHighlight(false);panoPoseViewer.setShowDirection(false);panoPoseViewer.setCurrentFrame(poseFrameAtTime(item,item.preview_start_s));panoPoseViewer._onResize()}
 document.querySelector('#pano-case-tabs').innerHTML=panoShowcases.map((x,i)=>`<button class="${i===0?'active':''}" data-case="${x[1]}">${x[0]}</button>`).join('');
 document.querySelector('#pano-case-tabs').addEventListener('click',e=>{if(e.target.matches('button'))loadPanoShowcase(e.target.dataset.case)});
 document.querySelector('#pano-case-video').addEventListener('timeupdate',e=>{if(panoPoseViewer&&activePanoCase)panoPoseViewer.setCurrentFrame(poseFrameAtTime(activePanoCase,activePanoCase.preview_start_s+e.target.currentTime))});
@@ -85,52 +99,80 @@ function openCase(key){const item=caseData[key];if(!item)return;activeCase=item;
 grid.addEventListener('click',e=>{const card=e.target.closest('.data-card');if(card)openCase(card.dataset.case)});grid.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('.data-card'))openCase(e.target.dataset.case)});document.querySelector('#modal-close').addEventListener('click',()=>modal.close());modal.addEventListener('close',()=>{modalVideo.pause();modalVideo.removeAttribute('src');modalVideo.load()});modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});
 modalVideo.addEventListener('timeupdate',()=>{if(!modalPoseViewer||!activeCase)return;modalPoseViewer.setCurrentFrame(poseFrameAtTime(activeCase,activeCase.preview_start_s+modalVideo.currentTime))});document.querySelector('#pose-frustums').addEventListener('change',e=>modalPoseViewer?.setShowFrustums(e.target.checked));document.querySelector('#pose-follow').addEventListener('change',e=>modalPoseViewer?.setFollowMode(e.target.checked));document.querySelector('#pose-reset').addEventListener('click',()=>modalPoseViewer?.resetCamera());
 
-// ─── Interactive geographic map: hover a glowing marker → floating video preview ───
-const GEO_SPOTS=[
-  {x:16.9,y:34.5,place:'California · USA',tag:'Coastal & urban driving',vids:['driving','cycling','drone-ridge']},
-  {x:29.4,y:30.5,place:'New York · USA',tag:'On-foot city capture',vids:['walking','escalator','static-pan']},
-  {x:36.9,y:73.2,place:'Brazil',tag:'Tropical trails',vids:['walking-winding','walking-curve']},
-  {x:49.7,y:25.4,place:'Western Europe',tag:'Streets & loops',vids:['walking-curve','driving-loop']},
-  {x:52.8,y:26.4,place:'Alpine Europe',tag:'Mountain transit',vids:['cable-car','skiing','train']},
-  {x:53.9,y:30.3,place:'Mediterranean',tag:'Waterways & vistas',vids:['boat','static-landscape']},
-  {x:65.0,y:42.2,place:'United Arab Emirates',tag:'Aerial cityscapes',vids:['drone','driving']},
-  {x:88.3,y:33.8,place:'Japan',tag:'Rail & pedestrian',vids:['train','walking-lturn','escalator']},
-  {x:82.8,y:36.6,place:'Shanghai · China · 360°',tag:'Panoramic capture',vids:['panorama-serpentine','panorama-switchback']},
-  {x:90.3,y:82.4,place:'Australia',tag:'Open-road motion',vids:['cycling','drone','cable-car-alpine']}
-];
+// ─── Interactive geographic map: hover/tap any shaded country → real stats + previews ───
+// Clip counts come from the caption corpus; previews prefer footage actually recorded
+// in that country and otherwise show a clearly-labelled representative selection.
 (function(){
-  const host=document.querySelector('#geo-hotspots'),pop=document.querySelector('#geo-pop'),map=document.querySelector('#geo-canvas');
-  if(!host||!pop||!map)return;
-  host.innerHTML=GEO_SPOTS.map((s,i)=>`<button class="geo-hotspot" data-i="${i}" style="left:${s.x}%;top:${s.y}%" aria-label="Preview footage from ${s.place}"><i></i></button>`).join('');
-  let openI=-1,hideT=null;
-  function buildPop(s){
-    const cards=s.vids.map(v=>`<div class="geo-vid"><video src="assets/videos/${v}.mp4" poster="assets/images/${v}.jpg" muted loop autoplay playsinline preload="auto"></video></div>`).join('');
-    pop.innerHTML=`<div class="geo-pop-head"><b>${s.place}</b><span>${s.tag}</span></div><div class="geo-pop-vids">${cards}</div>`;
-  }
-  function showPop(i,btn){
+  const hostEl=document.querySelector('#geo-svg-host'),pop=document.querySelector('#geo-pop'),map=document.querySelector('#geo-canvas');
+  if(!hostEl||!pop||!map)return;
+  let data={},svg=null,openName=null,hideT=null,current=null;
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  Promise.all([
+    fetch('assets/data/world.svg').then(r=>r.text()),
+    fetch('assets/data/geo_countries.json').then(r=>r.json())
+  ]).then(([svgText,payload])=>{
+    data=payload;hostEl.innerHTML=svgText;svg=hostEl.querySelector('svg');
+    const n=Object.keys(data).length;
+    const detail=document.querySelector('#geo-hint-detail');
+    if(detail)detail.textContent=`${n} countries are interactive`;
+    svg.addEventListener('mouseover',e=>{const p=e.target.closest('path.on');if(p)show(p);});
+    svg.addEventListener('mousemove',e=>{if(current)place(e);});
+    svg.addEventListener('mouseleave',hide);
+    svg.addEventListener('click',e=>{const p=e.target.closest('path.on');if(!p)return;
+      if(openName===p.dataset.n)hide();else{show(p);place(e);}});
+  }).catch(()=>{hostEl.innerHTML='<p class="geo-fallback">Coverage map unavailable.</p>';});
+  function show(path){
     clearTimeout(hideT);
-    if(openI!==i){openI=i;buildPop(GEO_SPOTS[i]);}
+    const name=path.dataset.n,item=data[name];
+    if(!item)return;
+    current=path;
+    if(openName!==name){
+      openName=name;
+      const vids=(item.videos||[]).map(v=>`<div class="geo-vid"><video src="${v.v}" poster="${v.p}" muted loop autoplay playsinline preload="auto"></video><em>${esc(v.motion||'')}</em></div>`).join('');
+      const places=[...new Set((item.videos||[]).map(v=>v.place).filter(Boolean))].slice(0,3);
+      const scenes=[...new Set((item.videos||[]).map(v=>v.scene).filter(Boolean))].slice(0,3);
+      const foot=vids
+        ? `recorded here${places.length?' · '+esc(places.join(' · ')):''}${scenes.length?' · '+esc(scenes.join(' / ')):''}`
+        : 'source footage not mirrored for preview';
+      pop.innerHTML=`<div class="geo-pop-head"><b>${esc(name)}</b><span>${item.clips.toLocaleString()} clips · ${item.share}% of corpus</span></div>${vids?`<div class="geo-pop-vids">${vids}</div>`:''}<p class="geo-pop-foot">${foot}</p>`;
+    }
+    svg.querySelectorAll('path.hot').forEach(p=>p.classList.remove('hot'));
+    path.classList.add('hot');
     pop.classList.add('show');pop.setAttribute('aria-hidden','false');
-    const mr=map.getBoundingClientRect(),br=btn.getBoundingClientRect();
-    const px=br.left-mr.left+br.width/2,py=br.top-mr.top;
+  }
+  function place(e){
+    const mr=map.getBoundingClientRect();
+    const px=e.clientX-mr.left,py=e.clientY-mr.top;
     const pw=pop.offsetWidth,ph=pop.offsetHeight,pad=10;
-    let left=px+14,top=py-ph-12;
-    if(top<pad)top=py+br.height+12;                 // flip below when no room above
-    if(left+pw>mr.width-pad)left=px-pw-14;           // flip left when overflowing right
+    let left=px+16,top=py-ph-14;
+    if(top<pad)top=py+18;
+    if(left+pw>mr.width-pad)left=px-pw-16;
     left=Math.max(pad,Math.min(left,mr.width-pw-pad));
     top=Math.max(pad,Math.min(top,mr.height-ph-pad));
     pop.style.left=left+'px';pop.style.top=top+'px';
-    host.querySelectorAll('.geo-hotspot').forEach(b=>b.classList.toggle('active',+b.dataset.i===i));
   }
-  function hidePop(){hideT=setTimeout(()=>{
+  function hide(){hideT=setTimeout(()=>{
     pop.classList.remove('show');pop.setAttribute('aria-hidden','true');
-    host.querySelectorAll('.geo-hotspot').forEach(b=>b.classList.remove('active'));
+    svg&&svg.querySelectorAll('path.hot').forEach(p=>p.classList.remove('hot'));
     pop.querySelectorAll('video').forEach(v=>{v.pause();v.removeAttribute('src');v.load();});
-    openI=-1;
-  },130);}
-  host.addEventListener('mouseover',e=>{const b=e.target.closest('.geo-hotspot');if(b)showPop(+b.dataset.i,b);});
-  host.addEventListener('mouseout',e=>{if(e.target.closest('.geo-hotspot'))hidePop();});
-  host.addEventListener('focusin',e=>{const b=e.target.closest('.geo-hotspot');if(b)showPop(+b.dataset.i,b);});
-  host.addEventListener('focusout',hidePop);
-  host.addEventListener('click',e=>{const b=e.target.closest('.geo-hotspot');if(!b)return;const i=+b.dataset.i;if(openI===i)hidePop();else showPop(i,b);});
+    openName=null;current=null;
+  },140);}
+})();
+
+// ─── Global media throttle: only decode video that is actually on screen. ───
+// The hero wall alone mounts ~38 looping clips; leaving them all decoding starved
+// the panoramic previews and the WebGL pose viewers of GPU/CPU time.
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      const v=en.target;
+      if(en.isIntersecting){if(v.dataset.autopause!=='0')v.play().catch(()=>{});}
+      else if(!v.paused)v.pause();
+    });
+  },{rootMargin:'120px',threshold:0.01});
+  const seen=new WeakSet();
+  function scan(){document.querySelectorAll('video').forEach(v=>{if(!seen.has(v)){seen.add(v);io.observe(v);}});}
+  scan();
+  new MutationObserver(scan).observe(document.body,{childList:true,subtree:true});
 })();

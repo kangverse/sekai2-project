@@ -331,3 +331,60 @@
 .access-box .button.dark{background:linear-gradient(135deg,#18434c,#0f2d33);border:0;color:#fff}
 .access-box .button.line{border:1px solid rgba(23,52,59,.4)}
 @media(max-width:900px){.source-cards{grid-template-columns:1fr}}
+
+/* ─── Explore grid: spans are computed per filter so every row is exactly full ─── */
+.dataset-grid{grid-auto-flow:row}
+.dataset-grid .data-card:nth-child(n){grid-column:inherit}
+.dataset-grid .data-card[data-span="4"]{grid-column:span 4}
+.dataset-grid .data-card[data-span="8"]{grid-column:span 8}
+.dataset-grid .data-card[data-span="12"]{grid-column:span 12}
+.dataset-grid .data-card[data-span="4"] .card-media{height:270px}
+.dataset-grid .data-card[data-span="8"] .card-media,.dataset-grid .data-card[data-span="12"] .card-media{height:340px}
+@media(max-width:900px){
+  .dataset-grid .data-card[data-span]{grid-column:span 6!important}
+  .dataset-grid .data-card[data-span] .card-media{height:250px}
+}
+@media(max-width:600px){
+  .dataset-grid .data-card[data-span]{grid-column:span 12!important}
+  .dataset-grid .data-card[data-span] .card-media{height:240px}
+}
+
+/* ─── Interactive country map ─── */
+.geo-svg-host{line-height:0}
+.geo-svg-host svg{display:block;width:100%;height:auto}
+.geo-svg-host path{stroke:#fff;stroke-width:1.1;vector-effect:non-scaling-stroke}
+.geo-svg-host path.on{cursor:pointer;transition:filter .16s,opacity .16s}
+.geo-svg-host path.on:hover,.geo-svg-host path.hot{filter:brightness(1.1) saturate(1.25);stroke:#0d2b31;stroke-width:1.9}
+.geo-svg-host path.off{pointer-events:none}
+.geo-fallback{padding:40px;text-align:center;color:var(--muted);font-size:12px}
+.geo-pop{width:270px}
+.geo-vid em{position:absolute;left:5px;bottom:4px;font-style:normal;font-size:7px;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.9);text-shadow:0 1px 3px rgba(0,0,0,.85)}
+.geo-pop-foot{margin-top:8px;color:rgba(155,206,193,.85);font-size:9px;letter-spacing:.03em}
+
+/* ─── Structured semantics: video fills the media column so long captions
+       never leave dead space beneath it ─── */
+.annotation-media{display:flex;flex-direction:column;gap:12px}
+.focus-frame{flex:1 1 auto;height:auto;min-height:340px}
+.focus-frame video{width:100%;height:100%;object-fit:cover;display:block}
+.segment-strip{margin-top:0}
+.field{padding:13px 0}
+.field p{font-size:11.5px;line-height:1.52}
+
+/* ─── Panoramic: video gets the space; metadata collapses to one line below ─── */
+.pano-card{display:block!important;grid-template-columns:none!important;padding:16px;background:linear-gradient(135deg,#e8f2f6,#f2f4ea)!important;min-height:0}
+.pano-case-media{display:grid;grid-template-columns:minmax(0,2.35fr) minmax(0,1fr);gap:12px;padding:0}
+.pano-preview{height:auto;aspect-ratio:2/1;background:#0f2a31}
+.pano-preview video{width:100%;height:100%;object-fit:contain;background:#0f2a31}
+.pano-pose{height:auto}
+.pano-bar{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;margin-top:14px;padding-top:13px;border-top:1px solid rgba(23,52,59,.14)}
+.pano-bar .tag{flex:none}
+.pano-bar b{flex:none;font:700 17px Manrope;letter-spacing:-.02em}
+.pano-bar p{flex:1 1 220px;min-width:0;color:var(--muted);font-size:12px;line-height:1.4}
+.pano-case-tabs{margin-top:0!important;flex:none}
+.pano-case-tabs button{padding:8px 12px;font-size:12px}
+@media(max-width:900px){
+  .pano-case-media{grid-template-columns:1fr}
+  .pano-preview{aspect-ratio:2/1}
+  .pano-pose{height:300px}
+  .pano-bar{align-items:flex-start;flex-direction:column}
+}

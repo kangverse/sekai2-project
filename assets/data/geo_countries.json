@@ -1,0 +1,3831 @@
+{
+"Tanzania": {
+"clips": 1,
+"share": 0.0,
+"continent": "Africa",
+"videos": [],
+"local": false
+},
+"Canada": {
+"clips": 1628,
+"share": 1.52,
+"continent": "North America",
+"videos": [
+{
+"v": "assets/videos/geo/canada-1.mp4",
+"p": "assets/images/geo/canada-1.jpg",
+"motion": "driving",
+"place": "Toronto",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "50Uf_T12OGY_0009090_0012690"
+},
+{
+"v": "assets/videos/geo/canada-2.mp4",
+"p": "assets/images/geo/canada-2.jpg",
+"motion": "walking",
+"place": "Montreal",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "o-TqQTWU7MM_0318171_0319971"
+},
+{
+"v": "assets/videos/geo/canada-3.mp4",
+"p": "assets/images/geo/canada-3.jpg",
+"motion": "stationary pan",
+"place": "Montreal",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "Fsl_YLIvZD8_0005490_0009090"
+}
+],
+"local": true
+},
+"United States": {
+"clips": 15690,
+"share": 14.64,
+"continent": "North America",
+"videos": [
+{
+"v": "assets/videos/geo/united-states-1.mp4",
+"p": "assets/images/geo/united-states-1.jpg",
+"motion": "stationary pan",
+"place": "New York City",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "-KAn9Fb717o_0023490_0024635"
+},
+{
+"v": "assets/videos/geo/united-states-2.mp4",
+"p": "assets/images/geo/united-states-2.jpg",
+"motion": "driving",
+"place": "Philadelphia",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "-clREMCmlw4_0005490_0009090"
+},
+{
+"v": "assets/videos/geo/united-states-3.mp4",
+"p": "assets/images/geo/united-states-3.jpg",
+"motion": "walking",
+"place": "Seattle",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "3EaCj-seAHM_0103098_0106698"
+}
+],
+"local": true
+},
+"Kazakhstan": {
+"clips": 44,
+"share": 0.04,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/kazakhstan-1.mp4",
+"p": "assets/images/geo/kazakhstan-1.jpg",
+"motion": "walking",
+"place": "Astana",
+"scene": "market or plaza",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "p9ZWcaQzj_U_0037950_0039750"
+},
+{
+"v": "assets/videos/geo/kazakhstan-2.mp4",
+"p": "assets/images/geo/kazakhstan-2.jpg",
+"motion": "walking",
+"place": "Almaty",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "MugLydvDRoE_0115925_0117725"
+},
+{
+"v": "assets/videos/geo/kazakhstan-3.mp4",
+"p": "assets/images/geo/kazakhstan-3.jpg",
+"motion": "walking",
+"place": "Almaty",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "PcJ0GPjXl6c_0069887_0071687"
+}
+],
+"local": true
+},
+"Uzbekistan": {
+"clips": 51,
+"share": 0.05,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/uzbekistan-1.mp4",
+"p": "assets/images/geo/uzbekistan-1.jpg",
+"motion": "walking",
+"place": "Tashkent",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "cNOCUv1KrMU_0226327_0228127"
+},
+{
+"v": "assets/videos/geo/uzbekistan-2.mp4",
+"p": "assets/images/geo/uzbekistan-2.jpg",
+"motion": "walking",
+"place": "Tashkent",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "KVx3DQ0MVXg_0118568_0120368"
+},
+{
+"v": "assets/videos/geo/uzbekistan-3.mp4",
+"p": "assets/images/geo/uzbekistan-3.jpg",
+"motion": "walking",
+"place": "Tashkent",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "YyHJHQPUWQk_0122468_0124268"
+}
+],
+"local": true
+},
+"Indonesia": {
+"clips": 183,
+"share": 0.17,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/indonesia-1.mp4",
+"p": "assets/images/geo/indonesia-1.jpg",
+"motion": "walking",
+"place": "Kuta",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "8o60Gu1AqAw_0027150_0028950"
+},
+{
+"v": "assets/videos/geo/indonesia-2.mp4",
+"p": "assets/images/geo/indonesia-2.jpg",
+"motion": "driving",
+"place": "Bali",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "8LzdjUHrKbs_0032550_0034350"
+},
+{
+"motion": "drone",
+"place": "",
+"scene": "grassland",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "dEep6DAv_xs_0013740_0014122",
+"v": "assets/videos/geo/indonesia-3.mp4",
+"p": "assets/images/geo/indonesia-3.jpg"
+}
+],
+"local": true
+},
+"Argentina": {
+"clips": 71,
+"share": 0.07,
+"continent": "South America",
+"videos": [
+{
+"v": "assets/videos/geo/argentina-1.mp4",
+"p": "assets/images/geo/argentina-1.jpg",
+"motion": "driving",
+"place": "Buenos Aires",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "-TPJot7-HTs_0009090_0012388"
+},
+{
+"v": "assets/videos/geo/argentina-2.mp4",
+"p": "assets/images/geo/argentina-2.jpg",
+"motion": "walking",
+"place": "Buenos Aires",
+"scene": "indoor",
+"when": "unknown",
+"weather": "unknown",
+"dataset": "sekai1",
+"clip": "l1M6CebSwho_0043350_0045150"
+},
+{
+"v": "assets/videos/geo/argentina-3.mp4",
+"p": "assets/images/geo/argentina-3.jpg",
+"motion": "walking",
+"place": "Mendoza",
+"scene": "park or recreation",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "OcVtSZNVpuk_0095757_0097557"
+}
+],
+"local": true
+},
+"Chile": {
+"clips": 97,
+"share": 0.09,
+"continent": "South America",
+"videos": [
+{
+"v": "assets/videos/geo/chile-1.mp4",
+"p": "assets/images/geo/chile-1.jpg",
+"motion": "walking",
+"place": "Santiago",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "RCWmuYkZGks_0035007_0036807"
+},
+{
+"v": "assets/videos/geo/chile-2.mp4",
+"p": "assets/images/geo/chile-2.jpg",
+"motion": "stationary pan",
+"place": "Santiago",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "1UFmQNXAdkk_0122736_0124536"
+},
+{
+"v": "assets/videos/geo/chile-3.mp4",
+"p": "assets/images/geo/chile-3.jpg",
+"motion": "walking",
+"place": "Santiago",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "m_GfJmG18Ks_0003750_0005550"
+}
+],
+"local": true
+},
+"Kenya": {
+"clips": 3,
+"share": 0.0,
+"continent": "Africa",
+"videos": [
+{
+"v": "assets/videos/geo/kenya-1.mp4",
+"p": "assets/images/geo/kenya-1.jpg",
+"motion": "walking",
+"place": "Nairobi",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "rXjizoBg4nk_0056907_0058707"
+},
+{
+"v": "assets/videos/geo/kenya-2.mp4",
+"p": "assets/images/geo/kenya-2.jpg",
+"motion": "walking",
+"place": "",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "rXjizoBg4nk_0091304_0093104"
+},
+{
+"v": "assets/videos/geo/kenya-3.mp4",
+"p": "assets/images/geo/kenya-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "rXjizoBg4nk_0053775_0055575"
+}
+],
+"local": true
+},
+"Haiti": {
+"clips": 5,
+"share": 0.0,
+"continent": "North America",
+"videos": [
+{
+"v": "assets/videos/geo/haiti-1.mp4",
+"p": "assets/images/geo/haiti-1.jpg",
+"motion": "walking",
+"place": "",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "MJNXh9KwH3k_0026605_0028405"
+},
+{
+"v": "assets/videos/geo/haiti-2.mp4",
+"p": "assets/images/geo/haiti-2.jpg",
+"motion": "walking",
+"place": "",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "MJNXh9KwH3k_0037405_0039205"
+},
+{
+"v": "assets/videos/geo/haiti-3.mp4",
+"p": "assets/images/geo/haiti-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "MJNXh9KwH3k_0007350_0009150"
+}
+],
+"local": true
+},
+"Russia": {
+"clips": 776,
+"share": 0.72,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/russia-1.mp4",
+"p": "assets/images/geo/russia-1.jpg",
+"motion": "walking",
+"place": "Moscow",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "xpvER5RN2dM_0008431_0010231"
+},
+{
+"v": "assets/videos/geo/russia-2.mp4",
+"p": "assets/images/geo/russia-2.jpg",
+"motion": "driving",
+"place": "Saint Petersburg",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "F9u6HWupHMM_0153090_0156690"
+},
+{
+"motion": "drone",
+"place": "Peterhof",
+"scene": "park or recreation",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "YK51b63cHUU_0173917_0174477",
+"v": "assets/videos/geo/russia-3.mp4",
+"p": "assets/images/geo/russia-3.jpg"
+}
+],
+"local": true
+},
+"Norway": {
+"clips": 2451,
+"share": 2.29,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/norway-1.mp4",
+"p": "assets/images/geo/norway-1.jpg",
+"motion": "train",
+"place": "Voss",
+"scene": "transport hub",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "1KYiyYbc2hI_0019065_0022665"
+},
+{
+"motion": "stationary",
+"place": "Voss",
+"scene": "transport hub",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "GcRKCn3lrrg_0002465_0003168",
+"v": "assets/videos/geo/norway-2.mp4",
+"p": "assets/images/geo/norway-2.jpg"
+},
+{
+"motion": "drone",
+"place": "Ålesund",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "U8LQQNuePA8_0020679_0021537",
+"v": "assets/videos/geo/norway-3.mp4",
+"p": "assets/images/geo/norway-3.jpg"
+}
+],
+"local": true
+},
+"South Africa": {
+"clips": 10,
+"share": 0.01,
+"continent": "Africa",
+"videos": [
+{
+"v": "assets/videos/geo/south-africa-1.mp4",
+"p": "assets/images/geo/south-africa-1.jpg",
+"motion": "stationary pan",
+"place": "Cape Town",
+"scene": "water body",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "pYHUuK12-J4_0038177_0039085"
+}
+],
+"local": true
+},
+"Mexico": {
+"clips": 358,
+"share": 0.33,
+"continent": "North America",
+"videos": [
+{
+"v": "assets/videos/geo/mexico-1.mp4",
+"p": "assets/images/geo/mexico-1.jpg",
+"motion": "walking",
+"place": "Mexico City",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "to7siLP-q5A_0184028_0185828"
+},
+{
+"v": "assets/videos/geo/mexico-2.mp4",
+"p": "assets/images/geo/mexico-2.jpg",
+"motion": "driving",
+"place": "Mexico City",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "oxZBX-e84O8_0001890_0005490"
+},
+{
+"v": "assets/videos/geo/mexico-3.mp4",
+"p": "assets/images/geo/mexico-3.jpg",
+"motion": "stationary pan",
+"place": "Mexico City",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "-FS32AWx6Hg_0016350_0018150"
+}
+],
+"local": true
+},
+"Uruguay": {
+"clips": 22,
+"share": 0.02,
+"continent": "South America",
+"videos": [
+{
+"v": "assets/videos/geo/uruguay-1.mp4",
+"p": "assets/images/geo/uruguay-1.jpg",
+"motion": "walking",
+"place": "Montevideo",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "8HGfHIYZzl0_0095605_0097405"
+},
+{
+"v": "assets/videos/geo/uruguay-2.mp4",
+"p": "assets/images/geo/uruguay-2.jpg",
+"motion": "walking",
+"place": "Montevideo",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "8HGfHIYZzl0_0083005_0084805"
+},
+{
+"v": "assets/videos/geo/uruguay-3.mp4",
+"p": "assets/images/geo/uruguay-3.jpg",
+"motion": "walking",
+"place": "Montevideo",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "8HGfHIYZzl0_0010950_0012750"
+}
+],
+"local": true
+},
+"Brazil": {
+"clips": 72,
+"share": 0.07,
+"continent": "South America",
+"videos": [
+{
+"v": "assets/videos/geo/brazil-1.mp4",
+"p": "assets/images/geo/brazil-1.jpg",
+"motion": "walking",
+"place": "Rio de Janeiro",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "VoNPdO9RJKM_0120342_0122142"
+},
+{
+"v": "assets/videos/geo/brazil-2.mp4",
+"p": "assets/images/geo/brazil-2.jpg",
+"motion": "walking",
+"place": "Rio de Janeiro",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "m4pT1j2-c-s_0080575_0082375"
+},
+{
+"v": "assets/videos/geo/brazil-3.mp4",
+"p": "assets/images/geo/brazil-3.jpg",
+"motion": "walking",
+"place": "Rio de Janeiro",
+"scene": "water body",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "5DbFbdxPSsA_0023550_0025350"
+}
+],
+"local": true
+},
+"Peru": {
+"clips": 116,
+"share": 0.11,
+"continent": "South America",
+"videos": [
+{
+"v": "assets/videos/geo/peru-1.mp4",
+"p": "assets/images/geo/peru-1.jpg",
+"motion": "walking",
+"place": "Lima",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "HgFVcnjdPvU_0123352_0125152"
+},
+{
+"v": "assets/videos/geo/peru-2.mp4",
+"p": "assets/images/geo/peru-2.jpg",
+"motion": "cycling",
+"place": "Lima",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "B5om80vI-cs_0084568_0086368"
+},
+{
+"v": "assets/videos/geo/peru-3.mp4",
+"p": "assets/images/geo/peru-3.jpg",
+"motion": "walking",
+"place": "Lima",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "kEwfNR-UYqA_0031471_0033271"
+}
+],
+"local": true
+},
+"Colombia": {
+"clips": 67,
+"share": 0.06,
+"continent": "South America",
+"videos": [
+{
+"v": "assets/videos/geo/colombia-1.mp4",
+"p": "assets/images/geo/colombia-1.jpg",
+"motion": "walking",
+"place": "Bogotá",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "-nzKUKEjHug_0009150_0010950"
+},
+{
+"v": "assets/videos/geo/colombia-2.mp4",
+"p": "assets/images/geo/colombia-2.jpg",
+"motion": "stationary pan",
+"place": "",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "-bsCFBIBEg8_0076425_0078225"
+},
+{
+"v": "assets/videos/geo/colombia-3.mp4",
+"p": "assets/images/geo/colombia-3.jpg",
+"motion": "walking",
+"place": "Salento",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "2hTRqUYTaxw_0144505_0146305"
+}
+],
+"local": true
+},
+"Panama": {
+"clips": 7,
+"share": 0.01,
+"continent": "North America",
+"videos": [
+{
+"v": "assets/videos/geo/panama-1.mp4",
+"p": "assets/images/geo/panama-1.jpg",
+"motion": "walking",
+"place": "Panama City",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "im-xQqEAacw_0010950_0012750"
+},
+{
+"v": "assets/videos/geo/panama-2.mp4",
+"p": "assets/images/geo/panama-2.jpg",
+"motion": "walking",
+"place": "Panama City",
+"scene": "park or recreation",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "im-xQqEAacw_0093775_0095575"
+},
+{
+"v": "assets/videos/geo/panama-3.mp4",
+"p": "assets/images/geo/panama-3.jpg",
+"motion": "walking",
+"place": "Panama City",
+"scene": "park or recreation",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "im-xQqEAacw_0117175_0118975"
+}
+],
+"local": true
+},
+"Costa Rica": {
+"clips": 1,
+"share": 0.0,
+"continent": "North America",
+"videos": [],
+"local": false
+},
+"Guatemala": {
+"clips": 20,
+"share": 0.02,
+"continent": "North America",
+"videos": [
+{
+"v": "assets/videos/geo/guatemala-1.mp4",
+"p": "assets/images/geo/guatemala-1.jpg",
+"motion": "walking",
+"place": "Antigua Guatemala",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "GPmjPAcuMN0_0102750_0104550"
+},
+{
+"v": "assets/videos/geo/guatemala-2.mp4",
+"p": "assets/images/geo/guatemala-2.jpg",
+"motion": "walking",
+"place": "",
+"scene": "market or plaza",
+"when": "night",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "npLCs0GKf6s_0035936_0037736"
+},
+{
+"v": "assets/videos/geo/guatemala-3.mp4",
+"p": "assets/images/geo/guatemala-3.jpg",
+"motion": "walking",
+"place": "Antigua Guatemala",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "GPmjPAcuMN0_0050550_0052350"
+}
+],
+"local": true
+},
+"Venezuela": {
+"clips": 19,
+"share": 0.02,
+"continent": "South America",
+"videos": [
+{
+"v": "assets/videos/geo/venezuela-1.mp4",
+"p": "assets/images/geo/venezuela-1.jpg",
+"motion": "walking",
+"place": "Caracas",
+"scene": "park or recreation",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "srcnbdzY4HM_0029955_0031755"
+},
+{
+"v": "assets/videos/geo/venezuela-2.mp4",
+"p": "assets/images/geo/venezuela-2.jpg",
+"motion": "walking",
+"place": "Caracas",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "srcnbdzY4HM_0116788_0118588"
+},
+{
+"v": "assets/videos/geo/venezuela-3.mp4",
+"p": "assets/images/geo/venezuela-3.jpg",
+"motion": "walking",
+"place": "Caracas",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "srcnbdzY4HM_0080788_0082588"
+}
+],
+"local": true
+},
+"Guyana": {
+"clips": 1,
+"share": 0.0,
+"continent": "South America",
+"videos": [
+{
+"v": "assets/videos/geo/guyana-1.mp4",
+"p": "assets/images/geo/guyana-1.jpg",
+"motion": "walking",
+"place": "Georgetown",
+"scene": "market or plaza",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "npLCs0GKf6s_0021897_0023697"
+}
+],
+"local": true
+},
+"France": {
+"clips": 2825,
+"share": 2.64,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/france-2.mp4",
+"p": "assets/images/geo/france-2.jpg",
+"motion": "walking",
+"place": "Paris",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "CydXzpOc7qU_0133957_0135757"
+},
+{
+"motion": "driving",
+"place": "Paris",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "20E0fE6tGE8_0027090_0027957",
+"v": "assets/videos/geo/france-1.mp4",
+"p": "assets/images/geo/france-1.jpg"
+},
+{
+"motion": "driving",
+"place": "Paris",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "20E0fE6tGE8_0041040_0044640",
+"v": "assets/videos/geo/france-3.mp4",
+"p": "assets/images/geo/france-3.jpg"
+}
+],
+"local": true
+},
+"Ecuador": {
+"clips": 1,
+"share": 0.0,
+"continent": "South America",
+"videos": [
+{
+"v": "assets/videos/geo/ecuador-1.mp4",
+"p": "assets/images/geo/ecuador-1.jpg",
+"motion": "walking",
+"place": "",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "_RRbWFgxw6U_0019950_0021750"
+}
+],
+"local": true
+},
+"Puerto Rico": {
+"clips": 33,
+"share": 0.03,
+"continent": "North America",
+"videos": [
+{
+"v": "assets/videos/geo/puerto-rico-1.mp4",
+"p": "assets/images/geo/puerto-rico-1.jpg",
+"motion": "walking",
+"place": "San Juan",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "FnCq4dWC_Fk_0016350_0018150"
+},
+{
+"v": "assets/videos/geo/puerto-rico-2.mp4",
+"p": "assets/images/geo/puerto-rico-2.jpg",
+"motion": "walking",
+"place": "San Juan",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "bE9-GfcZEaE_0030864_0032664"
+},
+{
+"v": "assets/videos/geo/puerto-rico-3.mp4",
+"p": "assets/images/geo/puerto-rico-3.jpg",
+"motion": "walking",
+"place": "San Juan",
+"scene": "park or recreation",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "7DVH2Xd-YtI_0022363_0024163"
+}
+],
+"local": true
+},
+"Jamaica": {
+"clips": 38,
+"share": 0.04,
+"continent": "North America",
+"videos": [
+{
+"v": "assets/videos/geo/jamaica-1.mp4",
+"p": "assets/images/geo/jamaica-1.jpg",
+"motion": "walking",
+"place": "Kingston",
+"scene": "market or plaza",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "npLCs0GKf6s_0119503_0121303"
+},
+{
+"v": "assets/videos/geo/jamaica-2.mp4",
+"p": "assets/images/geo/jamaica-2.jpg",
+"motion": "walking",
+"place": "May Pen",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "tYxyspZ4Dd4_0032550_0034350"
+},
+{
+"v": "assets/videos/geo/jamaica-3.mp4",
+"p": "assets/images/geo/jamaica-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "QAN-z2v9s68_0137982_0139782"
+}
+],
+"local": true
+},
+"Israel": {
+"clips": 199,
+"share": 0.19,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/israel-1.mp4",
+"p": "assets/images/geo/israel-1.jpg",
+"motion": "walking",
+"place": "Jerusalem",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "sFq2DTL5Qho_0046950_0048750"
+},
+{
+"v": "assets/videos/geo/israel-2.mp4",
+"p": "assets/images/geo/israel-2.jpg",
+"motion": "drone",
+"place": "Tel Aviv",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "a7IX6C0ZduU_0025815_0029415"
+},
+{
+"v": "assets/videos/geo/israel-3.mp4",
+"p": "assets/images/geo/israel-3.jpg",
+"motion": "walking",
+"place": "Tel Aviv",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "rkJUO3Km2KY_0030750_0032550"
+}
+],
+"local": true
+},
+"Madagascar": {
+"clips": 4,
+"share": 0.0,
+"continent": "Africa",
+"videos": [
+{
+"v": "assets/videos/geo/madagascar-2.mp4",
+"p": "assets/images/geo/madagascar-2.jpg",
+"motion": "walking",
+"place": "Fianarantsoa",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "60448OH6Yv0_0033665_0035465"
+},
+{
+"motion": "stationary",
+"place": "",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "Zbz20BhzwiE_0016296_0016693",
+"v": "assets/videos/geo/madagascar-1.mp4",
+"p": "assets/images/geo/madagascar-1.jpg"
+},
+{
+"motion": "walking",
+"place": "Antananarivo",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "Zbz20BhzwiE_0016956_0017844",
+"v": "assets/videos/geo/madagascar-3.mp4",
+"p": "assets/images/geo/madagascar-3.jpg"
+}
+],
+"local": true
+},
+"Jordan": {
+"clips": 159,
+"share": 0.15,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/jordan-1.mp4",
+"p": "assets/images/geo/jordan-1.jpg",
+"motion": "walking",
+"place": "Amman",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "bZ1SbSLwLgs_0140270_0142070"
+},
+{
+"v": "assets/videos/geo/jordan-2.mp4",
+"p": "assets/images/geo/jordan-2.jpg",
+"motion": "walking",
+"place": "Petra",
+"scene": "desert",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "J4NMLfsd5tU_0146384_0148184"
+},
+{
+"v": "assets/videos/geo/jordan-3.mp4",
+"p": "assets/images/geo/jordan-3.jpg",
+"motion": "walking",
+"place": "Amman",
+"scene": "park or recreation",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "q7wcdw80Uyc_0053257_0055057"
+}
+],
+"local": true
+},
+"United Arab Emirates": {
+"clips": 2464,
+"share": 2.3,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/united-arab-emirates-1.mp4",
+"p": "assets/images/geo/united-arab-emirates-1.jpg",
+"motion": "walking",
+"place": "Dubai",
+"scene": "indoor",
+"when": "unknown",
+"weather": "unknown",
+"dataset": "sekai1",
+"clip": "SlYoa5ympyM_0082316_0084116"
+},
+{
+"v": "assets/videos/geo/united-arab-emirates-2.mp4",
+"p": "assets/images/geo/united-arab-emirates-2.jpg",
+"motion": "driving",
+"place": "Dubai",
+"scene": "highway road",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "OL5N4FEeao0_0043803_0045090"
+},
+{
+"v": "assets/videos/geo/united-arab-emirates-3.mp4",
+"p": "assets/images/geo/united-arab-emirates-3.jpg",
+"motion": "escalator",
+"place": "Dubai",
+"scene": "indoor",
+"when": "unknown",
+"weather": "unknown",
+"dataset": "sekai1",
+"clip": "d-hF-nQ-lzs_0074607_0076407"
+}
+],
+"local": true
+},
+"Qatar": {
+"clips": 96,
+"share": 0.09,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/qatar-1.mp4",
+"p": "assets/images/geo/qatar-1.jpg",
+"motion": "walking",
+"place": "Doha",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "cfJ28bNva6s_0066310_0068110"
+},
+{
+"v": "assets/videos/geo/qatar-2.mp4",
+"p": "assets/images/geo/qatar-2.jpg",
+"motion": "driving",
+"place": "Doha",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "QV7RQsz9mhw_0016290_0019890"
+},
+{
+"v": "assets/videos/geo/qatar-3.mp4",
+"p": "assets/images/geo/qatar-3.jpg",
+"motion": "walking",
+"place": "Doha",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "PBsWxlyreXY_0019887_0021687"
+}
+],
+"local": true
+},
+"Kuwait": {
+"clips": 41,
+"share": 0.04,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/kuwait-1.mp4",
+"p": "assets/images/geo/kuwait-1.jpg",
+"motion": "walking",
+"place": "Kuwait City",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "bj3DdEeHKmE_0090625_0092425"
+},
+{
+"v": "assets/videos/geo/kuwait-2.mp4",
+"p": "assets/images/geo/kuwait-2.jpg",
+"motion": "walking",
+"place": "Kuwait City",
+"scene": "market or plaza",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "hwwaiyWC_ww_0014550_0016350"
+},
+{
+"v": "assets/videos/geo/kuwait-3.mp4",
+"p": "assets/images/geo/kuwait-3.jpg",
+"motion": "walking",
+"place": "Kuwait City",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "pp9g84-C74I_0054713_0056513"
+}
+],
+"local": true
+},
+"Iraq": {
+"clips": 19,
+"share": 0.02,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/iraq-1.mp4",
+"p": "assets/images/geo/iraq-1.jpg",
+"motion": "walking",
+"place": "Erbil",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "kEt5GzGUy6A_0023550_0025350"
+},
+{
+"v": "assets/videos/geo/iraq-2.mp4",
+"p": "assets/images/geo/iraq-2.jpg",
+"motion": "walking",
+"place": "Baghdad",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "vCrXu-FT7KE_0089955_0091755"
+},
+{
+"v": "assets/videos/geo/iraq-3.mp4",
+"p": "assets/images/geo/iraq-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "W2ZuoBoHRD8_0048841_0050641"
+}
+],
+"local": true
+},
+"Oman": {
+"clips": 2,
+"share": 0.0,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/oman-2.mp4",
+"p": "assets/images/geo/oman-2.jpg",
+"motion": "walking",
+"place": "Muscat",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "pp9g84-C74I_0085313_0087113"
+},
+{
+"motion": "boat",
+"place": "Muscat",
+"scene": "water body",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "i5cNvKXfl-Q_0001890_0002274",
+"v": "assets/videos/geo/oman-1.mp4",
+"p": "assets/images/geo/oman-1.jpg"
+}
+],
+"local": true
+},
+"Thailand": {
+"clips": 121,
+"share": 0.11,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/thailand-2.mp4",
+"p": "assets/images/geo/thailand-2.jpg",
+"motion": "walking",
+"place": "Bangkok",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "3CRJWy5zXvg_0116279_0118079"
+},
+{
+"v": "assets/videos/geo/thailand-3.mp4",
+"p": "assets/images/geo/thailand-3.jpg",
+"motion": "walking",
+"place": "Phuket",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "j1FTppJfbTI_0063150_0064950"
+},
+{
+"motion": "driving",
+"place": "Bangkok",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "82Jh37GLX54_0001890_0002610",
+"v": "assets/videos/geo/thailand-1.mp4",
+"p": "assets/images/geo/thailand-1.jpg"
+}
+],
+"local": true
+},
+"Myanmar": {
+"clips": 15,
+"share": 0.01,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/myanmar-1.mp4",
+"p": "assets/images/geo/myanmar-1.jpg",
+"motion": "walking",
+"place": "Yangon",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "6t2rhjOTvDQ_0027150_0028950"
+},
+{
+"v": "assets/videos/geo/myanmar-2.mp4",
+"p": "assets/images/geo/myanmar-2.jpg",
+"motion": "walking",
+"place": "Yangon",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "6t2rhjOTvDQ_0028950_0030750"
+},
+{
+"v": "assets/videos/geo/myanmar-3.mp4",
+"p": "assets/images/geo/myanmar-3.jpg",
+"motion": "walking",
+"place": "Yangon",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "6t2rhjOTvDQ_0023550_0025350"
+}
+],
+"local": true
+},
+"Vietnam": {
+"clips": 94,
+"share": 0.09,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/vietnam-1.mp4",
+"p": "assets/images/geo/vietnam-1.jpg",
+"motion": "walking",
+"place": "Hanoi",
+"scene": "urban street",
+"when": "night",
+"weather": "rainy",
+"dataset": "sekai1",
+"clip": "xId3cHWsta4_0323547_0325347"
+},
+{
+"v": "assets/videos/geo/vietnam-2.mp4",
+"p": "assets/images/geo/vietnam-2.jpg",
+"motion": "driving",
+"place": "Hanoi",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "_OZhGsKdBYY_0034835_0036635"
+},
+{
+"v": "assets/videos/geo/vietnam-3.mp4",
+"p": "assets/images/geo/vietnam-3.jpg",
+"motion": "walking",
+"place": "Hoi An",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "cm50M7kCV98_0029619_0031419"
+}
+],
+"local": true
+},
+"South Korea": {
+"clips": 2979,
+"share": 2.78,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/south-korea-1.mp4",
+"p": "assets/images/geo/south-korea-1.jpg",
+"motion": "walking",
+"place": "Seoul",
+"scene": "park or recreation",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "tLiGx6BUrAY_0018150_0019950"
+},
+{
+"v": "assets/videos/geo/south-korea-2.mp4",
+"p": "assets/images/geo/south-korea-2.jpg",
+"motion": "driving",
+"place": "Seoul",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "DlLqFGoNFZ8_0034290_0035540"
+},
+{
+"motion": "stationary pan",
+"place": "Seoul",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "SuGOd1qRCxI_0040153_0041029",
+"v": "assets/videos/geo/south-korea-3.mp4",
+"p": "assets/images/geo/south-korea-3.jpg"
+}
+],
+"local": true
+},
+"India": {
+"clips": 315,
+"share": 0.29,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/india-1.mp4",
+"p": "assets/images/geo/india-1.jpg",
+"motion": "driving",
+"place": "Mumbai",
+"scene": "urban street",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "0o8PlX0JUn0_0044505_0047046"
+},
+{
+"v": "assets/videos/geo/india-3.mp4",
+"p": "assets/images/geo/india-3.jpg",
+"motion": "walking",
+"place": "Agra",
+"scene": "park or recreation",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "MFGT0qBCf4k_0042014_0043177"
+},
+{
+"motion": "stationary pan",
+"place": "Delhi",
+"scene": "religious site",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "J9mpXixJptg_0012305_0012608",
+"v": "assets/videos/geo/india-2.mp4",
+"p": "assets/images/geo/india-2.jpg"
+}
+],
+"local": true
+},
+"Bangladesh": {
+"clips": 127,
+"share": 0.12,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/bangladesh-1.mp4",
+"p": "assets/images/geo/bangladesh-1.jpg",
+"motion": "walking",
+"place": "Dhaka",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "bn5Pok4EC78_0003750_0005550"
+},
+{
+"v": "assets/videos/geo/bangladesh-2.mp4",
+"p": "assets/images/geo/bangladesh-2.jpg",
+"motion": "cycling",
+"place": "Dhaka",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "9eTR93tD3LA_0118902_0120702"
+},
+{
+"v": "assets/videos/geo/bangladesh-3.mp4",
+"p": "assets/images/geo/bangladesh-3.jpg",
+"motion": "stationary pan",
+"place": "",
+"scene": "market or plaza",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "aoFhWqzab1Y_0029377_0030562"
+}
+],
+"local": true
+},
+"Nepal": {
+"clips": 9,
+"share": 0.01,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/nepal-1.mp4",
+"p": "assets/images/geo/nepal-1.jpg",
+"motion": "walking",
+"place": "Kathmandu",
+"scene": "market or plaza",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "SRL68weP1hs_0013144_0014944"
+},
+{
+"v": "assets/videos/geo/nepal-2.mp4",
+"p": "assets/images/geo/nepal-2.jpg",
+"motion": "walking",
+"place": "Kathmandu",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "SRL68weP1hs_0005550_0007350"
+},
+{
+"v": "assets/videos/geo/nepal-3.mp4",
+"p": "assets/images/geo/nepal-3.jpg",
+"motion": "walking",
+"place": "Kathmandu",
+"scene": "market or plaza",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "SRL68weP1hs_0010950_0012750"
+}
+],
+"local": true
+},
+"Pakistan": {
+"clips": 585,
+"share": 0.55,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/pakistan-1.mp4",
+"p": "assets/images/geo/pakistan-1.jpg",
+"motion": "walking",
+"place": "Lahore",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "u5MR9esvypU_0074639_0076439"
+},
+{
+"v": "assets/videos/geo/pakistan-2.mp4",
+"p": "assets/images/geo/pakistan-2.jpg",
+"motion": "stationary pan",
+"place": "Sargodha",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "tQvzbmVD5j4_0019950_0021750"
+},
+{
+"v": "assets/videos/geo/pakistan-3.mp4",
+"p": "assets/images/geo/pakistan-3.jpg",
+"motion": "driving",
+"place": "",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "LNKFDSGgXow_0005550_0007350"
+}
+],
+"local": true
+},
+"Afghanistan": {
+"clips": 43,
+"share": 0.04,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/afghanistan-1.mp4",
+"p": "assets/images/geo/afghanistan-1.jpg",
+"motion": "walking",
+"place": "Kabul",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "9EZ34Jg3HCA_0082172_0083972"
+},
+{
+"v": "assets/videos/geo/afghanistan-2.mp4",
+"p": "assets/images/geo/afghanistan-2.jpg",
+"motion": "stationary pan",
+"place": "",
+"scene": "indoor",
+"when": "unknown",
+"weather": "unknown",
+"dataset": "sekai1",
+"clip": "YP8Bg-XD8PQ_0054565_0056365"
+},
+{
+"v": "assets/videos/geo/afghanistan-3.mp4",
+"p": "assets/images/geo/afghanistan-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "market or plaza",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "-Hdb5XybZBE_0080324_0082124"
+}
+],
+"local": true
+},
+"Tajikistan": {
+"clips": 35,
+"share": 0.03,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/tajikistan-1.mp4",
+"p": "assets/images/geo/tajikistan-1.jpg",
+"motion": "walking",
+"place": "Dushanbe",
+"scene": "park or recreation",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "cNOCUv1KrMU_0138580_0140380"
+},
+{
+"v": "assets/videos/geo/tajikistan-2.mp4",
+"p": "assets/images/geo/tajikistan-2.jpg",
+"motion": "walking",
+"place": "Dushanbe",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "KVx3DQ0MVXg_0068972_0070772"
+},
+{
+"v": "assets/videos/geo/tajikistan-3.mp4",
+"p": "assets/images/geo/tajikistan-3.jpg",
+"motion": "walking",
+"place": "Dushanbe",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "cNOCUv1KrMU_0027150_0028950"
+}
+],
+"local": true
+},
+"Kyrgyzstan": {
+"clips": 5,
+"share": 0.0,
+"continent": "Asia",
+"videos": [
+{
+"motion": "drone",
+"place": "",
+"scene": "mountain",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "45vn8c1l6Ig_0007523_0008281",
+"v": "assets/videos/geo/kyrgyzstan-1.mp4",
+"p": "assets/images/geo/kyrgyzstan-1.jpg"
+}
+],
+"local": true
+},
+"Iran": {
+"clips": 39,
+"share": 0.04,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/iran-1.mp4",
+"p": "assets/images/geo/iran-1.jpg",
+"motion": "walking",
+"place": "Tehran",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "PVCLqfcBNZA_0022073_0023873"
+},
+{
+"v": "assets/videos/geo/iran-2.mp4",
+"p": "assets/images/geo/iran-2.jpg",
+"motion": "walking",
+"place": "Marivan",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "kEt5GzGUy6A_0047489_0049289"
+},
+{
+"v": "assets/videos/geo/iran-3.mp4",
+"p": "assets/images/geo/iran-3.jpg",
+"motion": "walking",
+"place": "Tehran",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "JRpDUQJnkVg_0126152_0127952"
+}
+],
+"local": true
+},
+"Syria": {
+"clips": 7,
+"share": 0.01,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/syria-1.mp4",
+"p": "assets/images/geo/syria-1.jpg",
+"motion": "walking",
+"place": "Damascus",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "UaEd0SVykkE_0018240_0020040"
+},
+{
+"v": "assets/videos/geo/syria-2.mp4",
+"p": "assets/images/geo/syria-2.jpg",
+"motion": "walking",
+"place": "Damascus",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "UaEd0SVykkE_0027257_0029057"
+},
+{
+"v": "assets/videos/geo/syria-3.mp4",
+"p": "assets/images/geo/syria-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "UaEd0SVykkE_0066141_0067941"
+}
+],
+"local": true
+},
+"Armenia": {
+"clips": 64,
+"share": 0.06,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/armenia-1.mp4",
+"p": "assets/images/geo/armenia-1.jpg",
+"motion": "walking",
+"place": "Yerevan",
+"scene": "religious site",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "KgMtGuYcUN8_0071243_0073043"
+},
+{
+"v": "assets/videos/geo/armenia-2.mp4",
+"p": "assets/images/geo/armenia-2.jpg",
+"motion": "walking",
+"place": "Yerevan",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "QpJRJ0DYF8s_0039750_0041550"
+},
+{
+"v": "assets/videos/geo/armenia-3.mp4",
+"p": "assets/images/geo/armenia-3.jpg",
+"motion": "walking",
+"place": "Yerevan",
+"scene": "park or recreation",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "FwU8wzWx8jM_0032550_0034350"
+}
+],
+"local": true
+},
+"Sweden": {
+"clips": 210,
+"share": 0.2,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/sweden-1.mp4",
+"p": "assets/images/geo/sweden-1.jpg",
+"motion": "walking",
+"place": "Stockholm",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "k3PquMPpgSM_0016350_0018150"
+},
+{
+"v": "assets/videos/geo/sweden-2.mp4",
+"p": "assets/images/geo/sweden-2.jpg",
+"motion": "train",
+"place": "Stockholm",
+"scene": "transport hub",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "yatAW22n9_k_0392609_0396209"
+},
+{
+"v": "assets/videos/geo/sweden-3.mp4",
+"p": "assets/images/geo/sweden-3.jpg",
+"motion": "walking",
+"place": "Stockholm",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "S3L4wBDlz30_0252442_0254242"
+}
+],
+"local": true
+},
+"Belarus": {
+"clips": 31,
+"share": 0.03,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/belarus-1.mp4",
+"p": "assets/images/geo/belarus-1.jpg",
+"motion": "walking",
+"place": "Minsk",
+"scene": "urban street",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "bBP6wgCqqRs_0033705_0035505"
+},
+{
+"v": "assets/videos/geo/belarus-2.mp4",
+"p": "assets/images/geo/belarus-2.jpg",
+"motion": "walking",
+"place": "Minsk",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "X8juXUCuQ-4_0018150_0019950"
+},
+{
+"v": "assets/videos/geo/belarus-3.mp4",
+"p": "assets/images/geo/belarus-3.jpg",
+"motion": "walking",
+"place": "Minsk",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "j2CnFmsXZFQ_0034632_0036432"
+}
+],
+"local": true
+},
+"Ukraine": {
+"clips": 264,
+"share": 0.25,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/ukraine-1.mp4",
+"p": "assets/images/geo/ukraine-1.jpg",
+"motion": "walking",
+"place": "Lviv",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "KofCL9GkcrE_0077840_0081090"
+},
+{
+"motion": "driving",
+"place": "Chernobyl",
+"scene": "industrial site",
+"when": "unknown",
+"weather": "foggy",
+"dataset": "sekai2_add_static",
+"clip": "f9cW-JvQ1a8_0076482_0076785",
+"v": "assets/videos/geo/ukraine-2.mp4",
+"p": "assets/images/geo/ukraine-2.jpg"
+},
+{
+"motion": "stationary pan",
+"place": "Kyiv",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "P2XKf5jsyks_0047867_0048540",
+"v": "assets/videos/geo/ukraine-3.mp4",
+"p": "assets/images/geo/ukraine-3.jpg"
+}
+],
+"local": true
+},
+"Poland": {
+"clips": 335,
+"share": 0.31,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/poland-1.mp4",
+"p": "assets/images/geo/poland-1.jpg",
+"motion": "walking",
+"place": "Krakow",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "Po-WUJuNYPM_0043350_0045150"
+},
+{
+"v": "assets/videos/geo/poland-3.mp4",
+"p": "assets/images/geo/poland-3.jpg",
+"motion": "cycling",
+"place": "Warsaw",
+"scene": "urban street",
+"when": "night",
+"weather": "rainy",
+"dataset": "sekai1",
+"clip": "d8-uO8IvVdk_0023550_0025350"
+},
+{
+"motion": "drone",
+"place": "Krakow",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "fNVupmEDF9Q_0005596_0006041",
+"v": "assets/videos/geo/poland-2.mp4",
+"p": "assets/images/geo/poland-2.jpg"
+}
+],
+"local": true
+},
+"Austria": {
+"clips": 201,
+"share": 0.19,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/austria-1.mp4",
+"p": "assets/images/geo/austria-1.jpg",
+"motion": "boat",
+"place": "Hallstatt",
+"scene": "water body",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "1tRMFiEH_J4_0025221_0028821"
+},
+{
+"v": "assets/videos/geo/austria-2.mp4",
+"p": "assets/images/geo/austria-2.jpg",
+"motion": "walking",
+"place": "Salzburg",
+"scene": "religious site",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "rPbIYVCBWtU_0118980_0120780"
+},
+{
+"v": "assets/videos/geo/austria-3.mp4",
+"p": "assets/images/geo/austria-3.jpg",
+"motion": "driving",
+"place": "Innsbruck",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "ScuXgcLAi_Y_0009363_0012963"
+}
+],
+"local": true
+},
+"Hungary": {
+"clips": 184,
+"share": 0.17,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/hungary-1.mp4",
+"p": "assets/images/geo/hungary-1.jpg",
+"motion": "walking",
+"place": "Budapest",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "Hdsakb9Ih7U_0083538_0085338"
+},
+{
+"v": "assets/videos/geo/hungary-2.mp4",
+"p": "assets/images/geo/hungary-2.jpg",
+"motion": "walking",
+"place": "Budapest",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "xdEm-KLCBwM_0059479_0061279"
+},
+{
+"v": "assets/videos/geo/hungary-3.mp4",
+"p": "assets/images/geo/hungary-3.jpg",
+"motion": "walking",
+"place": "Budapest",
+"scene": "urban street",
+"when": "midday",
+"weather": "snowy",
+"dataset": "sekai1",
+"clip": "qMSkZkK8ric_0064950_0066750"
+}
+],
+"local": true
+},
+"Moldova": {
+"clips": 15,
+"share": 0.01,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/moldova-1.mp4",
+"p": "assets/images/geo/moldova-1.jpg",
+"motion": "walking",
+"place": "Chisinau",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "fui87oXlHVY_0153150_0154950"
+},
+{
+"v": "assets/videos/geo/moldova-2.mp4",
+"p": "assets/images/geo/moldova-2.jpg",
+"motion": "walking",
+"place": "Chisinau",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "fui87oXlHVY_0057750_0059550"
+},
+{
+"v": "assets/videos/geo/moldova-3.mp4",
+"p": "assets/images/geo/moldova-3.jpg",
+"motion": "walking",
+"place": "Chișinău",
+"scene": "park or recreation",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "fui87oXlHVY_0012750_0014550"
+}
+],
+"local": true
+},
+"Romania": {
+"clips": 66,
+"share": 0.06,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/romania-1.mp4",
+"p": "assets/images/geo/romania-1.jpg",
+"motion": "walking",
+"place": "Brașov",
+"scene": "urban street",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "__GEoXDwIjI_0009150_0010950"
+},
+{
+"v": "assets/videos/geo/romania-2.mp4",
+"p": "assets/images/geo/romania-2.jpg",
+"motion": "walking",
+"place": "Sibiu",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "EQf78XIiuY4_0016350_0018150"
+},
+{
+"v": "assets/videos/geo/romania-3.mp4",
+"p": "assets/images/geo/romania-3.jpg",
+"motion": "walking",
+"place": "Bucharest",
+"scene": "park or recreation",
+"when": "midday",
+"weather": "snowy",
+"dataset": "sekai1",
+"clip": "5avhvOFzuVs_0051300_0053100"
+}
+],
+"local": true
+},
+"Lithuania": {
+"clips": 188,
+"share": 0.18,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/lithuania-1.mp4",
+"p": "assets/images/geo/lithuania-1.jpg",
+"motion": "walking",
+"place": "Vilnius",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "5PFLHSiQ_xU_0294255_0297855"
+},
+{
+"motion": "drone",
+"place": "Klaipeda",
+"scene": "water body",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "5v4gNG8gAfU_0006906_0007239",
+"v": "assets/videos/geo/lithuania-2.mp4",
+"p": "assets/images/geo/lithuania-2.jpg"
+},
+{
+"motion": "drone",
+"place": "Klaipeda",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "5v4gNG8gAfU_0008843_0012443",
+"v": "assets/videos/geo/lithuania-3.mp4",
+"p": "assets/images/geo/lithuania-3.jpg"
+}
+],
+"local": true
+},
+"Latvia": {
+"clips": 106,
+"share": 0.1,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/latvia-1.mp4",
+"p": "assets/images/geo/latvia-1.jpg",
+"motion": "walking",
+"place": "Riga",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "CjLTzAYD3GA_0006247_0008555"
+},
+{
+"v": "assets/videos/geo/latvia-3.mp4",
+"p": "assets/images/geo/latvia-3.jpg",
+"motion": "walking",
+"place": "Riga",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "zcqo9RVQdoo_0039953_0041753"
+},
+{
+"motion": "drone",
+"place": "Riga",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "vwG5Gg_AkPU_0006832_0007246",
+"v": "assets/videos/geo/latvia-2.mp4",
+"p": "assets/images/geo/latvia-2.jpg"
+}
+],
+"local": true
+},
+"Estonia": {
+"clips": 162,
+"share": 0.15,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/estonia-1.mp4",
+"p": "assets/images/geo/estonia-1.jpg",
+"motion": "drone",
+"place": "Klaipeda",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "5v4gNG8gAfU_0073615_0075851"
+},
+{
+"v": "assets/videos/geo/estonia-2.mp4",
+"p": "assets/images/geo/estonia-2.jpg",
+"motion": "walking",
+"place": "Tallinn",
+"scene": "park or recreation",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "mXjSzZVi-2U_0140704_0142504"
+},
+{
+"v": "assets/videos/geo/estonia-3.mp4",
+"p": "assets/images/geo/estonia-3.jpg",
+"motion": "walking",
+"place": "Tallinn",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "y57HgqX1uGc_0023550_0025350"
+}
+],
+"local": true
+},
+"Germany": {
+"clips": 1520,
+"share": 1.42,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/germany-2.mp4",
+"p": "assets/images/geo/germany-2.jpg",
+"motion": "driving",
+"place": "Frankfurt",
+"scene": "urban street",
+"when": "dawn",
+"weather": "foggy",
+"dataset": "sekai2_add_static",
+"clip": "JSuWYeSs70Y_0005912_0009512"
+},
+{
+"v": "assets/videos/geo/germany-3.mp4",
+"p": "assets/images/geo/germany-3.jpg",
+"motion": "cycling",
+"place": "Munich",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "Ps8ETd-J2yk_0106472_0108285"
+},
+{
+"motion": "walking",
+"place": "Dusseldorf",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "14cj5fDqp9g_0006725_0007067",
+"v": "assets/videos/geo/germany-1.mp4",
+"p": "assets/images/geo/germany-1.jpg"
+}
+],
+"local": true
+},
+"Bulgaria": {
+"clips": 10,
+"share": 0.01,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/bulgaria-1.mp4",
+"p": "assets/images/geo/bulgaria-1.jpg",
+"motion": "walking",
+"place": "Sofia",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "DcgF1DgIcTA_0037177_0038977"
+},
+{
+"v": "assets/videos/geo/bulgaria-2.mp4",
+"p": "assets/images/geo/bulgaria-2.jpg",
+"motion": "walking",
+"place": "Sofia",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "-n99SR4cpuQ_0088699_0090499"
+},
+{
+"v": "assets/videos/geo/bulgaria-3.mp4",
+"p": "assets/images/geo/bulgaria-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "fQS17dd2Ikc_0041775_0043575"
+}
+],
+"local": true
+},
+"Greece": {
+"clips": 170,
+"share": 0.16,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/greece-2.mp4",
+"p": "assets/images/geo/greece-2.jpg",
+"motion": "walking",
+"place": "Athens",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "QVh0TuWyEYc_0086461_0088261"
+},
+{
+"motion": "drone",
+"place": "Athens",
+"scene": "park or recreation",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "3mLJCi5pRYM_0191066_0191856",
+"v": "assets/videos/geo/greece-1.mp4",
+"p": "assets/images/geo/greece-1.jpg"
+},
+{
+"motion": "stationary pan",
+"place": "Santorini",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "MAUg5v-2Akg_0010304_0010638",
+"v": "assets/videos/geo/greece-3.mp4",
+"p": "assets/images/geo/greece-3.jpg"
+}
+],
+"local": true
+},
+"Turkey": {
+"clips": 394,
+"share": 0.37,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/turkey-2.mp4",
+"p": "assets/images/geo/turkey-2.jpg",
+"motion": "drone",
+"place": "Kas",
+"scene": "water body",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "3mLJCi5pRYM_0201866_0203420"
+},
+{
+"v": "assets/videos/geo/turkey-3.mp4",
+"p": "assets/images/geo/turkey-3.jpg",
+"motion": "walking",
+"place": "Istanbul",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "09yi1wNAntw_0610990_0612790"
+},
+{
+"motion": "driving",
+"place": "Safranbolu",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "0LaqsslRdkE_0041770_0042393",
+"v": "assets/videos/geo/turkey-1.mp4",
+"p": "assets/images/geo/turkey-1.jpg"
+}
+],
+"local": true
+},
+"Albania": {
+"clips": 33,
+"share": 0.03,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/albania-1.mp4",
+"p": "assets/images/geo/albania-1.jpg",
+"motion": "walking",
+"place": "Tirana",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "bNlkMrE3SbI_0071479_0073279"
+},
+{
+"v": "assets/videos/geo/albania-2.mp4",
+"p": "assets/images/geo/albania-2.jpg",
+"motion": "walking",
+"place": "Durrës",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "FbiaUO4niz8_0018150_0019950"
+},
+{
+"v": "assets/videos/geo/albania-3.mp4",
+"p": "assets/images/geo/albania-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "Lx9M_LpiF6M_0041550_0043350"
+}
+],
+"local": true
+},
+"Croatia": {
+"clips": 256,
+"share": 0.24,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/croatia-1.mp4",
+"p": "assets/images/geo/croatia-1.jpg",
+"motion": "walking",
+"place": "Zagreb",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "jQsWHOXz-W4_0070116_0071916"
+},
+{
+"v": "assets/videos/geo/croatia-3.mp4",
+"p": "assets/images/geo/croatia-3.jpg",
+"motion": "walking",
+"place": "Split",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "IT4reovDNXE_0150669_0152469"
+},
+{
+"motion": "drone",
+"place": "",
+"scene": "water body",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "1cbHghNlc1E_0409896_0410362",
+"v": "assets/videos/geo/croatia-2.mp4",
+"p": "assets/images/geo/croatia-2.jpg"
+}
+],
+"local": true
+},
+"Switzerland": {
+"clips": 814,
+"share": 0.76,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/switzerland-1.mp4",
+"p": "assets/images/geo/switzerland-1.jpg",
+"motion": "train",
+"place": "Zurich",
+"scene": "transport hub",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "9j7aGqhHffo_0023477_0024571"
+},
+{
+"v": "assets/videos/geo/switzerland-2.mp4",
+"p": "assets/images/geo/switzerland-2.jpg",
+"motion": "walking",
+"place": "Basel",
+"scene": "urban street",
+"when": "night",
+"weather": "snowy",
+"dataset": "sekai1",
+"clip": "DeXnO5W3-M0_0122215_0124015"
+},
+{
+"v": "assets/videos/geo/switzerland-3.mp4",
+"p": "assets/images/geo/switzerland-3.jpg",
+"motion": "cycling",
+"place": "Zermatt",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "_tyXyaK36nM_0083688_0086158"
+}
+],
+"local": true
+},
+"Luxembourg": {
+"clips": 14,
+"share": 0.01,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/luxembourg-1.mp4",
+"p": "assets/images/geo/luxembourg-1.jpg",
+"motion": "walking",
+"place": "Luxembourg City",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "ODO3bgNY674_0089605_0091405"
+},
+{
+"v": "assets/videos/geo/luxembourg-2.mp4",
+"p": "assets/images/geo/luxembourg-2.jpg",
+"motion": "walking",
+"place": "Luxembourg City",
+"scene": "urban street",
+"when": "morning",
+"weather": "rainy",
+"dataset": "sekai1",
+"clip": "ZGStZyuTi1g_0100511_0102311"
+},
+{
+"v": "assets/videos/geo/luxembourg-3.mp4",
+"p": "assets/images/geo/luxembourg-3.jpg",
+"motion": "walking",
+"place": "Luxembourg City",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "ODO3bgNY674_0071555_0073355"
+}
+],
+"local": true
+},
+"Belgium": {
+"clips": 145,
+"share": 0.14,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/belgium-1.mp4",
+"p": "assets/images/geo/belgium-1.jpg",
+"motion": "walking",
+"place": "Leuven",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "bttnThsaq6w_0071841_0073641"
+},
+{
+"v": "assets/videos/geo/belgium-2.mp4",
+"p": "assets/images/geo/belgium-2.jpg",
+"motion": "stationary pan",
+"place": "Ghent",
+"scene": "indoor",
+"when": "unknown",
+"weather": "unknown",
+"dataset": "sekai1",
+"clip": "2mulVGR0VTk_0022790_0024590"
+},
+{
+"v": "assets/videos/geo/belgium-3.mp4",
+"p": "assets/images/geo/belgium-3.jpg",
+"motion": "walking",
+"place": "Bruges",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "Lewu9iMkcv8_0056128_0057928"
+}
+],
+"local": true
+},
+"Netherlands": {
+"clips": 377,
+"share": 0.35,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/netherlands-1.mp4",
+"p": "assets/images/geo/netherlands-1.jpg",
+"motion": "walking",
+"place": "Amsterdam",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "YgHSJ7XUlI8_0178673_0180473"
+},
+{
+"v": "assets/videos/geo/netherlands-3.mp4",
+"p": "assets/images/geo/netherlands-3.jpg",
+"motion": "boat",
+"place": "Haarlem",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "aQVkV7JXIEI_0003285_0005629"
+},
+{
+"motion": "driving",
+"place": "Rotterdam",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "F6EglrQP5aQ_0009444_0010021",
+"v": "assets/videos/geo/netherlands-2.mp4",
+"p": "assets/images/geo/netherlands-2.jpg"
+}
+],
+"local": true
+},
+"Portugal": {
+"clips": 368,
+"share": 0.34,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/portugal-1.mp4",
+"p": "assets/images/geo/portugal-1.jpg",
+"motion": "walking",
+"place": "Lisbon",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "aSPjORdz5jM_0131135_0132935"
+},
+{
+"motion": "drone",
+"place": "Funchal",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "iU49c9HcQLQ_0118977_0119521",
+"v": "assets/videos/geo/portugal-2.mp4",
+"p": "assets/images/geo/portugal-2.jpg"
+},
+{
+"motion": "driving",
+"place": "Lisbon",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "nPvlUrYfvX8_0511565_0511934",
+"v": "assets/videos/geo/portugal-3.mp4",
+"p": "assets/images/geo/portugal-3.jpg"
+}
+],
+"local": true
+},
+"Spain": {
+"clips": 1432,
+"share": 1.34,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/spain-1.mp4",
+"p": "assets/images/geo/spain-1.jpg",
+"motion": "walking",
+"place": "Barcelona",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "zztvSyRLg4U_0045092_0046892"
+},
+{
+"v": "assets/videos/geo/spain-2.mp4",
+"p": "assets/images/geo/spain-2.jpg",
+"motion": "cycling",
+"place": "Madrid",
+"scene": "park or recreation",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "AsuDyA2GZFc_0281094_0282894"
+},
+{
+"motion": "stationary pan",
+"place": "",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "HHNez_3G6Bk_0019323_0019625",
+"v": "assets/videos/geo/spain-3.mp4",
+"p": "assets/images/geo/spain-3.jpg"
+}
+],
+"local": true
+},
+"Ireland": {
+"clips": 154,
+"share": 0.14,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/ireland-1.mp4",
+"p": "assets/images/geo/ireland-1.jpg",
+"motion": "driving",
+"place": "Dublin",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "V6tgumeU284_0012690_0014340"
+},
+{
+"v": "assets/videos/geo/ireland-2.mp4",
+"p": "assets/images/geo/ireland-2.jpg",
+"motion": "walking",
+"place": "Dublin",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "48CyXuhIrE8_0046950_0048750"
+},
+{
+"v": "assets/videos/geo/ireland-3.mp4",
+"p": "assets/images/geo/ireland-3.jpg",
+"motion": "driving",
+"place": "Dublin",
+"scene": "urban street",
+"when": "morning",
+"weather": "rainy",
+"dataset": "sekai2_add_static",
+"clip": "zoqLX1Z5nm8_0045439_0049039"
+}
+],
+"local": true
+},
+"New Zealand": {
+"clips": 99,
+"share": 0.09,
+"continent": "Oceania",
+"videos": [
+{
+"v": "assets/videos/geo/new-zealand-1.mp4",
+"p": "assets/images/geo/new-zealand-1.jpg",
+"motion": "walking",
+"place": "Auckland",
+"scene": "transport hub",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "JRHXq-Quk-k_0016350_0018150"
+},
+{
+"v": "assets/videos/geo/new-zealand-2.mp4",
+"p": "assets/images/geo/new-zealand-2.jpg",
+"motion": "driving",
+"place": "Auckland",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "WdLXsvPT9VU_0013901_0016290"
+},
+{
+"v": "assets/videos/geo/new-zealand-3.mp4",
+"p": "assets/images/geo/new-zealand-3.jpg",
+"motion": "walking",
+"place": "Wellington",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "EfBFys3GvQY_0018150_0019950"
+}
+],
+"local": true
+},
+"Australia": {
+"clips": 320,
+"share": 0.3,
+"continent": "Oceania",
+"videos": [
+{
+"v": "assets/videos/geo/australia-1.mp4",
+"p": "assets/images/geo/australia-1.jpg",
+"motion": "walking",
+"place": "Sydney",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "unknown",
+"dataset": "sekai1",
+"clip": "Ik0Ltd0ryDE_0019950_0021750"
+},
+{
+"v": "assets/videos/geo/australia-2.mp4",
+"p": "assets/images/geo/australia-2.jpg",
+"motion": "driving",
+"place": "Gold Coast",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "E_xYNJda_-A_0016290_0019890"
+},
+{
+"v": "assets/videos/geo/australia-3.mp4",
+"p": "assets/images/geo/australia-3.jpg",
+"motion": "stationary pan",
+"place": "Melbourne",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "xErvm7sAt7w_0009150_0010950"
+}
+],
+"local": true
+},
+"Sri Lanka": {
+"clips": 41,
+"share": 0.04,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/sri-lanka-1.mp4",
+"p": "assets/images/geo/sri-lanka-1.jpg",
+"motion": "walking",
+"place": "Colombo",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "We1TIzAGHSY_0037950_0039750"
+},
+{
+"v": "assets/videos/geo/sri-lanka-2.mp4",
+"p": "assets/images/geo/sri-lanka-2.jpg",
+"motion": "walking",
+"place": "Colombo",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "Z0Gqq5wdm2E_0047462_0049262"
+},
+{
+"v": "assets/videos/geo/sri-lanka-3.mp4",
+"p": "assets/images/geo/sri-lanka-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "9soo3v7KG7M_0018150_0019950"
+}
+],
+"local": true
+},
+"China": {
+"clips": 2393,
+"share": 2.23,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/china-1.mp4",
+"p": "assets/images/geo/china-1.jpg",
+"motion": "walking",
+"place": "Chengdu",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "E72y74lyBvI_0030750_0032550"
+},
+{
+"v": "assets/videos/geo/china-2.mp4",
+"p": "assets/images/geo/china-2.jpg",
+"motion": "cycling",
+"place": "Nanjing",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "myIf-ZA_Cvw_0205602_0207402"
+},
+{
+"v": "assets/videos/geo/china-3.mp4",
+"p": "assets/images/geo/china-3.jpg",
+"motion": "stationary pan",
+"place": "Shantou",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "unknown",
+"dataset": "sekai1",
+"clip": "ZOsAXGZvudQ_0161410_0163210"
+}
+],
+"local": true
+},
+"Taiwan": {
+"clips": 167,
+"share": 0.16,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/taiwan-1.mp4",
+"p": "assets/images/geo/taiwan-1.jpg",
+"motion": "walking",
+"place": "Taipei",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "MCsuWkvg5ek_0050550_0052350"
+},
+{
+"v": "assets/videos/geo/taiwan-2.mp4",
+"p": "assets/images/geo/taiwan-2.jpg",
+"motion": "driving",
+"place": "Taipei",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "DPJBITIBUhY_0005490_0008782"
+},
+{
+"v": "assets/videos/geo/taiwan-3.mp4",
+"p": "assets/images/geo/taiwan-3.jpg",
+"motion": "walking",
+"place": "Taipei",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "s63J0SVOFY4_0030750_0032550"
+}
+],
+"local": true
+},
+"Italy": {
+"clips": 6006,
+"share": 5.61,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/italy-1.mp4",
+"p": "assets/images/geo/italy-1.jpg",
+"motion": "boat",
+"place": "Venice",
+"scene": "water body",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "0_nzpk0yHro_0010140_0012439"
+},
+{
+"motion": "walking",
+"place": "Venice",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "0txBFbAuhLY_0038303_0038604",
+"v": "assets/videos/geo/italy-2.mp4",
+"p": "assets/images/geo/italy-2.jpg"
+},
+{
+"motion": "stationary pan",
+"place": "Siena",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "1QiqPKZeAyc_0002315_0002735",
+"v": "assets/videos/geo/italy-3.mp4",
+"p": "assets/images/geo/italy-3.jpg"
+}
+],
+"local": true
+},
+"Denmark": {
+"clips": 141,
+"share": 0.13,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/denmark-2.mp4",
+"p": "assets/images/geo/denmark-2.jpg",
+"motion": "stationary pan",
+"place": "",
+"scene": "transport hub",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "fcwzcQy50UA_0041497_0042543"
+},
+{
+"v": "assets/videos/geo/denmark-3.mp4",
+"p": "assets/images/geo/denmark-3.jpg",
+"motion": "train",
+"place": "",
+"scene": "grassland",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "T9PUWbXgzSk_0275480_0277628"
+},
+{
+"motion": "walking",
+"place": "Copenhagen",
+"scene": "market or plaza",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "AQqPG14QjJM_0056877_0057744",
+"v": "assets/videos/geo/denmark-1.mp4",
+"p": "assets/images/geo/denmark-1.jpg"
+}
+],
+"local": true
+},
+"United Kingdom": {
+"clips": 18542,
+"share": 17.31,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/united-kingdom-1.mp4",
+"p": "assets/images/geo/united-kingdom-1.jpg",
+"motion": "driving",
+"place": "London",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "-jJVi-UxL9Y_0113490_0117090"
+},
+{
+"v": "assets/videos/geo/united-kingdom-2.mp4",
+"p": "assets/images/geo/united-kingdom-2.jpg",
+"motion": "walking",
+"place": "London",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "24FkcTR5Osg_0067176_0068573"
+},
+{
+"v": "assets/videos/geo/united-kingdom-3.mp4",
+"p": "assets/images/geo/united-kingdom-3.jpg",
+"motion": "cycling",
+"place": "London",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "3-Ff85qoVr0_0063090_0066690"
+}
+],
+"local": true
+},
+"Iceland": {
+"clips": 138,
+"share": 0.13,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/iceland-1.mp4",
+"p": "assets/images/geo/iceland-1.jpg",
+"motion": "walking",
+"place": "Reykjavik",
+"scene": "urban street",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "4Pga3DqeLCs_0036682_0038482"
+},
+{
+"v": "assets/videos/geo/iceland-2.mp4",
+"p": "assets/images/geo/iceland-2.jpg",
+"motion": "drone",
+"place": "Reykjavík",
+"scene": "religious site",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "UDYueB8qu5U_0025277_0027077"
+},
+{
+"v": "assets/videos/geo/iceland-3.mp4",
+"p": "assets/images/geo/iceland-3.jpg",
+"motion": "cycling",
+"place": "Reykjavik",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "iDBYCSG8sZA_0019950_0021750"
+}
+],
+"local": true
+},
+"Azerbaijan": {
+"clips": 87,
+"share": 0.08,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/azerbaijan-1.mp4",
+"p": "assets/images/geo/azerbaijan-1.jpg",
+"motion": "walking",
+"place": "Baku",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "eOtAIY4xZhs_0045150_0046950"
+},
+{
+"v": "assets/videos/geo/azerbaijan-2.mp4",
+"p": "assets/images/geo/azerbaijan-2.jpg",
+"motion": "walking",
+"place": "Baku",
+"scene": "park or recreation",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "aQHsVnljaYI_0009150_0010950"
+},
+{
+"v": "assets/videos/geo/azerbaijan-3.mp4",
+"p": "assets/images/geo/azerbaijan-3.jpg",
+"motion": "walking",
+"place": "Baku",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "blhsImlDVQM_0096222_0098022"
+}
+],
+"local": true
+},
+"Georgia": {
+"clips": 99,
+"share": 0.09,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/georgia-1.mp4",
+"p": "assets/images/geo/georgia-1.jpg",
+"motion": "walking",
+"place": "Tbilisi",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "J5O_TGtAl5c_0100087_0101887"
+},
+{
+"v": "assets/videos/geo/georgia-2.mp4",
+"p": "assets/images/geo/georgia-2.jpg",
+"motion": "driving",
+"place": "Tbilisi",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "QoYZejnzOic_0068550_0070350"
+},
+{
+"v": "assets/videos/geo/georgia-3.mp4",
+"p": "assets/images/geo/georgia-3.jpg",
+"motion": "walking",
+"place": "Tbilisi",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "M4zFLxZY4jo_0080093_0081893"
+}
+],
+"local": true
+},
+"Philippines": {
+"clips": 90,
+"share": 0.08,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/philippines-1.mp4",
+"p": "assets/images/geo/philippines-1.jpg",
+"motion": "walking",
+"place": "Boracay",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "MT9k1QieIdY_0100402_0102202"
+},
+{
+"v": "assets/videos/geo/philippines-2.mp4",
+"p": "assets/images/geo/philippines-2.jpg",
+"motion": "driving",
+"place": "Makati",
+"scene": "urban street",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "F7heBWT2QVM_0016290_0019890"
+},
+{
+"v": "assets/videos/geo/philippines-3.mp4",
+"p": "assets/images/geo/philippines-3.jpg",
+"motion": "walking",
+"place": "Manila",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "dC_4lnK0cb4_0021750_0023550"
+}
+],
+"local": true
+},
+"Malaysia": {
+"clips": 27,
+"share": 0.03,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/malaysia-1.mp4",
+"p": "assets/images/geo/malaysia-1.jpg",
+"motion": "cable car",
+"place": "Kuala Lumpur",
+"scene": "transport hub",
+"when": "midday",
+"weather": "unknown",
+"dataset": "sekai2_add_static",
+"clip": "IVy7FznFXVM_0017848_0019519"
+},
+{
+"v": "assets/videos/geo/malaysia-2.mp4",
+"p": "assets/images/geo/malaysia-2.jpg",
+"motion": "driving",
+"place": "Kuala Lumpur",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "ePVXT8qOhJY_0025614_0029214"
+},
+{
+"v": "assets/videos/geo/malaysia-3.mp4",
+"p": "assets/images/geo/malaysia-3.jpg",
+"motion": "walking",
+"place": "Kuala Lumpur",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "We1TIzAGHSY_0030750_0032550"
+}
+],
+"local": true
+},
+"Slovenia": {
+"clips": 3,
+"share": 0.0,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/slovenia-1.mp4",
+"p": "assets/images/geo/slovenia-1.jpg",
+"motion": "walking",
+"place": "Ljubljana",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "jQsWHOXz-W4_0187598_0189398"
+}
+],
+"local": true
+},
+"Finland": {
+"clips": 713,
+"share": 0.67,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/finland-1.mp4",
+"p": "assets/images/geo/finland-1.jpg",
+"motion": "drone",
+"place": "Kotka",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "5v4gNG8gAfU_0065587_0067082"
+},
+{
+"v": "assets/videos/geo/finland-2.mp4",
+"p": "assets/images/geo/finland-2.jpg",
+"motion": "walking",
+"place": "Helsinki",
+"scene": "urban street",
+"when": "night",
+"weather": "rainy",
+"dataset": "sekai1",
+"clip": "ASpigtT_FcA_0012750_0014550"
+},
+{
+"v": "assets/videos/geo/finland-3.mp4",
+"p": "assets/images/geo/finland-3.jpg",
+"motion": "walking",
+"place": "Helsinki",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "EX4v9Ey7s40_0064950_0066750"
+}
+],
+"local": true
+},
+"Slovakia": {
+"clips": 19,
+"share": 0.02,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/slovakia-1.mp4",
+"p": "assets/images/geo/slovakia-1.jpg",
+"motion": "walking",
+"place": "Bratislava",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "AJqNsuRXJoA_0075750_0077550"
+},
+{
+"v": "assets/videos/geo/slovakia-2.mp4",
+"p": "assets/images/geo/slovakia-2.jpg",
+"motion": "walking",
+"place": "Bratislava",
+"scene": "urban street",
+"when": "midday",
+"weather": "rainy",
+"dataset": "sekai1",
+"clip": "A0awg_DqakE_0048750_0050550"
+},
+{
+"v": "assets/videos/geo/slovakia-3.mp4",
+"p": "assets/images/geo/slovakia-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "WAVhHuAaTJw_0113595_0115395"
+}
+],
+"local": true
+},
+"Czechia": {
+"clips": 287,
+"share": 0.27,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/czechia-1.mp4",
+"p": "assets/images/geo/czechia-1.jpg",
+"motion": "walking",
+"place": "Prague",
+"scene": "urban street",
+"when": "evening",
+"weather": "rainy",
+"dataset": "sekai1",
+"clip": "_grR16CVnV8_0121085_0122885"
+},
+{
+"v": "assets/videos/geo/czechia-2.mp4",
+"p": "assets/images/geo/czechia-2.jpg",
+"motion": "stationary pan",
+"place": "Prague",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "dd2I7IYbNeM_0114549_0116349"
+},
+{
+"v": "assets/videos/geo/czechia-3.mp4",
+"p": "assets/images/geo/czechia-3.jpg",
+"motion": "driving",
+"place": "Karlovy Vary",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "2GX9gwsDdy4_0600771_0602571"
+}
+],
+"local": true
+},
+"Japan": {
+"clips": 36997,
+"share": 34.53,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/japan-1.mp4",
+"p": "assets/images/geo/japan-1.jpg",
+"motion": "walking",
+"place": "Tokyo",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "-60T8t6q5tE_0121668_0125268"
+},
+{
+"v": "assets/videos/geo/japan-3.mp4",
+"p": "assets/images/geo/japan-3.jpg",
+"motion": "train",
+"place": "Tokyo",
+"scene": "urban street",
+"when": "night",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "7-IfuNcW0jM_0083058_0086658"
+},
+{
+"motion": "driving",
+"place": "Tokyo",
+"scene": "urban street",
+"when": "morning",
+"weather": "cloudy",
+"dataset": "sekai2_add_static",
+"clip": "29DyST_dgaA_0003205_0003560",
+"v": "assets/videos/geo/japan-2.mp4",
+"p": "assets/images/geo/japan-2.jpg"
+}
+],
+"local": true
+},
+"Saudi Arabia": {
+"clips": 51,
+"share": 0.05,
+"continent": "Asia",
+"videos": [
+{
+"v": "assets/videos/geo/saudi-arabia-1.mp4",
+"p": "assets/images/geo/saudi-arabia-1.jpg",
+"motion": "driving",
+"place": "Riyadh",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "w1DX9wNtZrE_0003647_0007247"
+},
+{
+"v": "assets/videos/geo/saudi-arabia-2.mp4",
+"p": "assets/images/geo/saudi-arabia-2.jpg",
+"motion": "walking",
+"place": "Riyadh",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "bj3DdEeHKmE_0116250_0118050"
+},
+{
+"v": "assets/videos/geo/saudi-arabia-3.mp4",
+"p": "assets/images/geo/saudi-arabia-3.jpg",
+"motion": "walking",
+"place": "Riyadh",
+"scene": "urban street",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "0ZDU3iAQLx8_0055950_0057750"
+}
+],
+"local": true
+},
+"Morocco": {
+"clips": 124,
+"share": 0.12,
+"continent": "Africa",
+"videos": [
+{
+"v": "assets/videos/geo/morocco-1.mp4",
+"p": "assets/images/geo/morocco-1.jpg",
+"motion": "walking",
+"place": "Chefchaouen",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "XSn0EsrcNKw_0065792_0067592"
+},
+{
+"v": "assets/videos/geo/morocco-3.mp4",
+"p": "assets/images/geo/morocco-3.jpg",
+"motion": "walking",
+"place": "Marrakech",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "hw9DBlFh5uA_0049567_0051367"
+},
+{
+"motion": "stationary pan",
+"place": "Marrakesh",
+"scene": "market or plaza",
+"when": "evening",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "iISlmpC1t0g_0106903_0107375",
+"v": "assets/videos/geo/morocco-2.mp4",
+"p": "assets/images/geo/morocco-2.jpg"
+}
+],
+"local": true
+},
+"Egypt": {
+"clips": 366,
+"share": 0.34,
+"continent": "Africa",
+"videos": [
+{
+"v": "assets/videos/geo/egypt-3.mp4",
+"p": "assets/images/geo/egypt-3.jpg",
+"motion": "walking",
+"place": "Cairo",
+"scene": "market or plaza",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "MY3kolw6mNI_0048135_0049935"
+},
+{
+"motion": "driving",
+"place": "Giza",
+"scene": "desert",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "a_bKqM0_ZMo_0009597_0009991",
+"v": "assets/videos/geo/egypt-1.mp4",
+"p": "assets/images/geo/egypt-1.jpg"
+},
+{
+"motion": "driving",
+"place": "Cairo",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "peDTTGbtoc8_0060898_0062698",
+"v": "assets/videos/geo/egypt-2.mp4",
+"p": "assets/images/geo/egypt-2.jpg"
+}
+],
+"local": true
+},
+"Ethiopia": {
+"clips": 36,
+"share": 0.03,
+"continent": "Africa",
+"videos": [
+{
+"v": "assets/videos/geo/ethiopia-1.mp4",
+"p": "assets/images/geo/ethiopia-1.jpg",
+"motion": "walking",
+"place": "Addis Ababa",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "YlDqxr8B4G0_0032550_0034350"
+},
+{
+"v": "assets/videos/geo/ethiopia-2.mp4",
+"p": "assets/images/geo/ethiopia-2.jpg",
+"motion": "walking",
+"place": "Addis Ababa",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "wfuBd15WRTE_0010950_0012750"
+},
+{
+"v": "assets/videos/geo/ethiopia-3.mp4",
+"p": "assets/images/geo/ethiopia-3.jpg",
+"motion": "walking",
+"place": "Addis Ababa",
+"scene": "transport hub",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "VJZ8HQy2RIQ_0052350_0054150"
+}
+],
+"local": true
+},
+"North Macedonia": {
+"clips": 36,
+"share": 0.03,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/north-macedonia-1.mp4",
+"p": "assets/images/geo/north-macedonia-1.jpg",
+"motion": "walking",
+"place": "Skopje",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "Wulhe9hmU7I_0012750_0014550"
+},
+{
+"v": "assets/videos/geo/north-macedonia-2.mp4",
+"p": "assets/images/geo/north-macedonia-2.jpg",
+"motion": "walking",
+"place": "Skopje",
+"scene": "market or plaza",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "fQS17dd2Ikc_0108249_0110049"
+},
+{
+"v": "assets/videos/geo/north-macedonia-3.mp4",
+"p": "assets/images/geo/north-macedonia-3.jpg",
+"motion": "walking",
+"place": "Skopje",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "Lx9M_LpiF6M_0016350_0018150"
+}
+],
+"local": true
+},
+"Serbia": {
+"clips": 20,
+"share": 0.02,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/serbia-1.mp4",
+"p": "assets/images/geo/serbia-1.jpg",
+"motion": "walking",
+"place": "Belgrade",
+"scene": "urban street",
+"when": "afternoon",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "smnPx20jRKU_0021098_0022898"
+},
+{
+"v": "assets/videos/geo/serbia-2.mp4",
+"p": "assets/images/geo/serbia-2.jpg",
+"motion": "walking",
+"place": "Belgrade",
+"scene": "urban street",
+"when": "morning",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "fQS17dd2Ikc_0065049_0066849"
+},
+{
+"v": "assets/videos/geo/serbia-3.mp4",
+"p": "assets/images/geo/serbia-3.jpg",
+"motion": "walking",
+"place": "",
+"scene": "market or plaza",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai1",
+"clip": "Wulhe9hmU7I_0039750_0041550"
+}
+],
+"local": true
+},
+"Montenegro": {
+"clips": 67,
+"share": 0.06,
+"continent": "Europe",
+"videos": [
+{
+"v": "assets/videos/geo/montenegro-1.mp4",
+"p": "assets/images/geo/montenegro-1.jpg",
+"motion": "walking",
+"place": "Kotor",
+"scene": "mountain",
+"when": "evening",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "RcgvSgHgilM_0072572_0074372"
+},
+{
+"v": "assets/videos/geo/montenegro-2.mp4",
+"p": "assets/images/geo/montenegro-2.jpg",
+"motion": "walking",
+"place": "Budva",
+"scene": "water body",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "zStJKca_uZI_0073890_0075755"
+},
+{
+"v": "assets/videos/geo/montenegro-3.mp4",
+"p": "assets/images/geo/montenegro-3.jpg",
+"motion": "walking",
+"place": "Kotor",
+"scene": "urban street",
+"when": "midday",
+"weather": "cloudy",
+"dataset": "sekai1",
+"clip": "a5TpFQx8D-M_0046950_0048750"
+}
+],
+"local": true
+}
+}

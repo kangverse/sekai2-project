@@ -81,9 +81,11 @@ class PoseViewer {
         this.camera.lookAt(0, 0, 0);
 
         // 渲染器
-        this.renderer = new THREE.WebGLRenderer({ antialias: true });
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'low-power' });
         this.renderer.setSize(width, height);
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        // These viewers sit beside decoding video; a 2x buffer costs far more GPU
+        // than it adds visually at this panel size and made playback stutter.
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
         this.container.innerHTML = '';
         this.container.appendChild(this.renderer.domElement);
 
@@ -1083,8 +1085,13 @@ class PoseViewer {
     }
 
     _animate() {
-        this._animationId = requestAnimationFrame(() => this._animate());
+        this._animationId = requestAnimationFrame((t) => this._animate(t));
         if (this._inView === false) return;   // skip GPU work when scrolled off-screen
+        // Cap to ~40 fps. The trajectory is static between frame updates, so the
+        // spare budget is better spent on video decoding.
+        const now = (typeof performance !== 'undefined') ? performance.now() : 0;
+        if (this._lastDraw && now - this._lastDraw < 24) return;
+        this._lastDraw = now;
         this.controls?.update();
         this.renderer?.render(this.scene, this.camera);
     }

@@ -13,6 +13,10 @@ IMAGE_OUT = ROOT / "assets" / "images"
 VIDEO_OUT.mkdir(parents=True, exist_ok=True)
 IMAGE_OUT.mkdir(parents=True, exist_ok=True)
 
+# ViPE pose rate: 60 fps sources are decimated to 30 fps before pose estimation,
+# 30 fps sources are kept as-is. All `inds` in the pose npz are in this time base.
+POSE_FPS = 30.0
+
 VIDEO_ROOT = Path("/mnt/workspace/shared/datasets/world_model/Video/sekai2")
 CLIPS = [
     ("walking", "T5JzYSlRFNU/T5JzYSlRFNU_0109890_0111340.mp4", 20),
@@ -136,7 +140,16 @@ def build_case_data():
         pose_file = np.load(row["pose_path"])
         pose = pose_file["data"] if "data" in pose_file else pose_file["cam_c2w"]
         pose = np.asarray(pose, float)
-        pose = pose[np.isfinite(pose).all(axis=(1, 2))]
+        finite = np.isfinite(pose).all(axis=(1, 2))
+        # ViPE poses run at 30 fps (60 fps sources are decimated to 30, 30 fps
+        # sources kept), and `inds` are contiguous source-frame indices, so the
+        # trajectory's true span is (last - first + 1) / 30. Do NOT use the last
+        # caption segment's end time: it under-reports by ~3 s on many clips and
+        # makes the synchronized marker drift.
+        pose_inds = np.asarray(pose_file["inds"] if "inds" in pose_file
+                               else np.arange(len(pose)))[finite]
+        pose_duration = float((pose_inds[-1] - pose_inds[0] + 1) / POSE_FPS)
+        pose = pose[finite]
         pose = np.einsum("ij,njk->nik", np.linalg.inv(pose[0]), pose)
         # At most 240 poses; preserve the entire clip and camera orientation.
         pose = pose[np.linspace(0, len(pose)-1, min(240, len(pose))).astype(int)]
@@ -156,7 +169,9 @@ def build_case_data():
         # is local +Z (the projection utilities likewise require z > 0).
         forward = np.einsum("nij,j->ni", rotations, np.array([0., 0., 1.]))
         forward /= np.maximum(np.linalg.norm(forward, axis=1, keepdims=True), 1e-8)
-        source_duration = float(caption.get("segments", [{}])[-1].get("time_range_s", [0, 120])[-1])
+        if start + 15 > pose_duration + 1:
+            print(f"  WARNING {label}: preview starts at {start}s but pose ends at "
+                  f"{pose_duration:.1f}s — the marker would clamp; move the window.")
         output[label] = {
             "clip": clip, "dataset": row["dataset"], "video": f"assets/videos/{label}.mp4",
             "poster": f"assets/images/{label}.jpg", "preview_start_s": start,
@@ -165,8 +180,9 @@ def build_case_data():
                        "rotations": np.round(rotations.reshape(-1, 9), 6).tolist(),
                        "forward_vectors": np.round(forward, 6).tolist(),
                        "forward_axis": "+Z",
-                       "num_frames": len(pose), "duration": source_duration,
-                       "fps": len(pose) / max(source_duration, 1e-8)},
+                       "num_frames": len(pose), "duration": round(pose_duration, 3),
+                       "fps": round(len(pose) / max(pose_duration, 1e-8), 6),
+                       "pose_fps": POSE_FPS, "pose_frames": int(len(pose_inds))},
             "overall": {key: overall.get(key, "") for key in (
                 "subject_motion", "environment_motion", "static_scene",
                 "camera_description", "full_prompt")},

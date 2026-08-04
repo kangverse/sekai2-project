@@ -62,16 +62,15 @@
     <section class="geography section" id="geography">
       <div class="section-heading reveal">
         <div><p class="kicker">Geographic diversity</p><h2>Worldwide coverage,<br>grounded in real scenes.</h2></div>
-        <p>Coverage spans 115 countries — cities, natural environments, infrastructure, and cultures worldwide. Hover a highlighted location to preview the footage captured there.</p>
+        <p>Coverage spans 115 countries — cities, natural environments, infrastructure, and cultures worldwide. Hover any shaded country to see its clip count and preview representative footage.</p>
       </div>
       <div class="geo-map reveal" id="geo-map">
         <div class="geo-canvas" id="geo-canvas">
-          <img class="geo-basemap" src="assets/images/geographic-map-clean.png" alt="Sekai2 geographic coverage choropleth — 115 countries" loading="lazy">
-          <div class="geo-hotspots" id="geo-hotspots"></div>
+          <div class="geo-svg-host" id="geo-svg-host"></div>
           <div class="geo-pop" id="geo-pop" role="dialog" aria-hidden="true"></div>
         </div>
-        <div class="geo-legend"><span>fewer clips</span><i class="geo-scale"></i><span>more clips</span><em>115 countries</em></div>
-        <p class="geo-hint">Hover a glowing marker to preview real footage from that region</p>
+        <div class="geo-legend"><span>fewer clips</span><i class="geo-scale"></i><span>more clips</span><em id="geo-count">115 countries</em></div>
+        <p class="geo-hint">Hover or tap any shaded country · <span id="geo-hint-detail">98 countries are interactive</span></p>
       </div>
     </section>
 
@@ -135,8 +134,16 @@
         <p>Native 360° captures include long, revisiting trajectories designed to expose loop structure and support full-accumulation reconstruction.</p>
       </div>
       <div class="pano-card reveal">
-        <div class="pano-case-media"><div class="pano-preview"><video id="pano-case-video" muted loop autoplay playsinline></video><span>native equirectangular preview</span></div><div class="pano-pose"><div id="pano-pose-viewer"></div><span>complete trajectory · synchronized point</span></div></div>
-        <div class="pano-copy"><span class="tag">360° pose case studies</span><h3 id="pano-case-title">Spatial continuity beyond the forward view</h3><p id="pano-case-copy">Panoramic footage preserves the surrounding environment during turns, loops, obstacles, and repeated visits.</p><div class="pano-case-tabs" id="pano-case-tabs"></div></div>
+        <div class="pano-case-media">
+          <div class="pano-preview"><video id="pano-case-video" muted loop playsinline preload="auto"></video><span>native equirectangular · full 360° × 180° field</span></div>
+          <div class="pano-pose"><div id="pano-pose-viewer"></div><span>complete trajectory · synchronized point</span></div>
+        </div>
+        <div class="pano-bar">
+          <span class="tag">360° pose case studies</span>
+          <b id="pano-case-title">Meander</b>
+          <p id="pano-case-copy">Panoramic footage preserves the surrounding environment during turns, loops, and repeated visits.</p>
+          <div class="pano-case-tabs" id="pano-case-tabs"></div>
+        </div>
       </div>
       <div class="reconstruction reveal">
         <div class="reconstruction-head"><div><span class="tag">Full-accumulation reconstruction</span><h3>Long trajectories recover coherent spatial structure.</h3></div><p>Selected panoramic sequences span sharp turns, serpentine paths, obstacles, and revisitation loops. Color encodes progression along each recovered trajectory.</p></div>
