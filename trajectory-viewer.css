@@ -41,6 +41,10 @@
   gap: 14px;
 }
 
+.horizon-dots{display:flex;justify-content:center;gap:10px;margin-top:18px}.horizon-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer;transition:.25s}.horizon-dots button.active{width:28px;border-radius:99px;background:var(--lime)}
+
+.pano-card{grid-template-columns:1.32fr .68fr!important;background:linear-gradient(135deg,var(--sky),#edf4e8)!important}.pano-case-media{display:grid;grid-template-columns:1fr .72fr;gap:10px;padding:18px}.pano-preview,.pano-pose{position:relative;min-width:0;height:430px;overflow:hidden;border-radius:18px;background:#132f36}.pano-preview video{width:100%;height:100%;display:block;object-fit:cover}.pano-preview>span,.pano-pose>span{position:absolute;z-index:2;top:12px;left:12px;padding:6px 9px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(10,31,36,.72);color:#fff;font-size:8px;letter-spacing:.08em;text-transform:uppercase}.pano-pose>span{top:auto;bottom:12px}#pano-pose-viewer{width:100%;height:100%}#pano-pose-viewer canvas{display:block;width:100%!important;height:100%!important}.pano-case-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-top:24px}.pano-case-tabs button{padding:9px 13px;border:1px solid rgba(23,52,59,.18);border-radius:999px;background:rgba(255,255,255,.5);color:var(--ink);cursor:pointer}.pano-case-tabs button.active{background:var(--ink);color:#fff}.pano-copy{padding-left:22px!important}
+
 .trajectory-video-pane,
 .trajectory-3d-pane {
   position: relative;
@@ -87,6 +91,7 @@
 @media (max-width: 900px) {
   .trajectory-sync-grid { grid-template-columns: 1fr; }
   .trajectory-video-pane video { height: auto; aspect-ratio: 16 / 9; }
+  .pano-card{grid-template-columns:1fr!important}.pano-case-media{grid-template-columns:1fr}.pano-preview,.pano-pose{height:340px}.pano-copy{padding:28px!important}
 }
 
 .reconstruction-filters {
@@ -196,6 +201,8 @@
 
 .caption-case-tab.active { background: var(--ink); color: #fff; }
 .caption-case-tab.active span { color: #d9eeaa; }
+.metric.accent,.access-box{background:var(--lime)}.horizon{background:#17343b}.trajectory,footer{background:#102a31}.sources{background:var(--orange)}.button.primary,.trajectory-tab.active{background:var(--lime)}.kicker.light,.eyebrow{color:var(--lime)}
+.hero-copy.reveal.visible{transform:translate(-50%,-50%)}
 
 .caption-case-explorer {
   padding: 24px;

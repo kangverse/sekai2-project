@@ -37,7 +37,11 @@ CLIPS = [
     ("static-landscape", "../sekai2_add_static/8H06lSPYDeQ/8H06lSPYDeQ_0012690_0016290.mp4", 32),
 ]
 
-LONG_HORIZON = Path("/mnt/workspace/shared/datasets/world_model/Video/sekai2_add_static/BUHZ-H0fyus/BUHZ-H0fyus_0149515_0153090.mp4")
+LONG_HORIZONS = [
+    ("long-horizon-city", Path("/mnt/workspace/shared/datasets/world_model/Video/sekai2_add_static/Ps8ETd-J2yk/Ps8ETd-J2yk_0009090_0012690.mp4")),
+    ("long-horizon-mountain", Path("/mnt/workspace/shared/datasets/world_model/Video/sekai2_add_static/3mLJCi5pRYM/3mLJCi5pRYM_0435866_0439466.mp4")),
+    ("long-horizon-arcade", Path("/mnt/workspace/shared/datasets/world_model/Video/sekai2/-60T8t6q5tE/-60T8t6q5tE_0056868_0060468.mp4")),
+]
 
 
 def resize(frame, width=640):
@@ -46,7 +50,7 @@ def resize(frame, width=640):
     return image.resize((width, height), Image.Resampling.LANCZOS)
 
 
-def make_preview(name, relative, start, seconds=8, fps=15):
+def make_preview(name, relative, start, seconds=15, fps=15):
     source = VIDEO_ROOT / relative
     target = VIDEO_OUT / f"{name}.mp4"
     poster = IMAGE_OUT / f"{name}.jpg"
@@ -84,37 +88,26 @@ def make_preview(name, relative, start, seconds=8, fps=15):
 
 
 def make_long_horizon():
-    target = VIDEO_OUT / "long-horizon.mp4"
-    poster = IMAGE_OUT / "long-horizon.jpg"
-    if target.exists() and poster.exists():
-        return
-    inp = av.open(str(LONG_HORIZON))
-    stream = inp.streams.video[0]
-    output = av.open(str(target), "w")
-    fps = 8
-    out = output.add_stream("libx264", rate=fps)
-    out.width, out.height, out.pix_fmt = 640, 360, "yuv420p"
-    out.options = {"crf": "32", "preset": "slow", "movflags": "+faststart"}
-    next_time, written = 0.0, 0
-    for frame in inp.decode(stream):
-        timestamp = float(frame.time or 0)
-        if timestamp + 1e-3 < next_time:
-            continue
-        if timestamp >= 120 or written >= 120 * fps:
-            break
-        image = resize(frame).crop((0, 0, 640, 360))
-        if written == 0:
-            image.save(poster, quality=86, optimize=True)
-        encoded = av.VideoFrame.from_image(image)
-        encoded.pts = written
-        for packet in out.encode(encoded):
-            output.mux(packet)
-        written += 1
-        next_time = written / fps
-    for packet in out.encode():
-        output.mux(packet)
-    output.close(); inp.close()
-    print("long-horizon", written, target.stat().st_size)
+    for name, source in LONG_HORIZONS:
+        target, poster = VIDEO_OUT / f"{name}.mp4", IMAGE_OUT / f"{name}.jpg"
+        if target.exists() and poster.exists(): continue
+        inp = av.open(str(source)); stream = inp.streams.video[0]
+        output = av.open(str(target), "w"); fps = 4
+        out = output.add_stream("libx264", rate=fps)
+        out.width, out.height, out.pix_fmt = 640, 360, "yuv420p"
+        out.options = {"crf": "32", "preset": "slow", "movflags": "+faststart"}
+        next_time, written = 0.0, 0
+        for frame in inp.decode(stream):
+            timestamp = float(frame.time or 0)
+            if timestamp + 1e-3 < next_time: continue
+            if timestamp >= 120 or written >= 120 * fps: break
+            image = resize(frame).crop((0, 0, 640, 360))
+            if written == 0: image.save(poster, quality=86, optimize=True)
+            encoded = av.VideoFrame.from_image(image); encoded.pts = written
+            for packet in out.encode(encoded): output.mux(packet)
+            written += 1; next_time = written / fps
+        for packet in out.encode(): output.mux(packet)
+        output.close(); inp.close(); print(name, written, target.stat().st_size)
 
 
 def compact_image(source, target, width=1500, quality=84):

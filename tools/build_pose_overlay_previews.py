@@ -14,10 +14,11 @@ ROOT = Path(__file__).resolve().parents[1]
 VIDEOS = ROOT / "assets/videos"
 IMAGES = ROOT / "assets/images"
 MANIFEST = Path("/mnt/workspace/hk/Acamedic/Sekai2/statistic/sekai_all_final_merged.csv")
-SELECTED = ("drone", "walking", "driving", "cycling", "boat")
+SELECTED = ("drone", "walking", "driving", "cycling", "cable-car")
 CASE_SOURCE = {
-    "walking": "walking-winding",
+    "walking": "walking-lturn",
     "driving": "driving-loop",
+    "cable-car": "cable-car-alpine",
 }
 
 

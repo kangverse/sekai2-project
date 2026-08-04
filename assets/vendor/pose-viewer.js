@@ -32,6 +32,8 @@ class PoseViewer {
         this.showFrustums = true;
         this.showTrajectory = true;
         this.followMode = false;
+        this.progressHighlight = true;
+        this.showDirection = true;
 
         // 当前帧
         this.currentFrame = 0;
@@ -208,7 +210,7 @@ class PoseViewer {
         }
 
         // 更新已播放轨迹线颜色（红色高亮已播放部分）
-        if (this.trajectoryLine && this.trajectoryLine.geometry) {
+        if (this.progressHighlight && this.trajectoryLine && this.trajectoryLine.geometry) {
             const colors = this.trajectoryLine.geometry.getAttribute('color');
             if (colors) {
                 const vertexCount = colors.count;
@@ -270,6 +272,15 @@ class PoseViewer {
     setShowTrajectory(show) {
         this.showTrajectory = show;
         if (this.trajectoryLine) this.trajectoryLine.visible = show;
+    }
+
+    setProgressHighlight(enabled) {
+        this.progressHighlight = enabled;
+    }
+
+    setShowDirection(show) {
+        this.showDirection = show;
+        if (this.currentDirCone) this.currentDirCone.visible = show;
     }
 
     /**
@@ -967,6 +978,7 @@ class PoseViewer {
         const coneGeo = new THREE.ConeGeometry(s * 2.5, s * 8, 6);
         const coneMat = new THREE.MeshBasicMaterial({ color: 0xff4444, transparent: true, opacity: 0.8 });
         this.currentDirCone = new THREE.Mesh(coneGeo, coneMat);
+        this.currentDirCone.visible = this.showDirection;
 
         if (this.positions.length > 0) {
             const pos = this.positions[0];

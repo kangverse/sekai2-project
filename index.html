@@ -86,14 +86,15 @@
       <div class="timeline-stage reveal">
         <div class="timeline-viewport">
           <div class="timeline-placeholder" id="timeline-visual">
-            <video id="long-video" src="assets/videos/long-horizon.mp4" poster="assets/images/long-horizon.jpg" muted playsinline preload="metadata"></video>
+            <video id="long-video" src="assets/videos/long-horizon-city.mp4" poster="assets/images/long-horizon-city.jpg" muted playsinline preload="metadata"></video>
             <button class="long-play" id="long-play" type="button" aria-label="Play long-horizon video">▶</button>
-            <span class="scene-label">Waterfall approach · Drone · 120 s</span>
+            <span class="scene-label" id="long-scene-label">Golden-hour city turn · Driving · 120 s</span>
             <div class="horizon-line"></div>
           </div>
         </div>
         <input id="timeline" type="range" min="0" max="120" value="0" aria-label="Explore a two-minute sequence">
         <div class="timeline-labels"><span>0 s</span><span>30 s</span><span>60 s</span><span>90 s</span><span>120 s</span></div>
+        <div class="horizon-dots" id="horizon-dots" aria-label="Choose a long-horizon journey"></div>
         <p class="interaction-hint">Drag to travel through the sequence</p>
       </div>
     </section>
@@ -133,7 +134,7 @@
         <p>Released camera trajectories expose real motion patterns for trajectory-conditioned generation and long-horizon navigation.</p>
       </div>
       <div class="trajectory-stage reveal">
-        <div class="trajectory-live-label"><span>RGB + 3D POSE</span><b id="trajectory-case-name">Drone</b><small>synchronized video and camera-aligned path</small></div>
+        <div class="trajectory-live-label"><span>RGB + 3D POSE</span><b id="trajectory-case-name">Drone</b><small>15 s synchronized window on the complete trajectory</small></div>
         <div class="trajectory-sync-grid">
           <div class="trajectory-video-pane"><video id="trajectory-video" src="assets/videos/pose-overlay-drone.webm" poster="assets/images/pose-overlay-drone.jpg" controls autoplay muted loop playsinline></video><span>Clean RGB preview</span></div>
           <div class="trajectory-3d-pane"><div id="trajectory-viewer" aria-label="Interactive 3D camera trajectory visualization"></div><span>drag to orbit · scroll to zoom</span></div>
@@ -149,8 +150,8 @@
         <p>Native 360° captures include long, revisiting trajectories designed to expose loop structure and support full-accumulation reconstruction.</p>
       </div>
       <div class="pano-card reveal">
-        <div class="pano-sphere"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><span>360°</span></div>
-        <div class="pano-copy"><span class="tag">Loop-aware sequences</span><h3>Spatial continuity beyond the forward view</h3><p>Panoramic footage preserves the surrounding environment during turns, loops, obstacles, and repeated visits.</p><a href="#">Case studies coming soon <span>→</span></a></div>
+        <div class="pano-case-media"><div class="pano-preview"><video id="pano-case-video" muted loop autoplay playsinline></video><span>native equirectangular preview</span></div><div class="pano-pose"><div id="pano-pose-viewer"></div><span>complete trajectory · synchronized point</span></div></div>
+        <div class="pano-copy"><span class="tag">360° pose case studies</span><h3 id="pano-case-title">Spatial continuity beyond the forward view</h3><p id="pano-case-copy">Panoramic footage preserves the surrounding environment during turns, loops, obstacles, and repeated visits.</p><div class="pano-case-tabs" id="pano-case-tabs"></div></div>
       </div>
       <div class="reconstruction reveal">
         <div class="reconstruction-head"><div><span class="tag">Full-accumulation reconstruction</span><h3>Long trajectories recover coherent spatial structure.</h3></div><p>Selected panoramic sequences span sharp turns, serpentine paths, obstacles, and revisitation loops. Color encodes progression along each recovered trajectory.</p></div>
