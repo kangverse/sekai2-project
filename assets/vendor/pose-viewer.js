@@ -132,7 +132,11 @@ class PoseViewer {
      * 加载轨迹数据并渲染
      * @param {Object} data — 后端 /api/items/{id}/pose 返回的 JSON
      */
-    loadTrajectory(data) {
+    loadTrajectory(data, alignFrame = 0) {
+        // The overview is oriented to the heading at `alignFrame` — the frame the
+        // paired video starts on — so what the clip shows moving forward also moves
+        // away from the viewer here. Frame 0 can point a completely different way.
+        this._alignFrame = alignFrame;
         this.trajectoryData = data;
         this.positions = data.positions;
         // ViPE cam_c2w uses OpenCV's local +Z optical-forward convention.
@@ -1055,10 +1059,21 @@ class PoseViewer {
         // reads as motion INTO the screen rather than receding toward the viewer.
         const up = new THREE.Vector3(0, 1, 0);
         const dir = new THREE.Vector3(0, 0, 1);
-        const fwd0 = this.forwardVectors && this.forwardVectors[0];
-        if (fwd0) dir.set(fwd0[0], 0, fwd0[2]);              // initial heading, flattened to ground
-        if (dir.lengthSq() < 1e-6 && this.positions.length > 1) {
-            const a = this.positions[0], b = this.positions[this.positions.length - 1];
+        // Average the optical axis over a short window around the aligned frame so a
+        // single jittery pose cannot flip the whole view.
+        const n = this.positions.length;
+        const at = Math.max(0, Math.min(this._alignFrame || 0, n - 1));
+        const half = Math.max(2, Math.round(n * 0.02));
+        if (this.forwardVectors && this.forwardVectors.length) {
+            let sx = 0, sz = 0;
+            for (let i = Math.max(0, at - half); i <= Math.min(n - 1, at + half); i++) {
+                const f = this.forwardVectors[i];
+                if (f) { sx += f[0]; sz += f[2]; }
+            }
+            dir.set(sx, 0, sz);
+        }
+        if (dir.lengthSq() < 1e-6 && n > 1) {
+            const a = this.positions[0], b = this.positions[n - 1];
             dir.set(b[0] - a[0], 0, b[2] - a[2]);            // fallback: net ground displacement
         }
         if (dir.lengthSq() < 1e-6) dir.set(0, 0, 1);

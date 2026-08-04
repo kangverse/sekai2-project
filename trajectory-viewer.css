@@ -388,3 +388,12 @@
   .pano-pose{height:300px}
   .pano-bar{align-items:flex-start;flex-direction:column}
 }
+
+/* Country popup: one hero preview plus two supporting clips reads far better than
+   three equal slivers at this width. */
+.geo-pop{width:304px}
+.geo-pop-vids{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:row;gap:6px}
+.geo-pop-vids .geo-vid:first-child{grid-column:1 / -1}
+.geo-vid{aspect-ratio:16/9}
+.geo-vid em{font-size:7.5px}
+@media(max-width:600px){.geo-pop{width:250px}}
