@@ -27,6 +27,14 @@ The current page includes ten compact previews selected from the release, two vi
 
 The per-clip case modal contains a static adaptation of the Three.js pose visualization from `/mnt/workspace/gyt/code/world-model-viewer`. Backend indexing, authentication, comments, video proxying, and email functionality are intentionally excluded; GitHub Pages receives only precomputed trajectories for the selected showcase clips.
 
+The synchronized RGB pose-trace previews use the OSS `sekai_filter` camera-trace tool, downloaded to `/mnt/workspace/hk/code/sekai_filter_pose_overlay`. Rebuild the five web previews with:
+
+```bash
+python tools/build_pose_overlay_previews.py
+```
+
+The preview projection uses a display-only pinhole model inferred from the video resolution and a fixed 70-degree field of view because the ViPE NPZ files contain extrinsics but not camera intrinsics. It does not modify the released trajectories or pose-quality statistics.
+
 Regenerate the web media with:
 
 ```bash
