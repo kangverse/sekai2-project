@@ -26,17 +26,19 @@ const groups=['All','Aerial','Ground','Vehicle'];
 const filters=document.querySelector('#filters');
 filters.innerHTML=groups.map((x,i)=>`<button class="filter ${i===0?'active':''}" data-filter="${x}">${x}</button>`).join('');
 const grid=document.querySelector('#dataset-grid');
-// Partition N cards into rows of 3 or 2 so EVERY row is exactly full — a lone card
-// on the final row looked abrupt. Rows of 2 alternate 8+4 / 4+8 for visual rhythm.
+// Partition N cards so EVERY row is exactly full (12 columns) — a lone card on the
+// final row looked abrupt. Two-card rows are pushed to the FRONT as an 8+4 hero row
+// so the wide card reads as a deliberate lead, never as a leftover at the bottom.
+//   n%3==0 -> all rows of 3      n%3==2 -> hero 8+4, then rows of 3
+//   n%3==1 -> hero 8+4, rows of 3, and one balanced 6+6 row at the end
 function rowPlan(n){
   if(n<=0)return[];
   if(n===1)return[[12]];
-  const rows=[];let rest=n;
-  while(rest>3){rows.push(3);rest-=3}
-  if(rest===1){const i=rows.length-1;rows[i]=2;rows.push(2)}          // 3+1 -> 2+2
-  else if(rest>0)rows.push(rest);
-  let two=0;
-  return rows.map(size=>size===3?[4,4,4]:size===2?(two++%2===0?[8,4]:[4,8]):[12]);
+  if(n===2)return[[8,4]];
+  const r=n%3;
+  if(r===0)return Array.from({length:n/3},()=>[4,4,4]);
+  if(r===2)return [[8,4],...Array.from({length:(n-2)/3},()=>[4,4,4])];
+  return [[8,4],...Array.from({length:(n-4)/3},()=>[4,4,4]),[6,6]];   // r===1
 }
 function renderCards(group='All'){
   const list=types.filter(x=>group==='All'?x.featured:x.group===group);

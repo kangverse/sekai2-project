@@ -397,3 +397,21 @@
 .geo-vid{aspect-ratio:16/9}
 .geo-vid em{font-size:7.5px}
 @media(max-width:600px){.geo-pop{width:250px}}
+
+/* Rows are computed to be exactly full, so make every card in a row the same
+   height — a wide lead card next to a normal one must not look ragged. */
+.dataset-grid .data-card{display:flex;flex-direction:column}
+.dataset-grid .data-card .card-body{flex:1}
+.dataset-grid .data-card[data-span="4"] .card-media,
+.dataset-grid .data-card[data-span="6"] .card-media,
+.dataset-grid .data-card[data-span="8"] .card-media{height:300px}
+.dataset-grid .data-card[data-span="6"]{grid-column:span 6}
+.dataset-grid .data-card[data-span="12"] .card-media{height:360px}
+@media(max-width:900px){
+  .dataset-grid .data-card[data-span]{grid-column:span 6!important}
+  .dataset-grid .data-card[data-span] .card-media{height:250px!important}
+}
+@media(max-width:600px){
+  .dataset-grid .data-card[data-span]{grid-column:span 12!important}
+  .dataset-grid .data-card[data-span] .card-media{height:240px!important}
+}
