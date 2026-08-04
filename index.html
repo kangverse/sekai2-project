@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="trajectory-viewer.css">
 </head>
 <body>
   <nav class="nav" aria-label="Main navigation">
@@ -138,9 +139,10 @@
         <p>Released camera trajectories expose real motion patterns for trajectory-conditioned generation and long-horizon navigation.</p>
       </div>
       <div class="trajectory-stage reveal">
-        <canvas id="trajectory-canvas" aria-label="Animated camera trajectory visualization"></canvas>
+        <div class="trajectory-live-label"><span>LIVE 3D VIEWER</span><b id="trajectory-case-name">Drone</b><small>drag to orbit · scroll to zoom</small></div>
+        <div id="trajectory-viewer" aria-label="Interactive 3D camera trajectory visualization"></div>
         <div class="trajectory-tabs" id="trajectory-tabs"></div>
-        <div class="trajectory-meta"><span><i class="dot start"></i> Start</span><span><i class="star">★</i> End</span><span>Color encodes time</span></div>
+        <div class="trajectory-meta"><span><i class="dot start"></i> Start</span><span><i class="star">★</i> End</span><span>Color encodes time</span><span>Interactive: orbit · pan · zoom</span></div>
       </div>
     </section>
 
