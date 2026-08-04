@@ -158,7 +158,9 @@ def build_case_data():
                 segments.append({"time": tr, "text": text,
                                  "path": segment.get("camera_path", "")})
         rotations = pose[:, :3, :3]
-        forward = np.einsum("nij,j->ni", rotations, np.array([0., 0., -1.]))
+        # ViPE cam_c2w follows the OpenCV camera convention: optical forward
+        # is local +Z (the projection utilities likewise require z > 0).
+        forward = np.einsum("nij,j->ni", rotations, np.array([0., 0., 1.]))
         forward /= np.maximum(np.linalg.norm(forward, axis=1, keepdims=True), 1e-8)
         source_duration = float(caption.get("segments", [{}])[-1].get("time_range_s", [0, 120])[-1])
         output[label] = {
@@ -168,6 +170,7 @@ def build_case_data():
             "pose3d": {"positions": np.round(xyz, 6).tolist(),
                        "rotations": np.round(rotations.reshape(-1, 9), 6).tolist(),
                        "forward_vectors": np.round(forward, 6).tolist(),
+                       "forward_axis": "+Z",
                        "num_frames": len(pose), "duration": source_duration,
                        "fps": len(pose) / max(source_duration, 1e-8)},
             "overall": {key: overall.get(key, "") for key in (

@@ -113,7 +113,12 @@ class PoseViewer {
     loadTrajectory(data) {
         this.trajectoryData = data;
         this.positions = data.positions;
-        this.forwardVectors = data.forward_vectors;
+        // ViPE cam_c2w uses OpenCV's local +Z optical-forward convention.
+        // Older exported website JSON accidentally stored local -Z; preserve
+        // compatibility while new exports carry an explicit forward_axis tag.
+        this.forwardVectors = data.forward_axis === '+Z'
+            ? data.forward_vectors
+            : data.forward_vectors.map(v => [-v[0], -v[1], -v[2]]);
         this.currentFrame = 0;
 
         // 存储摇杆数据
@@ -203,8 +208,10 @@ class PoseViewer {
         if (this.trajectoryLine && this.trajectoryLine.geometry) {
             const colors = this.trajectoryLine.geometry.getAttribute('color');
             if (colors) {
-                for (let i = 0; i < this.positions.length; i++) {
-                    if (i <= frameIndex) {
+                const vertexCount = colors.count;
+                const progress = frameIndex / Math.max(this.positions.length - 1, 1);
+                for (let i = 0; i < vertexCount; i++) {
+                    if (i / Math.max(vertexCount - 1, 1) <= progress) {
                         colors.setXYZ(i, 1.0, 0.27, 0.27); // 红色
                     } else {
                         colors.setXYZ(i, 0.36, 0.54, 0.96); // 蓝色
