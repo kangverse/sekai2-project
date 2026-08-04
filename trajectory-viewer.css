@@ -415,3 +415,10 @@
   .dataset-grid .data-card[data-span]{grid-column:span 12!important}
   .dataset-grid .data-card[data-span] .card-media{height:240px!important}
 }
+
+/* ─── Dataset-composition hero (module 61 teaser wheel) ─── */
+.composition-figure{display:block;position:relative;padding:10px;border:1px solid var(--line);border-radius:22px;background:#fff;text-decoration:none;box-shadow:0 24px 70px rgba(20,50,48,.10);transition:transform .3s,box-shadow .3s}
+.composition-figure:hover{transform:translateY(-3px);box-shadow:0 30px 80px rgba(20,50,48,.16)}
+.composition-figure img{display:block;width:100%;height:auto;border-radius:14px}
+.composition-figure span{position:absolute;right:24px;top:24px;padding:8px 12px;border-radius:999px;background:rgba(9,31,33,.82);color:#fff;font-size:10px}
+@media(max-width:600px){.composition-figure span{display:none}}
