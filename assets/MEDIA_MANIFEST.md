@@ -7,8 +7,8 @@ The website uses compact, silent, eight-second previews derived from released cl
 | Walking | Sekai-2 new | `T5JzYSlRFNU_0109890_0111340` | 20 s |
 | Driving | Sekai-2 new | `jpRw1xbePTU_0027090_0030690` | 46 s |
 | Train | Sekai-2 new | `1n6580aSnE4_0185035_0188635` | 48 s |
-| Drone | Sekai-2 new | `z5G4dfck7JU_0158544_0161713` | 36 s |
-| Cycling | Sekai-2 new | `KqflPx9eP6g_0012690_0016290` | 48 s |
+| Drone | Sekai-2 new | `7qs9ceYnECM_0285422_0289022` | 48 s |
+| Cycling | Sekai-2 new | `CFInei-cCPU_0030301_0033901` | 48 s |
 | Boat | Sekai-2 new | `0_nzpk0yHro_0157943_0160290` | 30 s |
 | Cable car | Sekai-2 new | `facDr2lTAUM_0031277_0033090` | 22 s |
 | Escalator | Sekai-2 new | `JB1ss-iFXQ0_0023490_0027090` | 52 s |
