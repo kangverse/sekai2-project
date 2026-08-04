@@ -33,7 +33,7 @@ The synchronized RGB pose-trace previews use the OSS `sekai_filter` camera-trace
 python tools/build_pose_overlay_previews.py
 ```
 
-The preview projection uses a display-only pinhole model inferred from the video resolution and a fixed 70-degree field of view because the ViPE NPZ files contain extrinsics but not camera intrinsics. It does not modify the released trajectories or pose-quality statistics.
+The RGB previews show a synchronized bird's-eye inset computed directly from the ViPE camera translations. The muted line denotes the complete clip trajectory, the colored prefix denotes elapsed motion, and the highlighted marker denotes the current pose. We deliberately avoid projecting the trajectory into the RGB image because these ViPE NPZ files provide extrinsics but not the original camera intrinsics. The adjacent interactive panel visualizes the corresponding trajectory in 3D.
 
 Regenerate the web media with:
 
