@@ -1,12 +1,12 @@
 const types=[
   {name:'Drone',group:'Aerial',desc:'Ascending, orbiting, and long-range flight',a:'#7298a8',b:'#254e54',media:'drone',wide:true,featured:true},
   {name:'Walking',group:'Ground',desc:'First-person paths through real places',a:'#8caf8e',b:'#315b50',media:'walking',featured:true},
-  {name:'Boat',group:'Water',desc:'Waterborne motion at multiple scales',a:'#79aebd',b:'#24526a',media:'boat',wide:true,featured:true},
+  {name:'Boat',group:'Vehicle',desc:'Waterborne motion at multiple scales',a:'#79aebd',b:'#24526a',media:'boat',wide:true,featured:true},
   {name:'Cable Car',group:'Aerial',desc:'Vertical motion and distant vistas',a:'#c1a86a',b:'#725a55',media:'cable-car'},
   {name:'Driving',group:'Vehicle',desc:'Urban roads and long-distance travel',a:'#c68f72',b:'#424f57',media:'driving',featured:true},
-  {name:'Train',group:'Rail',desc:'Extended rail journeys and landscapes',a:'#9c8a72',b:'#39474b',media:'train',featured:true},
+  {name:'Train',group:'Vehicle',desc:'Extended rail journeys and landscapes',a:'#9c8a72',b:'#39474b',media:'train',featured:true},
   {name:'Cycling',group:'Ground',desc:'Fast egocentric motion on winding roads',a:'#88ad77',b:'#174d43',media:'cycling',featured:true},
-  {name:'Static & Pan',group:'Static',desc:'Stable observation with local rotation',a:'#9b91a8',b:'#464256',media:'static-pan',featured:true},
+  {name:'Static & Pan',group:'Ground',desc:'Stable observation with local rotation',a:'#9b91a8',b:'#464256',media:'static-pan',featured:true},
   {name:'Skiing',group:'Ground',desc:'Dynamic descent through snowy terrain',a:'#93aec5',b:'#405c77',media:'skiing',featured:true},
   {name:'Escalator',group:'Ground',desc:'Mechanically constrained vertical travel',a:'#c9a477',b:'#704e43',media:'escalator'},
   {name:'Straight Walk',group:'Ground',desc:'Long, steady pedestrian translation',a:'#77a78a',b:'#234d43',media:'walking-straight'},
@@ -17,12 +17,12 @@ const types=[
   {name:'Loop Drive',group:'Vehicle',desc:'Vehicle motion with a return trajectory',a:'#ba846e',b:'#4d4546',media:'driving-loop'},
   {name:'Ridge Flight',group:'Aerial',desc:'Aerial traversal over large-scale terrain',a:'#6f98ac',b:'#294d59',media:'drone-ridge'},
   {name:'Alpine Cable Car',group:'Aerial',desc:'Constrained elevated motion across a vista',a:'#b5a269',b:'#67564d',media:'cable-car-alpine'},
-  {name:'Static Landscape',group:'Static',desc:'Long observation with subtle camera motion',a:'#958da1',b:'#45434f',media:'static-landscape'}
+  {name:'Static Landscape',group:'Ground',desc:'Long observation with subtle camera motion',a:'#958da1',b:'#45434f',media:'static-landscape'}
 ];
 const wallColors=[['#496b70','#172f35'],['#9e8068','#3b433f'],['#6f9279','#21453c'],['#7d7590','#35344a'],['#b18b66','#4d443d']];
 document.querySelectorAll('.wall-column').forEach((col,ci)=>{const cards=[...types,...types];cards.forEach((t,i)=>{const d=document.createElement('div');d.className='wall-card';d.style.setProperty('--a',wallColors[(i+ci)%wallColors.length][0]);d.style.setProperty('--b',wallColors[(i+ci)%wallColors.length][1]);d.innerHTML=`<video src="assets/videos/${t.media}.mp4" poster="assets/images/${t.media}.jpg" autoplay muted loop playsinline preload="metadata"></video><span>${t.name} · Sekai2</span>`;col.appendChild(d)})});
 document.querySelector('#motion-pills').innerHTML=types.map(x=>`<span class="pill">${x.name}</span>`).join('');
-const groups=['All','Aerial','Ground','Vehicle','Rail','Water','Static'];
+const groups=['All','Aerial','Ground','Vehicle'];
 const filters=document.querySelector('#filters');
 filters.innerHTML=groups.map((x,i)=>`<button class="filter ${i===0?'active':''}" data-filter="${x}">${x}</button>`).join('');
 const grid=document.querySelector('#dataset-grid');
@@ -30,23 +30,24 @@ function renderCards(group='All'){
   grid.innerHTML=types.filter(x=>group==='All'?x.featured:x.group===group).map((x,i)=>`<article class="data-card ${x.wide?'wide':''} reveal visible" data-case="${x.media}" tabindex="0" role="button" aria-label="Open ${x.name} case study"><div class="card-media" style="--ca:${x.a};--cb:${x.b}"><video src="assets/videos/${x.media}.mp4" poster="assets/images/${x.media}.jpg" autoplay muted loop playsinline preload="metadata"></video><span class="media-type">${x.group}</span><span class="inspect">View case ↗</span></div><div class="card-body"><div><h3>${x.name}</h3><small>Video · Pose · Caption</small></div><p>${x.desc}</p></div></article>`).join('')
 }
 renderCards();filters.addEventListener('click',e=>{if(!e.target.matches('.filter'))return;filters.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');renderCards(e.target.dataset.filter)});
-const fields=[['subject_motion','A drone advances steadily above a clear river as the channel bends through the valley.'],['environment_motion','Sunlight flickers across flowing water while foliage moves gently along both banks.'],['static_scene','A shallow mountain river is enclosed by dense green forest, rocks, and narrow gravel banks.'],['camera_description','A stabilized aerial camera travels forward at low altitude, following the river corridor.'],['full_prompt','A continuous low-altitude aerial journey follows a bright forest river and reveals its changing bends, banks, and surrounding terrain.']];
-document.querySelector('#field-list').innerHTML=fields.map(x=>`<div class="field"><b>${x[0]}</b><p>${x[1]}</p></div>`).join('');
-const segColors=['#386889','#51978e','#78aa78','#dda044','#ca6a4f','#7c5ba8'];document.querySelector('#segment-strip').innerHTML=segColors.map((c,i)=>`<span class="segment" style="background:${c}" title="Segment ${i+1}"></span>`).join('');
-const timeline=document.querySelector('#timeline'),readout=document.querySelector('#time-readout'),longVideo=document.querySelector('#long-video'),longPlay=document.querySelector('#long-play');
-const longHorizonCases=[
-  {src:'assets/videos/long-horizon-city.mp4',poster:'assets/images/long-horizon-city.jpg',label:'Golden-hour city turn · Driving · 120 s'},
-  {src:'assets/videos/long-horizon-mountain.mp4',poster:'assets/images/long-horizon-mountain.jpg',label:'Frozen mountain lake · Drone · 120 s'},
-  {src:'assets/videos/long-horizon-arcade.mp4',poster:'assets/images/long-horizon-arcade.jpg',label:'Covered arcade journey · Walking · 120 s'}
-];
-const horizonDots=document.querySelector('#horizon-dots');
-horizonDots.innerHTML=longHorizonCases.map((x,i)=>`<button class="${i===0?'active':''}" data-index="${i}" aria-label="Show ${x.label}"></button>`).join('');
-function loadLongHorizon(index){const item=longHorizonCases[index];longVideo.pause();longVideo.src=item.src;longVideo.poster=item.poster;document.querySelector('#long-scene-label').textContent=item.label;timeline.value=0;showTime(0);horizonDots.querySelectorAll('button').forEach((x,i)=>x.classList.toggle('active',i===index));longVideo.load()}
-horizonDots.addEventListener('click',e=>{if(e.target.matches('button'))loadLongHorizon(+e.target.dataset.index)});
-function showTime(n){n=Math.max(0,Math.min(120,Math.round(n)));readout.textContent=`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`}
-timeline.addEventListener('input',()=>{const n=+timeline.value;showTime(n);if(Number.isFinite(longVideo.duration))longVideo.currentTime=Math.min(n,longVideo.duration-.05)});
-longVideo.addEventListener('timeupdate',()=>{if(!timeline.matches(':active')){timeline.value=Math.min(120,longVideo.currentTime);showTime(longVideo.currentTime)}});
-longVideo.addEventListener('play',()=>{longPlay.textContent='Ⅱ';longPlay.classList.add('playing')});longVideo.addEventListener('pause',()=>{longPlay.textContent='▶';longPlay.classList.remove('playing')});longPlay.addEventListener('click',()=>longVideo.paused?longVideo.play():longVideo.pause());
+// Structured-semantics demo — driven from a real case (coastal-highway drive):
+// global attributes + five clip-level fields + a proportional segment strip.
+const SEG_PALETTE=['#315B7D','#438C8C','#6DAA72','#D49A45','#C7674F','#7C5AA6','#476A9F','#609B76'];
+function renderAnnotationDemo(){
+  const item=caseData['driving'];if(!item)return;
+  const chip=document.querySelector('#annotation-chip');
+  const total=item.pose3d?.duration||item.duration||120;
+  if(chip)chip.textContent=`Coastal highway · ${Math.round(total)} s`;
+  const video=document.querySelector('#annotation-video');
+  if(video&&video.src!==new URL(item.video,location.href).href){video.src=item.video;video.poster=item.poster;video.play().catch(()=>{});}
+  const controlled=document.querySelector('#annotation-controlled');
+  if(controlled)controlled.innerHTML=Object.values(item.attributes||{}).filter(Boolean).map(v=>`<span>${String(v).replaceAll('_',' ')}</span>`).join('');
+  const order=['subject_motion','environment_motion','static_scene','camera_description','full_prompt'];
+  const entries=order.filter(k=>item.overall&&item.overall[k]).map(k=>[k,item.overall[k]]);
+  document.querySelector('#field-list').innerHTML=entries.map(x=>`<div class="field"><b>${x[0]}</b><p>${x[1]}</p></div>`).join('');
+  const segs=item.segments||[];
+  document.querySelector('#segment-strip').innerHTML=segs.map((s,i)=>{const w=s.time?((s.time[1]-s.time[0])/total*100):100/segs.length;return `<span class="segment" style="background:${SEG_PALETTE[i%SEG_PALETTE.length]};flex:${w.toFixed(2)} 1 0" title="Segment ${i+1} · ${s.time?s.time.join('–')+'s':''}"></span>`;}).join('');
+}
 const trajectoryChoices=[['Drone','drone'],['L-turn walk','walking'],['Turning drive','driving'],['Cycling','cycling'],['Cable car','cable-car']];
 const trajectoryPoseSources={walking:'walking-lturn',driving:'driving-loop','cable-car':'cable-car-alpine'};
 const tabs=document.querySelector('#trajectory-tabs');tabs.innerHTML=trajectoryChoices.map(([name,key],i)=>`<button class="trajectory-tab ${i===0?'active':''}" data-case="${key}">${name}</button>`).join('');
@@ -77,9 +78,59 @@ function loadPanoShowcase(key){const item=caseData[key];if(!item)return;activePa
 document.querySelector('#pano-case-tabs').innerHTML=panoShowcases.map((x,i)=>`<button class="${i===0?'active':''}" data-case="${x[1]}">${x[0]}</button>`).join('');
 document.querySelector('#pano-case-tabs').addEventListener('click',e=>{if(e.target.matches('button'))loadPanoShowcase(e.target.dataset.case)});
 document.querySelector('#pano-case-video').addEventListener('timeupdate',e=>{if(panoPoseViewer&&activePanoCase)panoPoseViewer.setCurrentFrame(poseFrameAtTime(activePanoCase,activePanoCase.preview_start_s+e.target.currentTime))});
-fetch('assets/data/cases.json').then(r=>r.json()).then(data=>{caseData=data;loadHomepageTrajectory('drone');loadPanoShowcase('panorama-serpentine')});
+fetch('assets/data/cases.json').then(r=>r.json()).then(data=>{caseData=data;renderAnnotationDemo();loadHomepageTrajectory('drone');loadPanoShowcase('panorama-serpentine')});
 const modal=document.querySelector('#case-modal'),modalVideo=document.querySelector('#modal-video');
 let modalPoseViewer=null,activeCase=null;
 function openCase(key){const item=caseData[key];if(!item)return;activeCase=item;const type=types.find(x=>x.media===key);document.querySelector('#modal-title').textContent=type?.name||key;document.querySelector('#modal-meta').textContent=`${item.dataset} · ${item.clip} · preview from t=${item.preview_start_s}s`;modalVideo.src=item.video;modalVideo.poster=item.poster;document.querySelector('#modal-attributes').innerHTML=Object.entries(item.attributes).filter(([,v])=>v).map(([k,v])=>`<span><small>${k.replaceAll('_',' ')}</small>${String(v).replaceAll('_',' ')}</span>`).join('');document.querySelector('#modal-fields').innerHTML=Object.entries(item.overall).filter(([,v])=>v).map(([k,v])=>`<div class="modal-field"><b>${k}</b><p>${v}</p></div>`).join('');document.querySelector('#modal-segments').innerHTML=item.segments.map((s,i)=>`<div class="modal-segment"><b>S${i} · ${s.time?.join('–')}s${s.path?' · '+s.path.replaceAll('_',' '):''}</b><p>${s.text}</p></div>`).join('');modal.showModal();requestAnimationFrame(()=>{if(!modalPoseViewer){modalPoseViewer=new PoseViewer(document.querySelector('#modal-pose-3d'));modalPoseViewer.init()}modalPoseViewer.loadTrajectory(item.pose3d);modalPoseViewer.setShowFrustums(document.querySelector('#pose-frustums').checked);modalPoseViewer._onResize()});modalVideo.play().catch(()=>{})}
 grid.addEventListener('click',e=>{const card=e.target.closest('.data-card');if(card)openCase(card.dataset.case)});grid.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('.data-card'))openCase(e.target.dataset.case)});document.querySelector('#modal-close').addEventListener('click',()=>modal.close());modal.addEventListener('close',()=>{modalVideo.pause();modalVideo.removeAttribute('src');modalVideo.load()});modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});
 modalVideo.addEventListener('timeupdate',()=>{if(!modalPoseViewer||!activeCase)return;modalPoseViewer.setCurrentFrame(poseFrameAtTime(activeCase,activeCase.preview_start_s+modalVideo.currentTime))});document.querySelector('#pose-frustums').addEventListener('change',e=>modalPoseViewer?.setShowFrustums(e.target.checked));document.querySelector('#pose-follow').addEventListener('change',e=>modalPoseViewer?.setFollowMode(e.target.checked));document.querySelector('#pose-reset').addEventListener('click',()=>modalPoseViewer?.resetCamera());
+
+// ─── Interactive geographic map: hover a glowing marker → floating video preview ───
+const GEO_SPOTS=[
+  {x:16.9,y:34.5,place:'California · USA',tag:'Coastal & urban driving',vids:['driving','cycling','drone-ridge']},
+  {x:29.4,y:30.5,place:'New York · USA',tag:'On-foot city capture',vids:['walking','escalator','static-pan']},
+  {x:36.9,y:73.2,place:'Brazil',tag:'Tropical trails',vids:['walking-winding','walking-curve']},
+  {x:49.7,y:25.4,place:'Western Europe',tag:'Streets & loops',vids:['walking-curve','driving-loop']},
+  {x:52.8,y:26.4,place:'Alpine Europe',tag:'Mountain transit',vids:['cable-car','skiing','train']},
+  {x:53.9,y:30.3,place:'Mediterranean',tag:'Waterways & vistas',vids:['boat','static-landscape']},
+  {x:65.0,y:42.2,place:'United Arab Emirates',tag:'Aerial cityscapes',vids:['drone','driving']},
+  {x:88.3,y:33.8,place:'Japan',tag:'Rail & pedestrian',vids:['train','walking-lturn','escalator']},
+  {x:82.8,y:36.6,place:'Shanghai · China · 360°',tag:'Panoramic capture',vids:['panorama-serpentine','panorama-switchback']},
+  {x:90.3,y:82.4,place:'Australia',tag:'Open-road motion',vids:['cycling','drone','cable-car-alpine']}
+];
+(function(){
+  const host=document.querySelector('#geo-hotspots'),pop=document.querySelector('#geo-pop'),map=document.querySelector('#geo-canvas');
+  if(!host||!pop||!map)return;
+  host.innerHTML=GEO_SPOTS.map((s,i)=>`<button class="geo-hotspot" data-i="${i}" style="left:${s.x}%;top:${s.y}%" aria-label="Preview footage from ${s.place}"><i></i></button>`).join('');
+  let openI=-1,hideT=null;
+  function buildPop(s){
+    const cards=s.vids.map(v=>`<div class="geo-vid"><video src="assets/videos/${v}.mp4" poster="assets/images/${v}.jpg" muted loop autoplay playsinline preload="auto"></video></div>`).join('');
+    pop.innerHTML=`<div class="geo-pop-head"><b>${s.place}</b><span>${s.tag}</span></div><div class="geo-pop-vids">${cards}</div>`;
+  }
+  function showPop(i,btn){
+    clearTimeout(hideT);
+    if(openI!==i){openI=i;buildPop(GEO_SPOTS[i]);}
+    pop.classList.add('show');pop.setAttribute('aria-hidden','false');
+    const mr=map.getBoundingClientRect(),br=btn.getBoundingClientRect();
+    const px=br.left-mr.left+br.width/2,py=br.top-mr.top;
+    const pw=pop.offsetWidth,ph=pop.offsetHeight,pad=10;
+    let left=px+14,top=py-ph-12;
+    if(top<pad)top=py+br.height+12;                 // flip below when no room above
+    if(left+pw>mr.width-pad)left=px-pw-14;           // flip left when overflowing right
+    left=Math.max(pad,Math.min(left,mr.width-pw-pad));
+    top=Math.max(pad,Math.min(top,mr.height-ph-pad));
+    pop.style.left=left+'px';pop.style.top=top+'px';
+    host.querySelectorAll('.geo-hotspot').forEach(b=>b.classList.toggle('active',+b.dataset.i===i));
+  }
+  function hidePop(){hideT=setTimeout(()=>{
+    pop.classList.remove('show');pop.setAttribute('aria-hidden','true');
+    host.querySelectorAll('.geo-hotspot').forEach(b=>b.classList.remove('active'));
+    pop.querySelectorAll('video').forEach(v=>{v.pause();v.removeAttribute('src');v.load();});
+    openI=-1;
+  },130);}
+  host.addEventListener('mouseover',e=>{const b=e.target.closest('.geo-hotspot');if(b)showPop(+b.dataset.i,b);});
+  host.addEventListener('mouseout',e=>{if(e.target.closest('.geo-hotspot'))hidePop();});
+  host.addEventListener('focusin',e=>{const b=e.target.closest('.geo-hotspot');if(b)showPop(+b.dataset.i,b);});
+  host.addEventListener('focusout',hidePop);
+  host.addEventListener('click',e=>{const b=e.target.closest('.geo-hotspot');if(!b)return;const i=+b.dataset.i;if(openI===i)hidePop();else showPop(i,b);});
+})();

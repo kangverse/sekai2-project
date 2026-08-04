@@ -201,7 +201,7 @@
 
 .caption-case-tab.active { background: var(--ink); color: #fff; }
 .caption-case-tab.active span { color: #d9eeaa; }
-.metric.accent,.access-box{background:var(--lime)}.horizon{background:#17343b}.trajectory,footer{background:#102a31}.sources{background:var(--orange)}.button.primary,.trajectory-tab.active{background:var(--lime)}.kicker.light,.eyebrow{color:var(--lime)}
+.metric.accent{background:var(--lime)}.horizon{background:#17343b}.trajectory,footer{background:#102a31}.button.primary,.trajectory-tab.active{background:var(--lime)}.eyebrow{color:var(--lime)}
 .hero-copy.reveal.visible{transform:translate(-50%,-50%)}
 
 .caption-case-explorer {
@@ -286,3 +286,48 @@
   .web-caption-field,
   .web-caption-segment { grid-template-columns: 1fr; }
 }
+
+/* ─── Interactive geographic map ─── */
+.geo-map{position:relative;margin-top:14px;padding:18px;border-radius:22px;background:linear-gradient(180deg,#fbfaf5,#f2f0e7);border:1px solid var(--line);box-shadow:0 24px 70px rgba(20,50,48,.08)}
+.geo-canvas{position:relative;line-height:0}
+.geo-basemap{display:block;width:100%;height:auto;border-radius:14px;-webkit-user-drag:none;user-select:none}
+.geo-hotspots{position:absolute;inset:0;pointer-events:none}
+.geo-hotspot{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;padding:0;border:0;background:transparent;cursor:pointer;pointer-events:auto}
+.geo-hotspot i{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#f7ad86;border:2px solid #fff;box-shadow:0 0 0 2px rgba(247,173,134,.5),0 3px 7px rgba(0,0,0,.28);transition:.2s}
+.geo-hotspot::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:rgba(247,173,134,.5);animation:geoPulse 2.4s ease-out infinite;pointer-events:none}
+.geo-hotspot:hover i,.geo-hotspot.active i{background:#e8663f;box-shadow:0 0 0 3px rgba(232,102,63,.38),0 3px 9px rgba(0,0,0,.32);transform:translate(-50%,-50%) scale(1.18)}
+@keyframes geoPulse{0%{width:12px;height:12px;opacity:.65}100%{width:44px;height:44px;opacity:0}}
+.geo-pop{position:absolute;z-index:6;left:0;top:0;width:250px;padding:12px;border-radius:16px;background:rgba(9,31,33,.93);color:#fff;box-shadow:0 22px 55px rgba(0,0,0,.42);backdrop-filter:blur(10px);opacity:0;transform:translateY(6px) scale(.97);transition:opacity .16s,transform .16s;pointer-events:none;line-height:1.2}
+.geo-pop.show{opacity:1;transform:none}
+.geo-pop-head b{display:block;font:700 14px Manrope}
+.geo-pop-head span{display:block;margin-top:3px;color:#9BCEC1;font-size:9px;text-transform:uppercase;letter-spacing:.09em}
+.geo-pop-vids{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;margin-top:10px}
+.geo-vid{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:9px;background:#12333a}
+.geo-vid video{width:100%;height:100%;object-fit:cover;display:block}
+.geo-legend{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;color:var(--muted);font-size:10px;letter-spacing:.03em}
+.geo-legend em{font-style:normal;color:var(--teal);font-weight:700}
+.geo-scale{width:120px;height:8px;border-radius:6px;background:linear-gradient(90deg,#dfeee7,#a9d6c9,#7fbfc0,#5b9fbd,#3d6f86,#22414c)}
+.geo-hint{text-align:center;margin-top:8px;color:var(--muted);font-size:11px}
+@media(max-width:600px){.geo-pop{width:210px}.geo-hotspot{width:34px;height:34px}}
+
+/* ─── "Three complementary sources" — refined dark band with pastel-accented cards ─── */
+.sources{background:radial-gradient(120% 150% at 12% -10%,#18434c 0%,#103036 45%,#0b2429 100%);color:#eaf4ef}
+.sources .kicker.light{color:#9BCEC1}
+.source-copy h2{color:#f5faf6}
+.source-cards{border:0!important;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1180px;margin:52px auto 0}
+.source-cards article{position:relative;overflow:hidden;padding:34px 30px 30px;border:1px solid rgba(255,255,255,.1)!important;border-radius:20px;background:rgba(255,255,255,.045);transition:transform .35s,box-shadow .35s,border-color .35s}
+.source-cards article::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent)}
+.source-cards article:nth-child(1){--accent:linear-gradient(90deg,#67A2C5,#9cc9df)}
+.source-cards article:nth-child(2){--accent:linear-gradient(90deg,#9BCEC1,#c4e6dd)}
+.source-cards article:nth-child(3){--accent:linear-gradient(90deg,#f7ad86,#f9c9a9)}
+.source-cards article:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.24)!important;box-shadow:0 26px 60px rgba(0,0,0,.34)}
+.source-cards span{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.09);color:#cfe6dd;font:700 12px Manrope}
+.source-cards h3{color:#f5faf6;font:700 24px Manrope;margin:22px 0 12px}
+.source-cards p{color:rgba(234,244,239,.7);font-size:13px;line-height:1.62}
+
+/* ─── "Build with Sekai2" — soft pastel gradient card ─── */
+.access-box{background:linear-gradient(135deg,#eef5f2 0%,#e2edf0 46%,#f4ece1 100%);border:1px solid var(--line);box-shadow:0 30px 80px rgba(20,50,48,.09)}
+.access .kicker{color:var(--teal)}
+.access-box .button.dark{background:linear-gradient(135deg,#18434c,#0f2d33);border:0;color:#fff}
+.access-box .button.line{border:1px solid rgba(23,52,59,.4)}
+@media(max-width:900px){.source-cards{grid-template-columns:1fr}}

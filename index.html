@@ -62,9 +62,17 @@
     <section class="geography section" id="geography">
       <div class="section-heading reveal">
         <div><p class="kicker">Geographic diversity</p><h2>Worldwide coverage,<br>grounded in real scenes.</h2></div>
-        <p>Coverage spans cities, natural environments, infrastructure, and cultures worldwide. Representative previews reveal the visual diversity behind the aggregate map.</p>
+        <p>Coverage spans 115 countries — cities, natural environments, infrastructure, and cultures worldwide. Hover a highlighted location to preview the footage captured there.</p>
       </div>
-      <a class="map-figure reveal" href="assets/images/geographic-demo-map.jpg" target="_blank" rel="noreferrer"><img src="assets/images/geographic-demo-map.jpg" alt="Sekai2 geographic coverage map with representative video examples"><span>Open map ↗</span></a>
+      <div class="geo-map reveal" id="geo-map">
+        <div class="geo-canvas" id="geo-canvas">
+          <img class="geo-basemap" src="assets/images/geographic-map-clean.png" alt="Sekai2 geographic coverage choropleth — 115 countries" loading="lazy">
+          <div class="geo-hotspots" id="geo-hotspots"></div>
+          <div class="geo-pop" id="geo-pop" role="dialog" aria-hidden="true"></div>
+        </div>
+        <div class="geo-legend"><span>fewer clips</span><i class="geo-scale"></i><span>more clips</span><em>115 countries</em></div>
+        <p class="geo-hint">Hover a glowing marker to preview real footage from that region</p>
+      </div>
     </section>
 
     <section class="explore section" id="explore">
@@ -76,29 +84,6 @@
       <div class="dataset-grid" id="dataset-grid"></div>
     </section>
 
-    <section class="horizon full-section" id="long-horizon">
-      <div class="horizon-copy reveal">
-        <p class="kicker light">Long-horizon by design</p>
-        <h2>Not a moment.<br>A continuous journey.</h2>
-        <p>Two-minute sequences preserve complete motion arcs, environmental changes, and revisitation cues that short clips discard.</p>
-        <div class="time-readout"><b id="time-readout">00:00</b><span>/ 02:00</span></div>
-      </div>
-      <div class="timeline-stage reveal">
-        <div class="timeline-viewport">
-          <div class="timeline-placeholder" id="timeline-visual">
-            <video id="long-video" src="assets/videos/long-horizon-city.mp4" poster="assets/images/long-horizon-city.jpg" muted playsinline preload="metadata"></video>
-            <button class="long-play" id="long-play" type="button" aria-label="Play long-horizon video">▶</button>
-            <span class="scene-label" id="long-scene-label">Golden-hour city turn · Driving · 120 s</span>
-            <div class="horizon-line"></div>
-          </div>
-        </div>
-        <input id="timeline" type="range" min="0" max="120" value="0" aria-label="Explore a two-minute sequence">
-        <div class="timeline-labels"><span>0 s</span><span>30 s</span><span>60 s</span><span>90 s</span><span>120 s</span></div>
-        <div class="horizon-dots" id="horizon-dots" aria-label="Choose a long-horizon journey"></div>
-        <p class="interaction-hint">Drag to travel through the sequence</p>
-      </div>
-    </section>
-
     <section class="annotation section" id="annotations">
       <div class="section-heading reveal">
         <div><p class="kicker">Structured semantics</p><h2>Describe the world<br>at two temporal scales.</h2></div>
@@ -106,13 +91,13 @@
       </div>
       <div class="annotation-demo reveal">
         <div class="annotation-media">
-          <span class="media-chip">Example · 120 s</span>
-          <div class="focus-frame"><video src="assets/videos/drone.mp4" poster="assets/images/drone.jpg" autoplay muted loop playsinline></video></div>
+          <span class="media-chip" id="annotation-chip">Example</span>
+          <div class="focus-frame"><video id="annotation-video" muted loop autoplay playsinline preload="metadata"></video></div>
           <div class="segment-strip" id="segment-strip"></div>
         </div>
         <div class="annotation-panel">
           <div class="panel-head"><span>Global annotation</span><span class="status"><i></i> synchronized</span></div>
-          <div class="controlled"><span>drone</span><span>river valley</span><span>clear</span><span>aerial</span></div>
+          <div class="controlled" id="annotation-controlled"></div>
           <div class="field-list" id="field-list"></div>
         </div>
       </div>

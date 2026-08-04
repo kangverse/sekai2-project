@@ -56,6 +56,12 @@ class PoseViewer {
 
         this._animationId = null;
         this._resizeHandler = null;
+
+        // Only run the WebGL render loop while the viewer is on-screen. Several
+        // viewers coexist on the page; rendering the off-screen ones wastes GPU
+        // and made on-screen video (esp. the panoramic clips) stutter.
+        this._inView = true;
+        this._io = null;
     }
 
     /**
@@ -106,6 +112,15 @@ class PoseViewer {
         // 窗口 resize
         this._resizeHandler = () => this._onResize();
         window.addEventListener('resize', this._resizeHandler);
+
+        // 视口可见性：离屏时暂停渲染以降低 GPU 负载（改善视频流畅度）
+        if ('IntersectionObserver' in window) {
+            this._io = new IntersectionObserver(
+                (entries) => { this._inView = entries[0].isIntersecting; },
+                { threshold: 0.01 }
+            );
+            this._io.observe(this.container);
+        }
 
         // 开始渲染循环
         this._animate();
@@ -328,6 +343,7 @@ class PoseViewer {
     dispose() {
         if (this._animationId) cancelAnimationFrame(this._animationId);
         if (this._resizeHandler) window.removeEventListener('resize', this._resizeHandler);
+        if (this._io) { this._io.disconnect(); this._io = null; }
         if (this.renderer) {
             this.renderer.dispose();
             this.container.innerHTML = '';
@@ -1032,10 +1048,24 @@ class PoseViewer {
         this.camera.far = Math.max(distance * 12, 100);
         this.camera.updateProjectionMatrix();
 
+        // Motion-aligned overview: sit BEHIND the trajectory's initial heading
+        // (slightly above and to one side) so forward motion in the RGB clip
+        // reads as motion INTO the screen rather than receding toward the viewer.
+        const up = new THREE.Vector3(0, 1, 0);
+        const dir = new THREE.Vector3(0, 0, 1);
+        const fwd0 = this.forwardVectors && this.forwardVectors[0];
+        if (fwd0) dir.set(fwd0[0], 0, fwd0[2]);              // initial heading, flattened to ground
+        if (dir.lengthSq() < 1e-6 && this.positions.length > 1) {
+            const a = this.positions[0], b = this.positions[this.positions.length - 1];
+            dir.set(b[0] - a[0], 0, b[2] - a[2]);            // fallback: net ground displacement
+        }
+        if (dir.lengthSq() < 1e-6) dir.set(0, 0, 1);
+        dir.normalize();
+        const side = new THREE.Vector3().crossVectors(up, dir).normalize();
         this.camera.position.set(
-            center.x + distance * 0.7,
-            center.y + distance * 0.5,
-            center.z + distance * 0.7
+            center.x - dir.x * distance * 0.95 + side.x * distance * 0.42,
+            center.y + distance * 0.55,
+            center.z - dir.z * distance * 0.95 + side.z * distance * 0.42
         );
         this.camera.lookAt(center);
         this.controls.target.copy(center);
@@ -1054,6 +1084,7 @@ class PoseViewer {
 
     _animate() {
         this._animationId = requestAnimationFrame(() => this._animate());
+        if (this._inView === false) return;   // skip GPU work when scrolled off-screen
         this.controls?.update();
         this.renderer?.render(this.scene, this.camera);
     }
