@@ -132,11 +132,12 @@ def build_case_data():
         overall = caption.get("overall", {})
         pose_file = np.load(row["pose_path"])
         pose = pose_file["data"] if "data" in pose_file else pose_file["cam_c2w"]
-        xyz = np.asarray(pose[:, :3, 3], float)
-        xyz = xyz[np.isfinite(xyz).all(1)]
-        xyz -= xyz[0]
-        # At most 240 points; normalize jointly while preserving trajectory shape.
-        xyz = xyz[np.linspace(0, len(xyz)-1, min(240, len(xyz))).astype(int)]
+        pose = np.asarray(pose, float)
+        pose = pose[np.isfinite(pose).all(axis=(1, 2))]
+        pose = np.einsum("ij,njk->nik", np.linalg.inv(pose[0]), pose)
+        # At most 240 poses; preserve the entire clip and camera orientation.
+        pose = pose[np.linspace(0, len(pose)-1, min(240, len(pose))).astype(int)]
+        xyz = pose[:, :3, 3]
         xz = xyz[:, [0, 2]]
         span = np.ptp(xz, axis=0); scale = max(float(span.max()), 1e-8)
         xz = (xz - xz.min(0)) / scale
@@ -147,10 +148,19 @@ def build_case_data():
             if text:
                 segments.append({"time": tr, "text": text,
                                  "path": segment.get("camera_path", "")})
+        rotations = pose[:, :3, :3]
+        forward = np.einsum("nij,j->ni", rotations, np.array([0., 0., -1.]))
+        forward /= np.maximum(np.linalg.norm(forward, axis=1, keepdims=True), 1e-8)
+        source_duration = float(caption.get("segments", [{}])[-1].get("time_range_s", [0, 120])[-1])
         output[label] = {
             "clip": clip, "dataset": row["dataset"], "video": f"assets/videos/{label}.mp4",
             "poster": f"assets/images/{label}.jpg", "preview_start_s": start,
             "trajectory": np.round(xz, 5).tolist(),
+            "pose3d": {"positions": np.round(xyz, 6).tolist(),
+                       "rotations": np.round(rotations.reshape(-1, 9), 6).tolist(),
+                       "forward_vectors": np.round(forward, 6).tolist(),
+                       "num_frames": len(pose), "duration": source_duration,
+                       "fps": len(pose) / max(source_duration, 1e-8)},
             "overall": {key: overall.get(key, "") for key in (
                 "subject_motion", "environment_motion", "static_scene",
                 "camera_description", "full_prompt")},

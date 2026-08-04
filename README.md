@@ -25,6 +25,8 @@ Open `http://localhost:8080`.
 
 The current page includes ten compact previews selected from the release, two video--pose--caption case studies, two panoramic reconstruction galleries, and a geographic map with representative examples. See `assets/MEDIA_MANIFEST.md` for exact provenance. Paper URL, author list, final release links, and access policy remain placeholders.
 
+The per-clip case modal contains a static adaptation of the Three.js pose visualization from `/mnt/workspace/gyt/code/world-model-viewer`. Backend indexing, authentication, comments, video proxying, and email functionality are intentionally excluded; GitHub Pages receives only precomputed trajectories for the selected showcase clips.
+
 Regenerate the web media with:
 
 ```bash

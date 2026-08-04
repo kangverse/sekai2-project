@@ -183,13 +183,16 @@
     <button class="modal-close" id="modal-close" aria-label="Close case study">×</button>
     <div class="modal-heading"><p class="kicker">Interactive clip inspection</p><h2 id="modal-title">Clip case study</h2><p id="modal-meta"></p></div>
     <div class="modal-grid">
-      <div class="modal-visual"><video id="modal-video" controls muted playsinline></video><div class="pose-card"><div class="pose-head"><b>Released ViPE trajectory</b><span><i></i> start &nbsp; <em>★</em> end</span></div><canvas id="modal-pose"></canvas></div></div>
+      <div class="modal-visual"><video id="modal-video" controls muted playsinline></video><div class="pose-card"><div class="pose-head"><b>Interactive 3D ViPE trajectory</b><span>drag to orbit · scroll to zoom</span></div><div id="modal-pose-3d"></div><div class="pose-options"><label><input id="pose-frustums" type="checkbox" checked> camera frustums</label><label><input id="pose-follow" type="checkbox"> follow current frame</label><button id="pose-reset" type="button">Reset view</button></div></div></div>
       <div class="modal-annotations"><div class="modal-attributes" id="modal-attributes"></div><div id="modal-fields"></div></div>
     </div>
     <div class="modal-segments"><h3>Temporally grounded annotations</h3><div id="modal-segments"></div></div>
   </dialog>
 
   <footer><a class="brand" href="#top"><span class="brand-mark">S2</span><span>Sekai2</span></a><p>Long-horizon real-world video data for interactive world modeling.</p><span>Project page scaffold · 2026</span></footer>
+  <script src="assets/vendor/three.min.js"></script>
+  <script src="assets/vendor/OrbitControls.js"></script>
+  <script src="assets/vendor/pose-viewer.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
