@@ -58,6 +58,14 @@
       <div class="pill-row" id="motion-pills"></div>
     </section>
 
+    <section class="geography section" id="geography">
+      <div class="section-heading reveal">
+        <div><p class="kicker">Geographic diversity</p><h2>Worldwide coverage,<br>grounded in real scenes.</h2></div>
+        <p>Coverage spans cities, natural environments, infrastructure, and cultures worldwide. Representative previews reveal the visual diversity behind the aggregate map.</p>
+      </div>
+      <a class="map-figure reveal" href="assets/images/geographic-demo-map.jpg" target="_blank" rel="noreferrer"><img src="assets/images/geographic-demo-map.jpg" alt="Sekai2 geographic coverage map with representative video examples"><span>Open map ↗</span></a>
+    </section>
+
     <section class="explore section" id="explore">
       <div class="section-heading reveal">
         <div><p class="kicker">Explore the collection</p><h2>Many cameras.<br>Many worlds.</h2></div>
@@ -77,6 +85,7 @@
       <div class="timeline-stage reveal">
         <div class="timeline-viewport">
           <div class="timeline-placeholder" id="timeline-visual">
+            <video src="assets/videos/drone.mp4" poster="assets/images/drone.jpg" autoplay muted loop playsinline></video>
             <span class="scene-label">Mountain traversal · Drone</span>
             <div class="horizon-line"></div>
           </div>
@@ -95,7 +104,7 @@
       <div class="annotation-demo reveal">
         <div class="annotation-media">
           <span class="media-chip">Example · 120 s</span>
-          <div class="focus-frame"><span>VIDEO PLACEHOLDER</span></div>
+          <div class="focus-frame"><video src="assets/videos/drone.mp4" poster="assets/images/drone.jpg" autoplay muted loop playsinline></video></div>
           <div class="segment-strip" id="segment-strip"></div>
         </div>
         <div class="annotation-panel">
@@ -104,6 +113,21 @@
           <div class="field-list" id="field-list"></div>
         </div>
       </div>
+    </section>
+
+    <section class="case-studies section" id="case-studies">
+      <div class="section-heading reveal">
+        <div><p class="kicker">Caption case studies</p><h2>See space, motion,<br>and language together.</h2></div>
+        <p>Each example connects sampled frames, a released ViPE camera trajectory, global structured fields, and temporally grounded segment descriptions.</p>
+      </div>
+      <div class="study-switch reveal" role="tablist" aria-label="Caption case studies">
+        <button class="study-tab active" data-study="drone">Vertical drone flight</button>
+        <button class="study-tab" data-study="walking">Winding walking path</button>
+      </div>
+      <a class="study-figure reveal" id="study-link" href="assets/images/caption-case-drone.jpg" target="_blank" rel="noreferrer">
+        <img id="study-image" src="assets/images/caption-case-drone.jpg" alt="Sekai2 drone video, pose, and caption case study">
+        <span>Open full figure ↗</span>
+      </a>
     </section>
 
     <section class="trajectory full-section" id="trajectories">
@@ -127,6 +151,11 @@
       <div class="pano-card reveal">
         <div class="pano-sphere"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><span>360°</span></div>
         <div class="pano-copy"><span class="tag">Loop-aware sequences</span><h3>Spatial continuity beyond the forward view</h3><p>Panoramic footage preserves the surrounding environment during turns, loops, obstacles, and repeated visits.</p><a href="#">Case studies coming soon <span>→</span></a></div>
+      </div>
+      <div class="reconstruction reveal">
+        <div class="reconstruction-head"><div><span class="tag">Full-accumulation reconstruction</span><h3>Long trajectories recover coherent spatial structure.</h3></div><p>Selected panoramic sequences span sharp turns, serpentine paths, obstacles, and revisitation loops. Color encodes progression along each recovered trajectory.</p></div>
+        <div class="reconstruction-tabs" role="tablist"><button class="recon-tab active" data-recon="1">Gallery I</button><button class="recon-tab" data-recon="2">Gallery II</button></div>
+        <a id="recon-link" href="assets/images/panoramic-reconstruction-1.jpg" target="_blank" rel="noreferrer"><img id="recon-image" src="assets/images/panoramic-reconstruction-1.jpg" alt="Panoramic full-accumulation reconstructions"></a>
       </div>
     </section>
 

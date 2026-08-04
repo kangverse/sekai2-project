@@ -23,7 +23,13 @@ Open `http://localhost:8080`.
 - Sources: Sekai-1, Sekai-2 New, and Panoramic.
 - Access: paper, code, and dataset buttons.
 
-All visual media areas are deliberate placeholders. Replace them after the final showcase clips, thumbnails, paper URL, GitHub URL, author list, and release policy are confirmed.
+The current page includes ten compact previews selected from the release, two video--pose--caption case studies, two panoramic reconstruction galleries, and a geographic map with representative examples. See `assets/MEDIA_MANIFEST.md` for exact provenance. Paper URL, author list, final release links, and access policy remain placeholders.
+
+Regenerate the web media with:
+
+```bash
+python tools/build_media.py
+```
 
 ## GitHub Pages
 
