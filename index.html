@@ -85,8 +85,9 @@
       <div class="timeline-stage reveal">
         <div class="timeline-viewport">
           <div class="timeline-placeholder" id="timeline-visual">
-            <video src="assets/videos/drone.mp4" poster="assets/images/drone.jpg" autoplay muted loop playsinline></video>
-            <span class="scene-label">Forest river traversal · Drone</span>
+            <video id="long-video" src="assets/videos/long-horizon.mp4" poster="assets/images/long-horizon.jpg" muted playsinline preload="metadata"></video>
+            <button class="long-play" id="long-play" type="button" aria-label="Play long-horizon video">▶</button>
+            <span class="scene-label">Waterfall approach · Drone · 120 s</span>
             <div class="horizon-line"></div>
           </div>
         </div>
@@ -177,6 +178,16 @@
       </div>
     </section>
   </main>
+
+  <dialog class="case-modal" id="case-modal">
+    <button class="modal-close" id="modal-close" aria-label="Close case study">×</button>
+    <div class="modal-heading"><p class="kicker">Interactive clip inspection</p><h2 id="modal-title">Clip case study</h2><p id="modal-meta"></p></div>
+    <div class="modal-grid">
+      <div class="modal-visual"><video id="modal-video" controls muted playsinline></video><div class="pose-card"><div class="pose-head"><b>Released ViPE trajectory</b><span><i></i> start &nbsp; <em>★</em> end</span></div><canvas id="modal-pose"></canvas></div></div>
+      <div class="modal-annotations"><div class="modal-attributes" id="modal-attributes"></div><div id="modal-fields"></div></div>
+    </div>
+    <div class="modal-segments"><h3>Temporally grounded annotations</h3><div id="modal-segments"></div></div>
+  </dialog>
 
   <footer><a class="brand" href="#top"><span class="brand-mark">S2</span><span>Sekai2</span></a><p>Long-horizon real-world video data for interactive world modeling.</p><span>Project page scaffold · 2026</span></footer>
   <script src="script.js"></script>

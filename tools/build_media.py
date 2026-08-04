@@ -2,6 +2,9 @@
 """Build compact GitHub-Pages media from selected Sekai2 release clips."""
 from pathlib import Path
 import av
+import csv
+import json
+import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,6 +26,8 @@ CLIPS = [
     ("skiing", "KbSiM37kfP4/KbSiM37kfP4_0045090_0048690.mp4", 50),
     ("static-pan", "QKc6v0HZtw0/QKc6v0HZtw0_0002376_0004647.mp4", 30),
 ]
+
+LONG_HORIZON = Path("/mnt/workspace/shared/datasets/world_model/Video/sekai2_add_static/BUHZ-H0fyus/BUHZ-H0fyus_0149515_0153090.mp4")
 
 
 def resize(frame, width=640):
@@ -68,6 +73,40 @@ def make_preview(name, relative, start, seconds=8, fps=15):
     print(name, written, target.stat().st_size)
 
 
+def make_long_horizon():
+    target = VIDEO_OUT / "long-horizon.mp4"
+    poster = IMAGE_OUT / "long-horizon.jpg"
+    if target.exists() and poster.exists():
+        return
+    inp = av.open(str(LONG_HORIZON))
+    stream = inp.streams.video[0]
+    output = av.open(str(target), "w")
+    fps = 8
+    out = output.add_stream("libx264", rate=fps)
+    out.width, out.height, out.pix_fmt = 640, 360, "yuv420p"
+    out.options = {"crf": "32", "preset": "slow", "movflags": "+faststart"}
+    next_time, written = 0.0, 0
+    for frame in inp.decode(stream):
+        timestamp = float(frame.time or 0)
+        if timestamp + 1e-3 < next_time:
+            continue
+        if timestamp >= 120 or written >= 120 * fps:
+            break
+        image = resize(frame).crop((0, 0, 640, 360))
+        if written == 0:
+            image.save(poster, quality=86, optimize=True)
+        encoded = av.VideoFrame.from_image(image)
+        encoded.pts = written
+        for packet in out.encode(encoded):
+            output.mux(packet)
+        written += 1
+        next_time = written / fps
+    for packet in out.encode():
+        output.mux(packet)
+    output.close(); inp.close()
+    print("long-horizon", written, target.stat().st_size)
+
+
 def compact_image(source, target, width=1500, quality=84):
     image = Image.open(source).convert("RGB")
     height = round(image.height * width / image.width)
@@ -79,6 +118,52 @@ def compact_image(source, target, width=1500, quality=84):
 
 for item in CLIPS:
     make_preview(*item)
+make_long_horizon()
+
+
+def build_case_data():
+    manifest_path = Path("/mnt/workspace/hk/Acamedic/Sekai2/statistic/sekai_all_final_merged.csv")
+    manifest = {r["clip_name"]: r for r in csv.DictReader(manifest_path.open())}
+    output = {}
+    for label, relative, start in CLIPS:
+        clip = Path(relative).stem
+        row = manifest[clip]
+        caption = json.load(open(row["caption_path"], encoding="utf-8"))
+        overall = caption.get("overall", {})
+        pose_file = np.load(row["pose_path"])
+        pose = pose_file["data"] if "data" in pose_file else pose_file["cam_c2w"]
+        xyz = np.asarray(pose[:, :3, 3], float)
+        xyz = xyz[np.isfinite(xyz).all(1)]
+        xyz -= xyz[0]
+        # At most 240 points; normalize jointly while preserving trajectory shape.
+        xyz = xyz[np.linspace(0, len(xyz)-1, min(240, len(xyz))).astype(int)]
+        xz = xyz[:, [0, 2]]
+        span = np.ptp(xz, axis=0); scale = max(float(span.max()), 1e-8)
+        xz = (xz - xz.min(0)) / scale
+        segments = []
+        for segment in caption.get("segments", []):
+            tr = segment.get("time_range_s", [])
+            text = segment.get("short_prompt") or segment.get("description") or ""
+            if text:
+                segments.append({"time": tr, "text": text,
+                                 "path": segment.get("camera_path", "")})
+        output[label] = {
+            "clip": clip, "dataset": row["dataset"], "video": f"assets/videos/{label}.mp4",
+            "poster": f"assets/images/{label}.jpg", "preview_start_s": start,
+            "trajectory": np.round(xz, 5).tolist(),
+            "overall": {key: overall.get(key, "") for key in (
+                "subject_motion", "environment_motion", "static_scene",
+                "camera_description", "full_prompt")},
+            "attributes": {key: overall.get(key, "") for key in (
+                "camera_motion", "location_type", "weather", "camera_perspective")},
+            "segments": segments,
+        }
+    data_dir = ROOT / "assets" / "data"; data_dir.mkdir(parents=True, exist_ok=True)
+    (data_dir / "cases.json").write_text(json.dumps(output, ensure_ascii=False), encoding="utf-8")
+    print("cases.json", (data_dir / "cases.json").stat().st_size)
+
+
+build_case_data()
 
 ANALYSIS = Path("/mnt/workspace/hk/Acamedic/Sekai2/analysis")
 compact_image(
