@@ -193,7 +193,9 @@ class PoseViewer {
                     pos[0] + fwd[0], pos[1] + fwd[1], pos[2] + fwd[2]
                 );
                 this.currentDirCone.lookAt(target);
-                this.currentDirCone.rotateX(Math.PI / 2);
+                // ConeGeometry points along local +Y. After lookAt(), local -Z
+                // faces the target, so rotate -90 degrees to align +Y with -Z.
+                this.currentDirCone.rotateX(-Math.PI / 2);
             }
         }
 
@@ -908,8 +910,9 @@ class PoseViewer {
                     pos[2] + fwd[2]
                 );
                 cone.lookAt(target);
-                // 锥体默认朝 Y 轴，旋转 90° 使其朝 Z 轴
-                cone.rotateX(Math.PI / 2);
+                // ConeGeometry points along local +Y; align its tip with the
+                // forward vector (lookAt maps local -Z toward the target).
+                cone.rotateX(-Math.PI / 2);
             }
 
             this.frustumGroup.add(cone);
@@ -939,7 +942,7 @@ class PoseViewer {
                 const fwd = this.forwardVectors[0];
                 const target = new THREE.Vector3(pos[0] + fwd[0], pos[1] + fwd[1], pos[2] + fwd[2]);
                 this.currentDirCone.lookAt(target);
-                this.currentDirCone.rotateX(Math.PI / 2);
+                this.currentDirCone.rotateX(-Math.PI / 2);
             }
         }
 
