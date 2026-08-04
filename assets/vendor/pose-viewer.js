@@ -83,6 +83,9 @@ class PoseViewer {
         this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         this.controls.enableDamping = true;
         this.controls.dampingFactor = 0.1;
+        // The synchronized viewer starts in a camera-aligned chase view. As
+        // soon as the reader drags the scene, return full control to OrbitControls.
+        this.controls.addEventListener('start', () => { this.followMode = false; });
 
         // 坐标轴
         const axes = new THREE.AxesHelper(0.5);
@@ -235,18 +238,23 @@ class PoseViewer {
         // 跟随模式：3D 相机跟随当前帧
         if (this.followMode && this.controls && this.positions[frameIndex]) {
             const pos = this.positions[frameIndex];
-            const target = new THREE.Vector3(pos[0], pos[1], pos[2]);
-            this.controls.target.lerp(target, 0.15);
-
             if (this.forwardVectors[frameIndex]) {
                 const fwd = this.forwardVectors[frameIndex];
-                // 相机位于当前帧后上方
+                const distance = Math.max((this._markerScale || 0.01) * 24, 0.3);
+                // Camera-aligned chase view: behind and slightly above the
+                // current pose, looking along the same optical-forward axis.
                 const camPos = new THREE.Vector3(
-                    pos[0] - fwd[0] * 0.8,
-                    pos[1] + 0.4,
-                    pos[2] - fwd[2] * 0.8
+                    pos[0] - fwd[0] * distance,
+                    pos[1] - fwd[1] * distance + distance * 0.35,
+                    pos[2] - fwd[2] * distance
                 );
-                this.camera.position.lerp(camPos, 0.1);
+                const target = new THREE.Vector3(
+                    pos[0] + fwd[0] * distance,
+                    pos[1] + fwd[1] * distance,
+                    pos[2] + fwd[2] * distance
+                );
+                this.camera.position.lerp(camPos, 0.18);
+                this.controls.target.lerp(target, 0.18);
             }
         }
     }
@@ -273,6 +281,26 @@ class PoseViewer {
             // 退出跟随时恢复全局视角
             this._fitCamera();
         }
+    }
+
+    snapToCameraView(frameIndex) {
+        if (!this.positions?.length || !this.forwardVectors?.length) return;
+        frameIndex = Math.max(0, Math.min(frameIndex, this.positions.length - 1));
+        const pos = this.positions[frameIndex];
+        const fwd = this.forwardVectors[frameIndex];
+        const distance = Math.max((this._markerScale || 0.01) * 24, 0.3);
+        this.camera.position.set(
+            pos[0] - fwd[0] * distance,
+            pos[1] - fwd[1] * distance + distance * 0.35,
+            pos[2] - fwd[2] * distance
+        );
+        this.controls.target.set(
+            pos[0] + fwd[0] * distance,
+            pos[1] + fwd[1] * distance,
+            pos[2] + fwd[2] * distance
+        );
+        this.followMode = true;
+        this.controls.update();
     }
 
     /**

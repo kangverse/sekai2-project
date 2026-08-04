@@ -89,7 +89,7 @@ def draw_pose_hud(image, positions, frame_index):
     return canvas
 
 
-def compact_video(source: Path, target: Path, poster: Path, positions, frame_indices):
+def compact_video(source: Path, target: Path, poster: Path):
     inp = av.open(str(source)); stream = inp.streams.video[0]
     rate = stream.average_rate
     out = av.open(str(target), "w"); encoder = out.add_stream("libvpx-vp9", rate=rate)
@@ -99,10 +99,6 @@ def compact_video(source: Path, target: Path, poster: Path, positions, frame_ind
     written = 0
     for frame in inp.decode(stream):
         image = frame.to_image().resize((640, 360))
-        bgr = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
-        pose_index = frame_indices[min(written, len(frame_indices) - 1)]
-        bgr = draw_pose_hud(bgr, positions, int(pose_index))
-        image = av.VideoFrame.from_ndarray(bgr, format="bgr24").to_image()
         if written == 75:
             image.save(poster, quality=88, optimize=True)
         encoded = av.VideoFrame.from_image(image); encoded.pts = written
@@ -126,7 +122,7 @@ def main():
         duration = float(case["pose3d"]["duration"])
         times = float(case["preview_start_s"]) + np.arange(count) / fps
         indices = np.clip(np.rint(times / duration * (len(poses) - 1)).astype(int), 0, len(poses) - 1)
-        compact_video(preview, target, poster, poses[:, :3, 3], indices)
+        compact_video(preview, target, poster)
         print(key, target.stat().st_size)
 
 

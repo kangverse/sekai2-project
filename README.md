@@ -27,13 +27,13 @@ The current page includes a filterable collection of compact previews, twenty co
 
 The per-clip case modal contains a static adaptation of the Three.js pose visualization from `/mnt/workspace/gyt/code/world-model-viewer`. Backend indexing, authentication, comments, video proxying, and email functionality are intentionally excluded; GitHub Pages receives only precomputed trajectories for the selected showcase clips.
 
-The synchronized RGB pose-trace previews use the OSS `sekai_filter` camera-trace tool, downloaded to `/mnt/workspace/hk/code/sekai_filter_pose_overlay`. Rebuild the five web previews with:
+Rebuild the five synchronized RGB previews with:
 
 ```bash
 python tools/build_pose_overlay_previews.py
 ```
 
-The RGB previews show a synchronized bird's-eye inset computed directly from the ViPE camera translations. The muted line denotes the complete clip trajectory, the colored prefix denotes elapsed motion, and the highlighted marker denotes the current pose. We deliberately avoid projecting the trajectory into the RGB image because these ViPE NPZ files provide extrinsics but not the original camera intrinsics. The adjacent interactive panel visualizes the corresponding trajectory in 3D.
+The left pane intentionally remains clean RGB. The adjacent interactive panel visualizes the corresponding ViPE trajectory in 3D and starts from a camera-aligned chase view; dragging the scene switches to free orbit control. We deliberately avoid projecting trajectories into the RGB image because these ViPE NPZ files provide extrinsics but not the original camera intrinsics.
 
 Regenerate the web media with:
 

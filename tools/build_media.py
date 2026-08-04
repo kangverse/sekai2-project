@@ -30,7 +30,8 @@ CLIPS = [
     ("walking-lturn", "gfv0o-zy1jM/gfv0o-zy1jM_0027744_0030690.mp4", 20),
     ("walking-scurve", "esVERYRZS6I/esVERYRZS6I_0060638_0064238.mp4", 30),
     ("walking-winding", "aVyuWb9F-SA/aVyuWb9F-SA_0027090_0030690.mp4", 34),
-    ("driving-loop", "NtLUyOnpYew/NtLUyOnpYew_0013644_0017244.mp4", 28),
+    # The 36 s window contains the clearest sustained turn in this clip.
+    ("driving-loop", "NtLUyOnpYew/NtLUyOnpYew_0013644_0017244.mp4", 36),
     ("drone-ridge", "z5G4dfck7JU/z5G4dfck7JU_0158544_0161713.mp4", 26),
     ("cable-car-alpine", "6P5KQeawY2Q/6P5KQeawY2Q_0012690_0016290.mp4", 24),
     ("static-landscape", "../sekai2_add_static/8H06lSPYDeQ/8H06lSPYDeQ_0012690_0016290.mp4", 32),
