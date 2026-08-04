@@ -25,6 +25,15 @@ CLIPS = [
     ("escalator", "JB1ss-iFXQ0/JB1ss-iFXQ0_0023490_0027090.mp4", 52),
     ("skiing", "KbSiM37kfP4/KbSiM37kfP4_0045090_0048690.mp4", 50),
     ("static-pan", "QKc6v0HZtw0/QKc6v0HZtw0_0002376_0004647.mp4", 30),
+    ("walking-straight", "tC9ewJzqJ0M/tC9ewJzqJ0M_0075117_0078717.mp4", 18),
+    ("walking-curve", "NrnpfilhsdY/NrnpfilhsdY_0040419_0044019.mp4", 24),
+    ("walking-lturn", "gfv0o-zy1jM/gfv0o-zy1jM_0027744_0030690.mp4", 20),
+    ("walking-scurve", "esVERYRZS6I/esVERYRZS6I_0060638_0064238.mp4", 30),
+    ("walking-winding", "aVyuWb9F-SA/aVyuWb9F-SA_0027090_0030690.mp4", 34),
+    ("driving-loop", "NtLUyOnpYew/NtLUyOnpYew_0013644_0017244.mp4", 28),
+    ("drone-ridge", "z5G4dfck7JU/z5G4dfck7JU_0158544_0161713.mp4", 26),
+    ("cable-car-alpine", "6P5KQeawY2Q/6P5KQeawY2Q_0012690_0016290.mp4", 24),
+    ("static-landscape", "../sekai2_add_static/8H06lSPYDeQ/8H06lSPYDeQ_0012690_0016290.mp4", 32),
 ]
 
 LONG_HORIZON = Path("/mnt/workspace/shared/datasets/world_model/Video/sekai2_add_static/BUHZ-H0fyus/BUHZ-H0fyus_0149515_0153090.mp4")

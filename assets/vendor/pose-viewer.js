@@ -127,6 +127,10 @@ class PoseViewer {
         // 清除旧的
         this._clearTrajectory();
 
+        // Fit first so the trajectory-dependent marker scale and clipping
+        // planes are valid before constructing markers and frustums.
+        this._fitCamera();
+
         // 构建轨迹线
         this._buildTrajectoryLine();
 
@@ -136,8 +140,8 @@ class PoseViewer {
         // 当前帧标记
         this._buildCurrentFrameMarker();
 
-        // 自适应相机位置
-        this._fitCamera();
+        // Re-apply the fitted view after all scene objects are attached.
+        this.controls.update();
     }
 
     /**
@@ -846,22 +850,25 @@ class PoseViewer {
         const points = this.positions.map(p => new THREE.Vector3(p[0], p[1], p[2]));
         if (points.length < 2) return;
 
-        const geometry = new THREE.BufferGeometry().setFromPoints(points);
-
-        // 逐顶点颜色，支持 setCurrentFrame 时高亮已播放部分
-        const colors = new Float32Array(points.length * 3);
-        for (let i = 0; i < points.length; i++) {
-            colors[i * 3] = 0.36;      // R
-            colors[i * 3 + 1] = 0.54;  // G
-            colors[i * 3 + 2] = 0.96;  // B
+        // WebGL ignores LineBasicMaterial.linewidth on most platforms, which
+        // made long trajectories nearly invisible. Render a lightweight tube
+        // with per-vertex temporal colors instead.
+        const curve = new THREE.CatmullRomCurve3(points);
+        const radius = Math.max(this._markerScale * 0.55, 0.002);
+        const geometry = new THREE.TubeGeometry(curve, Math.min(points.length * 2, 480), radius, 6, false);
+        const count = geometry.attributes.position.count;
+        const colors = new Float32Array(count * 3);
+        const color = new THREE.Color();
+        for (let i = 0; i < count; i++) {
+            const t = i / Math.max(count - 1, 1);
+            color.setHSL(0.56 + 0.32 * t, 0.72, 0.62);
+            colors[i * 3] = color.r;
+            colors[i * 3 + 1] = color.g;
+            colors[i * 3 + 2] = color.b;
         }
         geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-        const material = new THREE.LineBasicMaterial({
-            vertexColors: true,
-            linewidth: 2,
-        });
-        this.trajectoryLine = new THREE.Line(geometry, material);
+        const material = new THREE.MeshBasicMaterial({ vertexColors: true });
+        this.trajectoryLine = new THREE.Mesh(geometry, material);
         this.trajectoryLine.visible = this.showTrajectory;
         this.scene.add(this.trajectoryLine);
     }
@@ -964,10 +971,16 @@ class PoseViewer {
 
         const extent = Math.max(maxX - minX, maxY - minY, maxZ - minZ);
         const size = Math.max(extent, 0.5);
-        // 标记尺寸自适应轨迹范围，用 sqrt 平滑过渡：
-        // 近乎静止(0.001) → 球径~视野0.13%  正常运动(1.0) → ~4%
-        this._markerScale = Math.max(Math.sqrt(Math.max(extent, 1e-6)) * 0.01, 0.0001);
-        const distance = size * 2;
+        // Keep trajectory, endpoints, and frustums legible at every ViPE scale.
+        this._markerScale = Math.max(extent * 0.012, 0.002);
+        const distance = size * 1.18;
+
+        // Real ViPE trajectories can span hundreds of normalized units.  A
+        // fixed far plane of 100 clips the complete trajectory in those
+        // cases, leaving an apparently unresponsive blank viewer.
+        this.camera.near = Math.max(size / 10000, 0.001);
+        this.camera.far = Math.max(distance * 12, 100);
+        this.camera.updateProjectionMatrix();
 
         this.camera.position.set(
             center.x + distance * 0.7,

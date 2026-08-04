@@ -1,24 +1,33 @@
 const types=[
-  {name:'Drone',group:'Aerial',desc:'Ascending, orbiting, and long-range flight',a:'#7298a8',b:'#254e54',media:'drone',wide:true},
-  {name:'Walking',group:'Ground',desc:'First-person paths through real places',a:'#8caf8e',b:'#315b50',media:'walking'},
-  {name:'Boat',group:'Water',desc:'Waterborne motion at multiple scales',a:'#79aebd',b:'#24526a',media:'boat',wide:true},
+  {name:'Drone',group:'Aerial',desc:'Ascending, orbiting, and long-range flight',a:'#7298a8',b:'#254e54',media:'drone',wide:true,featured:true},
+  {name:'Walking',group:'Ground',desc:'First-person paths through real places',a:'#8caf8e',b:'#315b50',media:'walking',featured:true},
+  {name:'Boat',group:'Water',desc:'Waterborne motion at multiple scales',a:'#79aebd',b:'#24526a',media:'boat',wide:true,featured:true},
   {name:'Cable Car',group:'Aerial',desc:'Vertical motion and distant vistas',a:'#c1a86a',b:'#725a55',media:'cable-car'},
-  {name:'Driving',group:'Vehicle',desc:'Urban roads and long-distance travel',a:'#c68f72',b:'#424f57',media:'driving'},
-  {name:'Train',group:'Vehicle',desc:'Extended rail journeys and landscapes',a:'#9c8a72',b:'#39474b',media:'train'},
-  {name:'Cycling',group:'Ground',desc:'Fast egocentric motion on winding roads',a:'#88ad77',b:'#174d43',media:'cycling'},
-  {name:'Static & Pan',group:'Static',desc:'Stable observation with local rotation',a:'#9b91a8',b:'#464256',media:'static-pan'},
-  {name:'Skiing',group:'Ground',desc:'Dynamic descent through snowy terrain',a:'#93aec5',b:'#405c77',media:'skiing'},
-  {name:'Escalator',group:'Ground',desc:'Mechanically constrained vertical travel',a:'#c9a477',b:'#704e43',media:'escalator'}
+  {name:'Driving',group:'Vehicle',desc:'Urban roads and long-distance travel',a:'#c68f72',b:'#424f57',media:'driving',featured:true},
+  {name:'Train',group:'Rail',desc:'Extended rail journeys and landscapes',a:'#9c8a72',b:'#39474b',media:'train',featured:true},
+  {name:'Cycling',group:'Ground',desc:'Fast egocentric motion on winding roads',a:'#88ad77',b:'#174d43',media:'cycling',featured:true},
+  {name:'Static & Pan',group:'Static',desc:'Stable observation with local rotation',a:'#9b91a8',b:'#464256',media:'static-pan',featured:true},
+  {name:'Skiing',group:'Ground',desc:'Dynamic descent through snowy terrain',a:'#93aec5',b:'#405c77',media:'skiing',featured:true},
+  {name:'Escalator',group:'Ground',desc:'Mechanically constrained vertical travel',a:'#c9a477',b:'#704e43',media:'escalator'},
+  {name:'Straight Walk',group:'Ground',desc:'Long, steady pedestrian translation',a:'#77a78a',b:'#234d43',media:'walking-straight'},
+  {name:'Curved Walk',group:'Ground',desc:'A smooth pedestrian arc through a real scene',a:'#84a779',b:'#315748',media:'walking-curve'},
+  {name:'L-turn Walk',group:'Ground',desc:'A clear right-angle pedestrian turn',a:'#6e9f8b',b:'#274a48',media:'walking-lturn'},
+  {name:'S-curve Walk',group:'Ground',desc:'A continuous two-direction ground trajectory',a:'#799c87',b:'#304d45',media:'walking-scurve'},
+  {name:'Winding Walk',group:'Ground',desc:'Repeated turns along a complex path',a:'#8aaa76',b:'#365245',media:'walking-winding'},
+  {name:'Loop Drive',group:'Vehicle',desc:'Vehicle motion with a return trajectory',a:'#ba846e',b:'#4d4546',media:'driving-loop'},
+  {name:'Ridge Flight',group:'Aerial',desc:'Aerial traversal over large-scale terrain',a:'#6f98ac',b:'#294d59',media:'drone-ridge'},
+  {name:'Alpine Cable Car',group:'Aerial',desc:'Constrained elevated motion across a vista',a:'#b5a269',b:'#67564d',media:'cable-car-alpine'},
+  {name:'Static Landscape',group:'Static',desc:'Long observation with subtle camera motion',a:'#958da1',b:'#45434f',media:'static-landscape'}
 ];
 const wallColors=[['#496b70','#172f35'],['#9e8068','#3b433f'],['#6f9279','#21453c'],['#7d7590','#35344a'],['#b18b66','#4d443d']];
 document.querySelectorAll('.wall-column').forEach((col,ci)=>{const cards=[...types,...types];cards.forEach((t,i)=>{const d=document.createElement('div');d.className='wall-card';d.style.setProperty('--a',wallColors[(i+ci)%wallColors.length][0]);d.style.setProperty('--b',wallColors[(i+ci)%wallColors.length][1]);d.innerHTML=`<video src="assets/videos/${t.media}.mp4" poster="assets/images/${t.media}.jpg" autoplay muted loop playsinline preload="metadata"></video><span>${t.name} · Sekai2</span>`;col.appendChild(d)})});
 document.querySelector('#motion-pills').innerHTML=types.map(x=>`<span class="pill">${x.name}</span>`).join('');
-const groups=['All','Aerial','Ground','Vehicle','Water','Static'];
+const groups=['All','Aerial','Ground','Vehicle','Rail','Water','Static'];
 const filters=document.querySelector('#filters');
 filters.innerHTML=groups.map((x,i)=>`<button class="filter ${i===0?'active':''}" data-filter="${x}">${x}</button>`).join('');
 const grid=document.querySelector('#dataset-grid');
 function renderCards(group='All'){
-  grid.innerHTML=types.filter(x=>group==='All'||x.group===group).map((x,i)=>`<article class="data-card ${x.wide?'wide':''} reveal visible" data-case="${x.media}" tabindex="0" role="button" aria-label="Open ${x.name} case study"><div class="card-media" style="--ca:${x.a};--cb:${x.b}"><video src="assets/videos/${x.media}.mp4" poster="assets/images/${x.media}.jpg" autoplay muted loop playsinline preload="metadata"></video><span class="media-type">${x.group}</span><span class="inspect">View case ↗</span></div><div class="card-body"><div><h3>${x.name}</h3><small>Video · Pose · Caption</small></div><p>${x.desc}</p></div></article>`).join('')
+  grid.innerHTML=types.filter(x=>group==='All'?x.featured:x.group===group).map((x,i)=>`<article class="data-card ${x.wide?'wide':''} reveal visible" data-case="${x.media}" tabindex="0" role="button" aria-label="Open ${x.name} case study"><div class="card-media" style="--ca:${x.a};--cb:${x.b}"><video src="assets/videos/${x.media}.mp4" poster="assets/images/${x.media}.jpg" autoplay muted loop playsinline preload="metadata"></video><span class="media-type">${x.group}</span><span class="inspect">View case ↗</span></div><div class="card-body"><div><h3>${x.name}</h3><small>Video · Pose · Caption</small></div><p>${x.desc}</p></div></article>`).join('')
 }
 renderCards();filters.addEventListener('click',e=>{if(!e.target.matches('.filter'))return;filters.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');renderCards(e.target.dataset.filter)});
 const fields=[['subject_motion','A drone advances steadily above a clear river as the channel bends through the valley.'],['environment_motion','Sunlight flickers across flowing water while foliage moves gently along both banks.'],['static_scene','A shallow mountain river is enclosed by dense green forest, rocks, and narrow gravel banks.'],['camera_description','A stabilized aerial camera travels forward at low altitude, following the river corridor.'],['full_prompt','A continuous low-altitude aerial journey follows a bright forest river and reveals its changing bends, banks, and surrounding terrain.']];
@@ -36,7 +45,11 @@ function loadHomepageTrajectory(key){const item=caseData[key];if(!item?.pose3d)r
 tabs.addEventListener('click',e=>{if(!e.target.matches('button'))return;tabs.querySelectorAll('button').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');loadHomepageTrajectory(e.target.dataset.case)});
 const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>observer.observe(x));
 document.querySelectorAll('.study-tab').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.study-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');const key=button.dataset.study,path=`assets/images/caption-case-${key}.jpg`,image=document.querySelector('#study-image');image.src=path;image.alt=key==='drone'?'Sekai2 drone video, pose, and caption case study':'Sekai2 walking video, pose, and caption case study';document.querySelector('#study-link').href=path}));
-document.querySelectorAll('.recon-tab').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.recon-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');const path=`assets/images/panoramic-reconstruction-${button.dataset.recon}.jpg`;document.querySelector('#recon-image').src=path;document.querySelector('#recon-link').href=path}));
+let panoramicCases=[],panoramicExpanded=false,panoramicFilter='All';
+const reconstructionGrid=document.querySelector('#reconstruction-grid'),reconstructionFilters=document.querySelector('#reconstruction-filters'),reconstructionMore=document.querySelector('#reconstruction-more');
+function renderPanoramicCases(){const filtered=panoramicCases.filter(x=>panoramicFilter==='All'||x.motion===panoramicFilter),shown=panoramicExpanded?filtered:filtered.slice(0,12);reconstructionGrid.innerHTML=shown.map(x=>`<a class="reconstruction-card" href="${x.image}" target="_blank" rel="noreferrer"><div class="reconstruction-media"><img src="${x.image}" alt="${x.scene}, ${x.motion} panoramic reconstruction" loading="lazy"></div><div><b>${x.scene}</b><span>${x.motion.replaceAll('-',' ')}</span></div></a>`).join('');reconstructionMore.hidden=filtered.length<=12;reconstructionMore.textContent=panoramicExpanded?'Show selected cases only':`Show all ${filtered.length} reconstructions`}
+fetch('assets/data/panoramic_cases.json').then(r=>r.json()).then(data=>{panoramicCases=data;const motions=['All',...new Set(data.map(x=>x.motion))];reconstructionFilters.innerHTML=motions.map((x,i)=>`<button class="recon-filter ${i===0?'active':''}" data-motion="${x}">${x.replaceAll('-',' ')}</button>`).join('');renderPanoramicCases()});
+reconstructionFilters.addEventListener('click',e=>{if(!e.target.matches('button'))return;reconstructionFilters.querySelectorAll('button').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');panoramicFilter=e.target.dataset.motion;panoramicExpanded=false;renderPanoramicCases()});reconstructionMore.addEventListener('click',()=>{panoramicExpanded=!panoramicExpanded;renderPanoramicCases()});
 
 let caseData={};fetch('assets/data/cases.json').then(r=>r.json()).then(data=>{caseData=data;loadHomepageTrajectory('drone')});
 const modal=document.querySelector('#case-modal'),modalVideo=document.querySelector('#modal-video');

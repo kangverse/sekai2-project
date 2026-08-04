@@ -45,3 +45,81 @@
   #trajectory-viewer { height: 390px; }
   .trajectory-live-label small { display: none; }
 }
+
+.reconstruction-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 26px 0 22px;
+}
+
+.recon-filter {
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.recon-filter.active {
+  color: #fff;
+  background: var(--ink);
+}
+
+.reconstruction-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.reconstruction-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(20,50,48,.07);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.reconstruction-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgba(20,50,48,.13);
+}
+
+.reconstruction-media {
+  display: grid;
+  place-items: center;
+  height: 205px;
+  padding: 8px;
+  background: #f8f8f5;
+}
+
+.reconstruction-media img {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+  transition: transform .3s ease;
+}
+
+.reconstruction-card:hover img { transform: scale(1.025); }
+.reconstruction-card > div:last-child { padding: 13px 15px 15px; }
+.reconstruction-card b { display: block; font: 700 13px Manrope; }
+.reconstruction-card span { display: block; margin-top: 4px; color: var(--teal); font-size: 10px; text-transform: capitalize; }
+.reconstruction-more { display: block; margin: 25px auto 0; padding: 11px 18px; border: 1px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); cursor: pointer; }
+.reconstruction-more[hidden] { display: none; }
+
+@media (max-width: 900px) {
+  .reconstruction-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  .reconstruction-grid { grid-template-columns: 1fr; }
+  .reconstruction-media { height: 240px; }
+}
