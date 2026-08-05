@@ -30,8 +30,10 @@ clip, so check coverage before mapping a video timestamp to a pose index.
 
 ## Cache busting
 
-`index.html` references `styles.css`, `trajectory-viewer.css`, `script.js` and the
-vendor scripts with a `?v=<build>` stamp. GitHub Pages serves these with
+`index.html` references `styles.css`, `trajectory-viewer.css`, `script.js`, the vendor
+scripts **and `assets/images/dataset-composition.jpg`** with a `?v=<build>` stamp. The
+hero image is replaced in place, so an unversioned URL leaves visitors on the previous
+render for up to the 600 s max-age — version it whenever the figure is rebuilt. GitHub Pages serves these with
 `cache-control: max-age=600` and no fingerprint, so **bump the stamp whenever you
 change JS/CSS** or browsers will pair a stale script with new markup (which silently
 kills every section below the failure point). Re-stamp with:
@@ -39,7 +41,7 @@ kills every section below the failure point). Re-stamp with:
     python3 - <<'EOF'
     import re,time
     p='index.html'; s=open(p).read(); stamp=time.strftime('%Y%m%d%H%M')
-    s=re.sub(r'(href|src)="((?:styles\.css|trajectory-viewer\.css|script\.js|assets/vendor/[A-Za-z0-9_.\-]+\.js))(\?v=[0-9]+)?"',
+    s=re.sub(r'(href|src)="((?:styles\.css|trajectory-viewer\.css|script\.js|assets/vendor/[A-Za-z0-9_.\-]+\.js|assets/images/dataset-composition\.jpg))(\?v=[0-9]+)?"',
              lambda m:f'{m.group(1)}="{m.group(2)}?v={stamp}"',s)
     open(p,'w').write(s); print(stamp)
     EOF
