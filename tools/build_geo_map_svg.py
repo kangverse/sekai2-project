@@ -9,7 +9,7 @@ representative rotation is shown and labelled as such.
 
 Projection: plate carree, lon[-180,180] x lat[-58,84] -> viewBox 0 0 3600 1420
 """
-import json, re, os
+import json, re, os, sys
 from collections import Counter
 import geopandas as gpd
 from shapely.geometry import Polygon, MultiPolygon
@@ -17,12 +17,8 @@ from shapely.geometry import Polygon, MultiPolygon
 SH2 = "/mnt/workspace/hk/Acamedic/Sekai2/analysis/_shared2"
 WEB = "/mnt/workspace/hk/Acamedic/Sekai2/sekai2_website"
 
-ALIAS = {"usa":"United States","us":"United States","united states":"United States","america":"United States","uk":"United Kingdom","united kingdom":"United Kingdom","great britain":"United Kingdom","england":"United Kingdom","uae":"United Arab Emirates","united arab emirates":"United Arab Emirates","south korea":"South Korea","czech republic":"Czechia","russia":"Russia","hong kong":"Hong Kong"}
-def nc(s):
-    s=(s or "").strip()
-    if not s or s.lower()=="unknown": return None
-    k=re.sub(r"\s+"," ",re.sub(r"[_]+"," ",s)).strip().lower()
-    return ALIAS.get(k, re.sub(r"\s+"," ",re.sub(r"[_]+"," ",s)).strip().title())
+sys.path.insert(0, "/mnt/workspace/hk/Acamedic/Sekai2/analysis/_shared")
+from geo_norm import norm_country as nc
 
 co=json.load(open(SH2+"/country_counts.json")); cc=Counter()
 for ds,d in co.items():

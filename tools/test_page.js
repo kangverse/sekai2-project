@@ -65,7 +65,7 @@ async function readSource(rel) {
         return row === 0 && rows.every(r => r === 12);
       })(), [...window.document.querySelectorAll('#dataset-grid .data-card')].map(c=>c.dataset.span).join('+')],
     ['Map SVG injected',              n('#geo-svg-host svg') === 1, n('#geo-svg-host svg')],
-    ['Interactive countries',         n('#geo-svg-host path.on') === 98, n('#geo-svg-host path.on')],
+    ['Interactive countries',         n('#geo-svg-host path.on') === 99, n('#geo-svg-host path.on')],
     ['Annotation fields populated',   n('#field-list .field') === 5, n('#field-list .field')],
     ['Annotation segment strip',      n('#segment-strip .segment') === 6, n('#segment-strip .segment')],
     ['Annotation video src set',      !!q('#annotation-video')?.getAttribute('src'), q('#annotation-video')?.getAttribute('src')],

@@ -7,18 +7,16 @@ Writes /tmp/clip_geo_index.csv with:
   weather, time_of_day, video_ref, has_video
 Used to pick genuine per-country demo clips for the website map.
 """
-import csv, json, os, sys, re
+import csv, sys, json, os, sys, re
 from multiprocessing import Pool
 
 MAN = "/mnt/workspace/hk/Acamedic/Sekai2/statistic/sekai_all_final_merged.csv"
 OUT = "/tmp/clip_geo_index.csv"
 
-ALIAS = {"usa":"United States","us":"United States","united states":"United States","america":"United States","uk":"United Kingdom","united kingdom":"United Kingdom","great britain":"United Kingdom","england":"United Kingdom","uae":"United Arab Emirates","united arab emirates":"United Arab Emirates","south korea":"South Korea","czech republic":"Czechia","russia":"Russia","hong kong":"Hong Kong"}
-def canon(s):
-    s=(s or "").strip()
-    if not s or s.lower()=="unknown": return ""
-    k=re.sub(r"\s+"," ",re.sub(r"[_]+"," ",s)).strip().lower()
-    return ALIAS.get(k, re.sub(r"\s+"," ",re.sub(r"[_]+"," ",s)).strip().title())
+# Canonical rules live in analysis/_shared/geo_norm.py — a local copy here is what
+# drifted to 115 countries against the paper's 113.
+sys.path.insert(0, "/mnt/workspace/hk/Acamedic/Sekai2/analysis/_shared")
+from geo_norm import norm_country as canon
 
 def job(row):
     cp=row.get("caption_path") or ""

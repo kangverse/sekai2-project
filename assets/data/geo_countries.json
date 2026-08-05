@@ -3113,7 +3113,7 @@
 "local": true
 },
 "United Kingdom": {
-"clips": 18542,
+"clips": 18543,
 "share": 17.31,
 "continent": "Europe",
 "videos": [
@@ -3701,6 +3701,47 @@
 "weather": "cloudy",
 "dataset": "sekai1",
 "clip": "VJZ8HQy2RIQ_0052350_0054150"
+}
+],
+"local": true
+},
+"Bosnia and Herzegovina": {
+"clips": 45,
+"share": 0.04,
+"continent": "Europe",
+"videos": [
+{
+"motion": "stationary pan",
+"place": "Mostar",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "NEfjOmxURpY_0013220_0013604",
+"v": "assets/videos/geo/bosnia-and-herzegovina-1.mp4",
+"p": "assets/images/geo/bosnia-and-herzegovina-1.jpg"
+},
+{
+"motion": "stationary pan",
+"place": "Mostar",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "NEfjOmxURpY_0013785_0014203",
+"v": "assets/videos/geo/bosnia-and-herzegovina-2.mp4",
+"p": "assets/images/geo/bosnia-and-herzegovina-2.jpg"
+},
+{
+"motion": "stationary pan",
+"place": "Mostar",
+"scene": "urban street",
+"when": "midday",
+"weather": "clear",
+"dataset": "sekai2_add_static",
+"clip": "NEfjOmxURpY_0029568_0030148",
+"v": "assets/videos/geo/bosnia-and-herzegovina-3.mp4",
+"p": "assets/images/geo/bosnia-and-herzegovina-3.jpg"
 }
 ],
 "local": true
