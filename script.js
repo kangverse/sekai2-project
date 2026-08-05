@@ -110,8 +110,8 @@ modalVideo&&modalVideo.addEventListener('timeupdate',()=>{if(!modalPoseViewer||!
   let data={},svg=null,openName=null,hideT=null,current=null;
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   Promise.all([
-    fetch('assets/data/world.svg').then(r=>r.text()),
-    fetch('assets/data/geo_countries.json').then(r=>r.json())
+    fetch('assets/data/world.svg?v=202608052007').then(r=>r.text()),
+    fetch('assets/data/geo_countries.json?v=202608052007').then(r=>r.json())
   ]).then(([svgText,payload])=>{
     data=payload;hostEl.innerHTML=svgText;svg=hostEl.querySelector('svg');
     const n=Object.keys(data).length;
