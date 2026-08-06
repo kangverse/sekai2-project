@@ -55,21 +55,23 @@
 /* ---------------- validation: four abreast + a real table ---------------- */
 .sources .source-cards{grid-template-columns:repeat(4,1fr)}
 .val-table-wrap{max-width:1180px;margin:46px auto 0;overflow-x:auto;
-  border-radius:18px;border:1px solid rgba(16,41,43,.22);background:rgba(255,255,255,.5)}
+  border-radius:18px;border:1px solid rgba(255,255,255,.6);background:#fdfbf7;
+  box-shadow:0 24px 60px -40px rgba(60,30,10,.45)}
 .val-table{width:100%;min-width:760px;border-collapse:collapse;
   font:400 13.5px/1.5 'DM Sans',system-ui,sans-serif;color:#22383a}
 .val-table caption{caption-side:top;text-align:left;padding:16px 20px 12px;
   font:600 12px/1.4 'Manrope',system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(16,41,43,.62)}
+  color:#8a7256}
 .val-table th,.val-table td{padding:12px 20px;text-align:left;vertical-align:top;
-  border-top:1px solid rgba(16,41,43,.16)}
+  border-top:1px solid #efe6da}
 .val-table thead th{font:600 11.5px/1.3 'Manrope',system-ui,sans-serif;letter-spacing:.09em;
-  text-transform:uppercase;color:rgba(16,41,43,.7);border-top:none;
-  border-bottom:1px solid rgba(16,41,43,.32)}
+  text-transform:uppercase;color:#8a7256;border-top:none;
+  border-bottom:1px solid #e3d6c5}
 .val-table tbody th{font:600 13.5px/1.5 'DM Sans',system-ui,sans-serif;white-space:nowrap}
-.val-table tbody tr:hover{background:rgba(255,255,255,.42)}
-.val-table td b{font:700 15px/1.3 'Manrope',system-ui,sans-serif;font-variant-numeric:tabular-nums}
-.val-table td:last-child{color:rgba(16,41,43,.66);font-size:12.5px}
+.val-table tbody tr:hover{background:#f7f1e8}
+.val-table td b{font:700 15px/1.3 'Manrope',system-ui,sans-serif;font-variant-numeric:tabular-nums;
+  color:#1f5c6e}
+.val-table td:last-child{color:#7d8b8d;font-size:12.5px}
 .val-table em{font-style:italic}
 @media (max-width:1080px){.sources .source-cards{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){.sources .source-cards{grid-template-columns:1fr}

@@ -50,28 +50,29 @@ renderCards();filters.addEventListener('click',e=>{if(!e.target.matches('.filter
 // Structured-semantics demo — driven from a real case (coastal-highway drive):
 // global attributes + five clip-level fields + a proportional segment strip.
 const SEG_PALETTE=['#315B7D','#438C8C','#6DAA72','#D49A45','#C7674F','#7C5AA6','#476A9F','#609B76'];
-// Readers pick the clip: one hard-coded example cannot show that the schema behaves the
-// same across a highway drive, a rail window, an aerial descent and a city walk.
-const annotationChoices=[['Coastal highway','driving'],['Rail window','train'],
-  ['Aerial descent','drone'],['City walk','walking-lturn'],['Cycling','cycling'],
-  ['Ski descent','skiing'],['Cable car','cable-car-alpine'],['Escalator','escalator']];
-let annotationCase='driving';
+// Readers pick the clip, and the ten offered here appear NOWHERE else on the page: the
+// demo used to reuse explore-grid and trajectory clips, so switching tabs showed the same
+// few scenes again. assets/data/annotation_cases.json holds one clip per (scene, camera
+// motion) pair, cut fresh from the release.
+let annotationCases={},annotationCase=null;
 function renderAnnotationDemo(key){
-  if(key)annotationCase=key;
-  const item=caseData[annotationCase];if(!item)return;
+  const keys=Object.keys(annotationCases);
+  if(!keys.length)return;
+  if(key&&annotationCases[key])annotationCase=key;
+  if(!annotationCase||!annotationCases[annotationCase])annotationCase=keys[0];
+  const item=annotationCases[annotationCase];
   const tabsEl=document.querySelector('#annotation-tabs');
   if(tabsEl&&!tabsEl.dataset.ready){
-    tabsEl.innerHTML=annotationChoices.filter(([,k])=>caseData[k]).map(([label,k])=>
-      `<button class="annotation-tab${k===annotationCase?' active':''}" data-case="${k}" role="tab" aria-selected="${k===annotationCase}">${label}</button>`).join('');
+    tabsEl.innerHTML=keys.map(k=>
+      `<button class="annotation-tab${k===annotationCase?' active':''}" data-case="${k}" role="tab" aria-selected="${k===annotationCase}">${annotationCases[k].label}</button>`).join('');
     tabsEl.addEventListener('click',e=>{const b=e.target.closest('button');if(b)renderAnnotationDemo(b.dataset.case)});
     tabsEl.dataset.ready='1';
   }
   if(tabsEl)tabsEl.querySelectorAll('button').forEach(b=>{
     const on=b.dataset.case===annotationCase;b.classList.toggle('active',on);b.setAttribute('aria-selected',on)});
   const chip=document.querySelector('#annotation-chip');
-  const total=item.pose3d?.duration||item.duration||120;
-  const label=(annotationChoices.find(([,k])=>k===annotationCase)||['Example'])[0];
-  if(chip)chip.textContent=`${label} · ${Math.round(total)} s · ${(item.segments||[]).length} segments`;
+  const total=item.duration||120;
+  if(chip)chip.textContent=`${item.label}${item.sub?' · '+item.sub:''} · ${Math.round(total)} s · ${(item.segments||[]).length} segments`;
   const video=document.querySelector('#annotation-video');
   if(video&&!video.src.includes(item.video)){video.src=item.video+MEDIA_V;video.poster=item.poster+MEDIA_V;video.play().catch(()=>{});}
   const controlled=document.querySelector('#annotation-controlled');
@@ -112,7 +113,7 @@ function loadPanoShowcase(key){const item=caseData[key];if(!item)return;activePa
 if(document.querySelector('#pano-case-tabs'))document.querySelector('#pano-case-tabs').innerHTML=panoShowcases.map((x,i)=>`<button class="${i===0?'active':''}" data-case="${x[1]}">${x[0]}</button>`).join('');
 document.querySelector('#pano-case-tabs')?.addEventListener('click',e=>{if(e.target.matches('button'))loadPanoShowcase(e.target.dataset.case)});
 document.querySelector('#pano-case-video')?.addEventListener('timeupdate',e=>{if(panoPoseViewer&&activePanoCase)panoPoseViewer.setCurrentFrame(poseFrameAtTime(activePanoCase,activePanoCase.preview_start_s+e.target.currentTime))});
-fetch('assets/data/cases.json?v=202608061720').then(r=>r.json()).then(data=>{caseData=data;renderAnnotationDemo();loadHomepageTrajectory('drone');loadPanoShowcase('panorama-serpentine')});
+fetch('assets/data/cases.json?v=202608061720').then(r=>r.json()).then(data=>{caseData=data;loadHomepageTrajectory('drone');loadPanoShowcase('panorama-serpentine')});
 const modal=document.querySelector('#case-modal'),modalVideo=document.querySelector('#modal-video');
 let modalPoseViewer=null,activeCase=null;
 function openCase(key){const item=caseData[key];if(!item)return;activeCase=item;const type=types.find(x=>x.media===key);document.querySelector('#modal-title').textContent=type?.name||key;document.querySelector('#modal-meta').textContent=`${item.dataset} · ${item.clip} · preview from t=${item.preview_start_s}s`;modalVideo.src=item.video;modalVideo.poster=item.poster;document.querySelector('#modal-attributes').innerHTML=Object.entries(item.attributes).filter(([,v])=>v).map(([k,v])=>`<span><small>${k.replaceAll('_',' ')}</small>${String(v).replaceAll('_',' ')}</span>`).join('');document.querySelector('#modal-fields').innerHTML=Object.entries(item.overall).filter(([,v])=>v).map(([k,v])=>`<div class="modal-field"><b>${k}</b><p>${v}</p></div>`).join('');document.querySelector('#modal-segments').innerHTML=item.segments.map((s,i)=>`<div class="modal-segment"><b>S${i} · ${s.time?.join('–')}s${s.path?' · '+s.path.replaceAll('_',' '):''}</b><p>${s.text}</p></div>`).join('');modal.showModal();requestAnimationFrame(()=>{if(!modalPoseViewer){modalPoseViewer=new PoseViewer(document.querySelector('#modal-pose-3d'));modalPoseViewer.init()}modalPoseViewer.loadTrajectory(item.pose3d,poseFrameAtTime(item,item.preview_start_s));modalPoseViewer.setShowFrustums(document.querySelector('#pose-frustums').checked);modalPoseViewer._onResize()});modalVideo.play().catch(()=>{})}
@@ -254,3 +255,8 @@ modalVideo&&modalVideo.addEventListener('timeupdate',()=>{if(!modalPoseViewer||!
       draw(ORDER.find(([k])=>d[k])[0]);
     });
 })();
+
+/* the annotation demo runs off its own set of clips (see build_annotation_cases.py) */
+fetch('assets/data/annotation_cases.json?v=202608061720').then(r=>r.json())
+  .then(d=>{annotationCases=d;renderAnnotationDemo();})
+  .catch(()=>{});

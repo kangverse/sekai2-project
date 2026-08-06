@@ -67,7 +67,19 @@ async function readSource(rel) {
     ['Map SVG injected',              n('#geo-svg-host svg') === 1, n('#geo-svg-host svg')],
     ['Interactive countries',         n('#geo-svg-host path.on') === 99, n('#geo-svg-host path.on')],
     ['Annotation fields populated',   n('#field-list .field') === 5, n('#field-list .field')],
-    ['Annotation segment strip',      n('#segment-strip .segment') === 6, n('#segment-strip .segment')],
+    ['Annotation tabs',               n('#annotation-tabs .annotation-tab') === 10, n('#annotation-tabs .annotation-tab')],
+    ['Annotation clips are unique',   (() => {
+        const ann = JSON.parse(require('fs').readFileSync('assets/data/annotation_cases.json','utf8'));
+        const other = new Set();
+        for (const f of ['cases.json','caption_cases.json']) {
+          const d = JSON.parse(require('fs').readFileSync('assets/data/'+f,'utf8'));
+          for (const v of (Array.isArray(d) ? d : Object.values(d))) if (v && v.clip) other.add(v.clip);
+        }
+        const g = JSON.parse(require('fs').readFileSync('assets/data/geo_countries.json','utf8'));
+        for (const m of Object.values(g)) for (const v of (m.videos||[])) if (v.clip) other.add(v.clip);
+        return Object.values(ann).every(v => !other.has(v.clip));
+      })(), 'a demo clip is reused elsewhere'],
+    ['Annotation segment strip',      n('#segment-strip .segment') >= 4, n('#segment-strip .segment')],
     ['Annotation video src set',      !!q('#annotation-video')?.getAttribute('src'), q('#annotation-video')?.getAttribute('src')],
     ['Trajectory tabs',               n('#trajectory-tabs .trajectory-tab') === 5, n('#trajectory-tabs .trajectory-tab')],
     ['Caption case tabs',             n('#caption-case-tabs button') === 20, n('#caption-case-tabs button')],
