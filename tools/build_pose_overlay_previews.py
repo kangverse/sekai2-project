@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Render compact RGB + ViPE trace previews using the downloaded OSS tool."""
+"""SUPERSEDED - do not run.
+
+Despite the name, compact_video() never called the panel renderer above it: the outputs
+were plain 640x360 / VP9 CRF 34 copies of the case previews, which is what the trajectory
+section labelled "Clean RGB preview". Since the case previews are now cut at native
+1280x720 (tools/reencode_hq.py), the page points straight at them and the five
+pose-overlay-*.webm files were deleted rather than re-rendered at higher quality.
+
+Render compact RGB + ViPE trace previews using the downloaded OSS tool."""
 
 import csv
 import json

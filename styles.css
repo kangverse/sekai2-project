@@ -43,15 +43,3 @@
   .attr-name{font-size:12.5px}
 }
 
-/* ---------------- embedded report figures ---------------- */
-.figure-card{display:block;margin-top:26px;border:1px solid var(--line,#e4e0d8);border-radius:20px;
-  background:#fff;overflow:hidden;text-decoration:none;transition:box-shadow .22s ease,transform .22s ease}
-.figure-card:hover{box-shadow:0 26px 60px -38px rgba(24,32,36,.55);transform:translateY(-2px)}
-.figure-card img{display:block;width:100%;height:auto}
-.figure-cap{display:block;padding:14px 20px 17px;font:400 13px/1.6 'DM Sans',system-ui,sans-serif;
-  color:#5d6b71;border-top:1px solid #eef0ec}
-.figure-cap em{font-style:normal;color:#2f6f86;font-weight:600}
-.figure-card.dark{border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
-.figure-card.dark .figure-cap{color:rgba(255,255,255,.7);border-top-color:rgba(255,255,255,.12)}
-.figure-card.dark .figure-cap em{color:#9BCEC1}
-.figure-card.dark img{background:#fff}

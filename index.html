@@ -73,7 +73,7 @@
     <section class="attributes section" id="attributes">
       <div class="section-heading reveal">
         <div><p class="kicker">Environment and scene diversity</p><h2>Six controlled attributes,<br>long-tailed like the real world.</h2></div>
-        <p>Every clip is labelled along country, camera motion, lighting, time of day, weather and scene type. The head is dominated — urban streets, walking, clear skies — but the minority values stay populated at scale: <strong>22.4%</strong> of clips are shot at night, <strong>41.5%</strong> under non-clear weather, <strong>34.0%</strong> under artificial or mixed lighting. Pick an attribute to see its distribution.</p>
+        <p>Every clip is labelled along country, camera motion, lighting, time of day, weather and scene type. The head is dominated — urban streets, clear skies — but the minority values stay populated at scale: <strong>22.4%</strong> of clips are shot at night, <strong>41.5%</strong> under non-clear weather, <strong>34.0%</strong> under artificial or mixed lighting, and <strong>28.7%</strong> of the newly collected footage is natural scenery rather than street. Pick an attribute to see its distribution.</p>
       </div>
       <div class="attr-explorer reveal">
         <div class="attr-tabs" id="attr-tabs" role="tablist" aria-label="Choose an attribute"></div>
@@ -125,10 +125,6 @@
           <div class="field-list" id="field-list"></div>
         </div>
       </div>
-      <a class="figure-card reveal" href="assets/images/fig-vocab-components.jpg?v=202608061450" target="_blank" rel="noreferrer">
-        <img src="assets/images/fig-vocab-components.jpg?v=202608061450" alt="Jaccard overlap between the six caption components, word-sharing distribution, and the ten words common to all six" loading="lazy">
-        <span class="figure-cap">Do the fields repeat each other? Of the 444 distinct words in their combined head vocabulary, 51% appear in one component only and 10 in all six — and those ten are place nouns such as <em>street</em> and <em>sidewalk</em>, i.e. shared subject matter rather than shared phrasing. <em>Open full size ↗</em></span>
-      </a>
     </section>
 
     <section class="case-studies section" id="case-studies">
@@ -149,16 +145,12 @@
       <div class="trajectory-stage reveal">
         <div class="trajectory-live-label"><span>RGB + 3D POSE</span><b id="trajectory-case-name">Drone</b><small>15 s synchronized window on the complete trajectory</small></div>
         <div class="trajectory-sync-grid">
-          <div class="trajectory-video-pane"><video id="trajectory-video" src="assets/videos/pose-overlay-drone.webm" poster="assets/images/pose-overlay-drone.jpg" controls autoplay muted loop playsinline></video><span>Clean RGB preview</span></div>
+          <div class="trajectory-video-pane"><video id="trajectory-video" src="assets/videos/drone.mp4?v=202608061450" poster="assets/images/drone.jpg?v=202608061450" controls autoplay muted loop playsinline></video><span>released clip · 1280&times;720</span></div>
           <div class="trajectory-3d-pane"><div id="trajectory-viewer" aria-label="Interactive 3D camera trajectory visualization"></div><span>drag to orbit · scroll to zoom</span></div>
         </div>
         <div class="trajectory-tabs" id="trajectory-tabs"></div>
         <div class="trajectory-meta"><span><i class="dot start"></i> Start</span><span><i class="star">★</i> End</span><span>Color encodes time</span><span>Interactive: orbit · pan · zoom</span></div>
       </div>
-      <a class="figure-card reveal" href="assets/images/fig-camera-motion.jpg?v=202608061450" target="_blank" rel="noreferrer">
-        <img src="assets/images/fig-camera-motion.jpg?v=202608061450" alt="Distributions of path length, cumulative rotation, camera speed and bird's-eye extent for the three sources" loading="lazy">
-        <span class="figure-cap">Pose-derived motion over all 128,892 trajectories. The 360° subset travels farthest yet rotates least — a walker covering a long looping route needs no body rotation to see in every direction. <em>Open full size ↗</em></span>
-      </a>
     </section>
 
     <section class="panoramic section" id="panoramic">
@@ -194,10 +186,6 @@
         <article><span>03</span><h3>33.1%</h3><p>Top-1 caption→clip retrieval in a 10,000-clip pool, against a 0.01% chance rate. Every caption field separates from a shuffled control.</p></article>
         <article><span>04</span><h3>60.9%</h3><p>Preference over a conventional one-shot caption written by the same model from the same frames, scored in the presentation order that works against us.</p></article>
       </div>
-      <a class="figure-card dark reveal" href="assets/images/fig-frame-quality.jpg?v=202608061450" target="_blank" rel="noreferrer">
-        <img src="assets/images/fig-frame-quality.jpg?v=202608061450" alt="Per-clip distributions of optical flow magnitude, aesthetic score and Max-Running-LPIPS for Sekai2 and three prior corpora" loading="lazy">
-        <span class="figure-cap">Scored against MiraData, RealEstate10K and SpatialVID through one pipeline with 1,200 clips each. Per-frame quality sits in the same band as prior corpora; frame-to-frame motion is 1.4–1.8× higher. <em>Open full size ↗</em></span>
-      </a>
     </section>
 
     <section class="access section" id="access">

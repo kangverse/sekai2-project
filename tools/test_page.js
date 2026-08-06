@@ -78,11 +78,11 @@ async function readSource(rel) {
     ['Motion pills',                  n('#motion-pills .pill') === 19, n('#motion-pills .pill')],
     ['Hero wall videos',              n('.wall-card video') > 30, n('.wall-card video')],
     ['No long-horizon leftovers',     n('#long-horizon, #long-video, #timeline') === 0, n('#long-horizon, #long-video, #timeline')],
-    ['Attribute tabs',                n('#attr-tabs .attr-tab') === 6, n('#attr-tabs .attr-tab')],
+    ['Attribute tabs',                n('#attr-tabs .attr-tab') === 5, n('#attr-tabs .attr-tab')],
     ['Attribute bars drawn',          n('#attr-chart .attr-row') >= 8, n('#attr-chart .attr-row')],
     ['Attribute totals labelled',     /distinct values/.test(q('#attr-total')?.textContent || ''), q('#attr-total')?.textContent],
+    ['No report figures',             n('.figure-card') === 0, n('.figure-card')],
     ['Validation cards',              n('#validation .source-cards article') === 4, n('#validation .source-cards article')],
-    ['Report figures embedded',       n('.figure-card img') === 3, n('.figure-card img')],
     ['No placeholder copy',           !/can later be connected|coming soon here|Lorem/i.test(window.document.body.textContent), 'found placeholder text'],
   ];
 

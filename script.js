@@ -1,3 +1,4 @@
+const MEDIA_V='?v=202608061450';   // bump when the video assets are re-encoded
 const types=[
   {name:'Drone',group:'Aerial',desc:'Ascending, orbiting, and long-range flight',a:'#7298a8',b:'#254e54',media:'drone',wide:true,featured:true},
   {name:'Walking',group:'Ground',desc:'First-person paths through real places',a:'#8caf8e',b:'#315b50',media:'walking',featured:true},
@@ -20,7 +21,7 @@ const types=[
   {name:'Static Landscape',group:'Ground',desc:'Long observation with subtle camera motion',a:'#958da1',b:'#45434f',media:'static-landscape'}
 ];
 const wallColors=[['#496b70','#172f35'],['#9e8068','#3b433f'],['#6f9279','#21453c'],['#7d7590','#35344a'],['#b18b66','#4d443d']];
-document.querySelectorAll('.wall-column').forEach((col,ci)=>{const cards=[...types,...types];cards.forEach((t,i)=>{const d=document.createElement('div');d.className='wall-card';d.style.setProperty('--a',wallColors[(i+ci)%wallColors.length][0]);d.style.setProperty('--b',wallColors[(i+ci)%wallColors.length][1]);d.innerHTML=`<video src="assets/videos/${t.media}.mp4" poster="assets/images/${t.media}.jpg" autoplay muted loop playsinline preload="metadata"></video><span>${t.name} · Sekai2</span>`;col.appendChild(d)})});
+document.querySelectorAll('.wall-column').forEach((col,ci)=>{const cards=[...types,...types];cards.forEach((t,i)=>{const d=document.createElement('div');d.className='wall-card';d.style.setProperty('--a',wallColors[(i+ci)%wallColors.length][0]);d.style.setProperty('--b',wallColors[(i+ci)%wallColors.length][1]);d.innerHTML=`<video src="assets/videos/${t.media}.mp4${MEDIA_V}" poster="assets/images/${t.media}.jpg${MEDIA_V}" autoplay muted loop playsinline preload="metadata"></video><span>${t.name} · Sekai2</span>`;col.appendChild(d)})});
 if(document.querySelector('#motion-pills'))document.querySelector('#motion-pills').innerHTML=types.map(x=>`<span class="pill">${x.name}</span>`).join('');
 const groups=['All','Aerial','Ground','Vehicle'];
 const filters=document.querySelector('#filters');
@@ -43,7 +44,7 @@ function rowPlan(n){
 function renderCards(group='All'){
   const list=types.filter(x=>group==='All'?x.featured:x.group===group);
   const spans=rowPlan(list.length).flat();
-  grid.innerHTML=list.map((x,i)=>{const s=spans[i]||4;return `<article class="data-card reveal visible" data-case="${x.media}" data-span="${s}" style="grid-column:span ${s}" tabindex="0" role="button" aria-label="Open ${x.name} case study"><div class="card-media" style="--ca:${x.a};--cb:${x.b}"><video src="assets/videos/${x.media}.mp4" poster="assets/images/${x.media}.jpg" autoplay muted loop playsinline preload="metadata"></video><span class="media-type">${x.group}</span><span class="inspect">View case ↗</span></div><div class="card-body"><div><h3>${x.name}</h3><small>Video · Pose · Caption</small></div><p>${x.desc}</p></div></article>`}).join('')
+  grid.innerHTML=list.map((x,i)=>{const s=spans[i]||4;return `<article class="data-card reveal visible" data-case="${x.media}" data-span="${s}" style="grid-column:span ${s}" tabindex="0" role="button" aria-label="Open ${x.name} case study"><div class="card-media" style="--ca:${x.a};--cb:${x.b}"><video src="assets/videos/${x.media}.mp4${MEDIA_V}" poster="assets/images/${x.media}.jpg${MEDIA_V}" autoplay muted loop playsinline preload="metadata"></video><span class="media-type">${x.group}</span><span class="inspect">View case ↗</span></div><div class="card-body"><div><h3>${x.name}</h3><small>Video · Pose · Caption</small></div><p>${x.desc}</p></div></article>`}).join('')
 }
 renderCards();filters.addEventListener('click',e=>{if(!e.target.matches('.filter'))return;filters.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');renderCards(e.target.dataset.filter)});
 // Structured-semantics demo — driven from a real case (coastal-highway drive):
@@ -55,7 +56,7 @@ function renderAnnotationDemo(){
   const total=item.pose3d?.duration||item.duration||120;
   if(chip)chip.textContent=`Coastal highway · ${Math.round(total)} s`;
   const video=document.querySelector('#annotation-video');
-  if(video&&video.src!==new URL(item.video,location.href).href){video.src=item.video;video.poster=item.poster;video.play().catch(()=>{});}
+  if(video&&!video.src.includes(item.video)){video.src=item.video+MEDIA_V;video.poster=item.poster+MEDIA_V;video.play().catch(()=>{});}
   const controlled=document.querySelector('#annotation-controlled');
   if(controlled)controlled.innerHTML=Object.values(item.attributes||{}).filter(Boolean).map(v=>`<span>${String(v).replaceAll('_',' ')}</span>`).join('');
   const order=['subject_motion','environment_motion','static_scene','camera_description','full_prompt'];
@@ -69,7 +70,7 @@ const trajectoryPoseSources={walking:'walking-lturn',driving:'driving-loop','cab
 const tabs=document.querySelector('#trajectory-tabs');if(tabs)tabs.innerHTML=trajectoryChoices.map(([name,key],i)=>`<button class="trajectory-tab ${i===0?'active':''}" data-case="${key}">${name}</button>`).join('');
 let homepagePoseViewer=null;
 function poseFrameAtTime(item,sourceTime){const pose=item.pose3d,count=pose.num_frames||pose.positions.length;return Math.max(0,Math.min(count-1,Math.round(sourceTime/pose.duration*(count-1))))}
-function loadHomepageTrajectory(key){const item=caseData[trajectoryPoseSources[key]||key];if(!item?.pose3d)return;document.querySelector('#trajectory-case-name').textContent=trajectoryChoices.find(x=>x[1]===key)?.[0]||key;const video=document.querySelector('#trajectory-video');video.src=`assets/videos/pose-overlay-${key}.webm`;video.poster=`assets/images/pose-overlay-${key}.jpg`;video.play().catch(()=>{});if(!homepagePoseViewer){homepagePoseViewer=new PoseViewer(document.querySelector('#trajectory-viewer'));homepagePoseViewer.init()}homepagePoseViewer.loadTrajectory(item.pose3d,poseFrameAtTime(item,item.preview_start_s));homepagePoseViewer.setShowFrustums(false);homepagePoseViewer.setFollowMode(false);homepagePoseViewer.setProgressHighlight(false);homepagePoseViewer.setShowDirection(false);homepagePoseViewer.setCurrentFrame(poseFrameAtTime(item,item.preview_start_s));homepagePoseViewer._onResize()}
+function loadHomepageTrajectory(key){const item=caseData[trajectoryPoseSources[key]||key];if(!item?.pose3d)return;document.querySelector('#trajectory-case-name').textContent=trajectoryChoices.find(x=>x[1]===key)?.[0]||key;const video=document.querySelector('#trajectory-video');video.src=item.video+MEDIA_V;video.poster=item.poster+MEDIA_V;video.play().catch(()=>{});if(!homepagePoseViewer){homepagePoseViewer=new PoseViewer(document.querySelector('#trajectory-viewer'));homepagePoseViewer.init()}homepagePoseViewer.loadTrajectory(item.pose3d,poseFrameAtTime(item,item.preview_start_s));homepagePoseViewer.setShowFrustums(false);homepagePoseViewer.setFollowMode(false);homepagePoseViewer.setProgressHighlight(false);homepagePoseViewer.setShowDirection(false);homepagePoseViewer.setCurrentFrame(poseFrameAtTime(item,item.preview_start_s));homepagePoseViewer._onResize()}
 tabs&&tabs.addEventListener('click',e=>{if(!e.target.matches('button'))return;tabs.querySelectorAll('button').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');loadHomepageTrajectory(e.target.dataset.case)});
 document.querySelector('#trajectory-video')?.addEventListener('timeupdate',e=>{const active=tabs.querySelector('.active')?.dataset.case,item=caseData[trajectoryPoseSources[active]||active];if(!homepagePoseViewer||!item)return;homepagePoseViewer.setCurrentFrame(poseFrameAtTime(item,item.preview_start_s+e.target.currentTime))});
 const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>observer.observe(x));
@@ -200,8 +201,10 @@ modalVideo&&modalVideo.addEventListener('timeupdate',()=>{if(!modalPoseViewer||!
   const tabsEl=document.querySelector('#attr-tabs'),chartEl=document.querySelector('#attr-chart'),
         totalEl=document.querySelector('#attr-total');
   if(!tabsEl||!chartEl)return;
-  const ORDER=[['scene','Scene'],['motion','Camera motion'],['lighting','Lighting'],
-               ['time','Time of day'],['weather','Weather'],['country','Country']];
+  // Camera motion is deliberately absent: at 83% walking the bar chart says nothing the
+  // sentence above it does not already say, and a single full-width bar reads as a defect.
+  const ORDER=[['scene','Scene'],['lighting','Lighting'],['time','Time of day'],
+               ['weather','Weather'],['country','Country']];
   let data=null,active='scene';
   const fmt=n=>n.toLocaleString('en-US');
   function draw(key){
