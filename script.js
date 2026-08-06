@@ -1,4 +1,4 @@
-const MEDIA_V='?v=202608070120';   // bump when the video assets are re-encoded
+const MEDIA_V='?v=202608070145';   // bump when the video assets are re-encoded
 const types=[
   {name:'Drone',group:'Aerial',desc:'Ascending, orbiting, and long-range flight',a:'#7298a8',b:'#254e54',media:'drone',wide:true,featured:true},
   {name:'Walking',group:'Ground',desc:'First-person paths through real places',a:'#8caf8e',b:'#315b50',media:'walking',featured:true},
@@ -103,11 +103,11 @@ const captionCaseTabs=document.querySelector('#caption-case-tabs'),captionCaseEx
 function escapeHTML(value){return String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]))}
 function captionMarkup(value){return escapeHTML(value).replaceAll('&lt;camera&gt;','<mark>&lt;camera&gt;</mark>').replaceAll('&lt;/camera&gt;','<mark>&lt;/camera&gt;</mark>')}
 function renderCaptionCase(id){const item=captionCases.find(x=>x.id===id)||captionCases[0];if(!item)return;captionCaseTabs.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x.dataset.case===item.id));const points=item.trajectory.map(([x,y])=>`${8+x*84},${8+y*84}`).join(' '),fields=Object.entries(item.overall).map(([key,value])=>`<div class="web-caption-field"><b>${key}</b><p>${captionMarkup(value)}</p></div>`).join(''),segments=item.segments.map((segment,index)=>{const color=['#315B7D','#438C8C','#6DAA72','#D49A45','#C7674F','#7C5AA6','#476A9F','#609B76'][index%8];return `<div class="web-caption-segment" style="--segment-color:${color}"><b>S${index} · ${segment.time.join('–')}s · ${escapeHTML(segment.path||'continuous')}</b><p>${escapeHTML(segment.text)}</p></div>`}).join(''),timeline=item.segments.map((segment,index)=>{const color=['#315B7D','#438C8C','#6DAA72','#D49A45','#C7674F','#7C5AA6','#476A9F','#609B76'][index%8],width=(segment.time[1]-segment.time[0])/item.duration*100;return `<span style="width:${width}%;background:${color}">${segment.time.join('–')}s</span>`}).join('');captionCaseExplorer.innerHTML=`<div class="web-case-head"><div><span>Case ${item.id}</span><h3>${escapeHTML(item.shape)}</h3></div><p>${escapeHTML(item.dataset)} · ${Math.round(item.duration)} s · ${item.segments.length} segments</p></div><div class="web-case-frames">${item.frames.map((src,index)=>`<figure><img src="${src}" alt="Case ${item.id} at ${item.frame_times[index]} seconds" loading="lazy"><figcaption>t=${item.frame_times[index]}s</figcaption></figure>`).join('')}</div><div class="web-case-main"><div class="web-pose-card"><div class="web-card-title"><b>ViPE trajectory</b><span>bird's-eye view · color encodes time</span></div><svg viewBox="0 0 100 100" role="img" aria-label="Camera trajectory"><defs><linearGradient id="web-pose-gradient"><stop offset="0" stop-color="#315B7D"/><stop offset=".35" stop-color="#438C8C"/><stop offset=".7" stop-color="#D49A45"/><stop offset="1" stop-color="#7C5AA6"/></linearGradient></defs><polyline points="${points}"/><circle cx="${8+item.trajectory[0][0]*84}" cy="${8+item.trajectory[0][1]*84}" r="2.2"/><text x="${8+item.trajectory.at(-1)[0]*84}" y="${8+item.trajectory.at(-1)[1]*84}" class="web-pose-star">★</text></svg><div class="web-pose-legend"><span>● start</span><span>★ end</span></div></div><div class="web-global-card"><div class="web-card-title"><b>Global annotation</b><span>structured clip-level semantics</span></div><div class="web-controlled">${Object.values(item.attributes).filter(Boolean).map(x=>`<span>${escapeHTML(String(x).replaceAll('_',' '))}</span>`).join('')}</div><div class="web-caption-fields">${fields}</div></div></div><div class="web-temporal"><div class="web-card-title"><b>Temporally grounded annotations</b><span>segments[*].short_prompt · camera_path</span></div><div class="web-segment-timeline">${timeline}</div><div>${segments}</div></div>`}
-fetch('assets/data/caption_cases.json?v=202608070120').then(r=>r.json()).then(data=>{captionCases=data;captionCaseTabs.innerHTML=data.map((item,index)=>`<button class="caption-case-tab ${index===0?'active':''}" data-case="${item.id}"><span>${item.dataset}</span>${escapeHTML(item.shape)}</button>`).join('');renderCaptionCase(data[0]?.id)});captionCaseTabs&&captionCaseTabs.addEventListener('click',e=>{const button=e.target.closest('button');if(button)renderCaptionCase(button.dataset.case)});
+fetch('assets/data/caption_cases.json?v=202608070145').then(r=>r.json()).then(data=>{captionCases=data;captionCaseTabs.innerHTML=data.map((item,index)=>`<button class="caption-case-tab ${index===0?'active':''}" data-case="${item.id}"><span>${item.dataset}</span>${escapeHTML(item.shape)}</button>`).join('');renderCaptionCase(data[0]?.id)});captionCaseTabs&&captionCaseTabs.addEventListener('click',e=>{const button=e.target.closest('button');if(button)renderCaptionCase(button.dataset.case)});
 let panoramicCases=[],panoramicExpanded=false,panoramicFilter='All';
 const reconstructionGrid=document.querySelector('#reconstruction-grid'),reconstructionFilters=document.querySelector('#reconstruction-filters'),reconstructionMore=document.querySelector('#reconstruction-more');
 function renderPanoramicCases(){const filtered=panoramicCases.filter(x=>panoramicFilter==='All'||x.motion===panoramicFilter),shown=panoramicExpanded?filtered:filtered.slice(0,12);reconstructionGrid.innerHTML=shown.map(x=>`<a class="reconstruction-card" href="${x.image}" target="_blank" rel="noreferrer"><div class="reconstruction-media"><img src="${x.image}" alt="${x.scene}, ${x.motion} panoramic reconstruction" loading="lazy"></div><div><b>${x.scene}</b><span>${x.motion.replaceAll('-',' ')}</span></div></a>`).join('');reconstructionMore.hidden=filtered.length<=12;reconstructionMore.textContent=panoramicExpanded?'Show selected cases only':`Show all ${filtered.length} reconstructions`}
-fetch('assets/data/panoramic_cases.json?v=202608070120').then(r=>r.json()).then(data=>{panoramicCases=data;const motions=['All',...new Set(data.map(x=>x.motion))];reconstructionFilters.innerHTML=motions.map((x,i)=>`<button class="recon-filter ${i===0?'active':''}" data-motion="${x}">${x.replaceAll('-',' ')}</button>`).join('');renderPanoramicCases()});
+fetch('assets/data/panoramic_cases.json?v=202608070145').then(r=>r.json()).then(data=>{panoramicCases=data;const motions=['All',...new Set(data.map(x=>x.motion))];reconstructionFilters.innerHTML=motions.map((x,i)=>`<button class="recon-filter ${i===0?'active':''}" data-motion="${x}">${x.replaceAll('-',' ')}</button>`).join('');renderPanoramicCases()});
 reconstructionFilters&&reconstructionFilters.addEventListener('click',e=>{if(!e.target.matches('button'))return;reconstructionFilters.querySelectorAll('button').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');panoramicFilter=e.target.dataset.motion;panoramicExpanded=false;renderPanoramicCases()});reconstructionMore&&reconstructionMore.addEventListener('click',()=>{panoramicExpanded=!panoramicExpanded;renderPanoramicCases()});
 
 let caseData={},panoPoseViewer=null,activePanoCase=null;
@@ -120,7 +120,7 @@ function loadPanoShowcase(key){const item=caseData[key];if(!item)return;activePa
 if(document.querySelector('#pano-case-tabs'))document.querySelector('#pano-case-tabs').innerHTML=panoShowcases.map((x,i)=>`<button class="${i===0?'active':''}" data-case="${x[1]}">${x[0]}</button>`).join('');
 document.querySelector('#pano-case-tabs')?.addEventListener('click',e=>{if(e.target.matches('button'))loadPanoShowcase(e.target.dataset.case)});
 document.querySelector('#pano-case-video')?.addEventListener('timeupdate',e=>{if(panoPoseViewer&&activePanoCase)panoPoseViewer.setCurrentFrame(poseFrameAtTime(activePanoCase,activePanoCase.preview_start_s+e.target.currentTime))});
-fetch('assets/data/cases.json?v=202608070120').then(r=>r.json()).then(data=>{caseData=data;loadHomepageTrajectory('drone');loadPanoShowcase('panorama-serpentine')});
+fetch('assets/data/cases.json?v=202608070145').then(r=>r.json()).then(data=>{caseData=data;loadHomepageTrajectory('drone');loadPanoShowcase('panorama-serpentine')});
 const modal=document.querySelector('#case-modal'),modalVideo=document.querySelector('#modal-video');
 let modalPoseViewer=null,activeCase=null;
 function openCase(key){const item=caseData[key];if(!item)return;activeCase=item;const type=types.find(x=>x.media===key);document.querySelector('#modal-title').textContent=type?.name||key;document.querySelector('#modal-meta').textContent=`${item.dataset} · ${item.clip} · preview from t=${item.preview_start_s}s`;modalVideo.src=item.video;modalVideo.poster=item.poster;document.querySelector('#modal-attributes').innerHTML=Object.entries(item.attributes).filter(([,v])=>v).map(([k,v])=>`<span><small>${k.replaceAll('_',' ')}</small>${String(v).replaceAll('_',' ')}</span>`).join('');document.querySelector('#modal-fields').innerHTML=Object.entries(item.overall).filter(([,v])=>v).map(([k,v])=>`<div class="modal-field"><b>${k}</b><p>${v}</p></div>`).join('');document.querySelector('#modal-segments').innerHTML=item.segments.map((s,i)=>`<div class="modal-segment"><b>S${i} · ${s.time?.join('–')}s${s.path?' · '+s.path.replaceAll('_',' '):''}</b><p>${s.text}</p></div>`).join('');modal.showModal();requestAnimationFrame(()=>{if(!modalPoseViewer){modalPoseViewer=new PoseViewer(document.querySelector('#modal-pose-3d'));modalPoseViewer.init()}modalPoseViewer.loadTrajectory(item.pose3d,poseFrameAtTime(item,item.preview_start_s));modalPoseViewer.setShowFrustums(document.querySelector('#pose-frustums').checked);modalPoseViewer._onResize()});modalVideo.play().catch(()=>{})}
@@ -136,8 +136,8 @@ modalVideo&&modalVideo.addEventListener('timeupdate',()=>{if(!modalPoseViewer||!
   let data={},svg=null,openName=null,hideT=null,current=null;
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   Promise.all([
-    fetch('assets/data/world.svg?v=202608070120').then(r=>r.text()),
-    fetch('assets/data/geo_countries.json?v=202608070120').then(r=>r.json())
+    fetch('assets/data/world.svg?v=202608070145').then(r=>r.text()),
+    fetch('assets/data/geo_countries.json?v=202608070145').then(r=>r.json())
   ]).then(([svgText,payload])=>{
     data=payload;hostEl.innerHTML=svgText;svg=hostEl.querySelector('svg');
     const n=Object.keys(data).length;
@@ -250,7 +250,7 @@ modalVideo&&modalVideo.addEventListener('timeupdate',()=>{if(!modalPoseViewer||!
     const paint=()=>chartEl.querySelectorAll('.attr-track i').forEach(b=>b.classList.add('go'));
     typeof requestAnimationFrame==='function'?requestAnimationFrame(paint):paint();
   }
-  fetch('assets/data/attributes.json?v=202608070120')
+  fetch('assets/data/attributes.json?v=202608070145')
     .then(r=>r.json())
     .catch(()=>null)                       // only a fetch/parse failure blanks the section
     .then(d=>{
@@ -264,6 +264,6 @@ modalVideo&&modalVideo.addEventListener('timeupdate',()=>{if(!modalPoseViewer||!
 })();
 
 /* the annotation demo runs off its own set of clips (see build_annotation_cases.py) */
-fetch('assets/data/annotation_cases.json?v=202608070120').then(r=>r.json())
+fetch('assets/data/annotation_cases.json?v=202608070145').then(r=>r.json())
   .then(d=>{annotationCases=d;renderAnnotationDemo();})
   .catch(()=>{});
