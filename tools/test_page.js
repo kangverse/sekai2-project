@@ -88,6 +88,9 @@ async function readSource(rel) {
     ['Panoramic video src set',       !!q('#pano-case-video')?.getAttribute('src'), q('#pano-case-video')?.getAttribute('src')],
     ['Reconstruction cards',          n('#reconstruction-grid .reconstruction-card') === 12, n('#reconstruction-grid .reconstruction-card')],
     ['Motion pills',                  n('#motion-pills .pill') === 19, n('#motion-pills .pill')],
+    ['Motion pills break into 2 rows', n('#motion-pills .pill-break') === 1 &&
+       [...q('#motion-pills').children].findIndex(x => x.classList.contains('pill-break')) === 10,
+       [...q('#motion-pills').children].findIndex(x => x.classList.contains('pill-break'))],
     ['Hero wall videos',              n('.wall-card video') > 30, n('.wall-card video')],
     ['No long-horizon leftovers',     n('#long-horizon, #long-video, #timeline') === 0, n('#long-horizon, #long-video, #timeline')],
     ['Attribute tabs',                n('#attr-tabs .attr-tab') === 5, n('#attr-tabs .attr-tab')],
