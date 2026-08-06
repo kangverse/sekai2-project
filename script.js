@@ -50,11 +50,28 @@ renderCards();filters.addEventListener('click',e=>{if(!e.target.matches('.filter
 // Structured-semantics demo — driven from a real case (coastal-highway drive):
 // global attributes + five clip-level fields + a proportional segment strip.
 const SEG_PALETTE=['#315B7D','#438C8C','#6DAA72','#D49A45','#C7674F','#7C5AA6','#476A9F','#609B76'];
-function renderAnnotationDemo(){
-  const item=caseData['driving'];if(!item)return;
+// Readers pick the clip: one hard-coded example cannot show that the schema behaves the
+// same across a highway drive, a rail window, an aerial descent and a city walk.
+const annotationChoices=[['Coastal highway','driving'],['Rail window','train'],
+  ['Aerial descent','drone'],['City walk','walking-lturn'],['Cycling','cycling'],
+  ['Ski descent','skiing'],['Cable car','cable-car-alpine'],['Escalator','escalator']];
+let annotationCase='driving';
+function renderAnnotationDemo(key){
+  if(key)annotationCase=key;
+  const item=caseData[annotationCase];if(!item)return;
+  const tabsEl=document.querySelector('#annotation-tabs');
+  if(tabsEl&&!tabsEl.dataset.ready){
+    tabsEl.innerHTML=annotationChoices.filter(([,k])=>caseData[k]).map(([label,k])=>
+      `<button class="annotation-tab${k===annotationCase?' active':''}" data-case="${k}" role="tab" aria-selected="${k===annotationCase}">${label}</button>`).join('');
+    tabsEl.addEventListener('click',e=>{const b=e.target.closest('button');if(b)renderAnnotationDemo(b.dataset.case)});
+    tabsEl.dataset.ready='1';
+  }
+  if(tabsEl)tabsEl.querySelectorAll('button').forEach(b=>{
+    const on=b.dataset.case===annotationCase;b.classList.toggle('active',on);b.setAttribute('aria-selected',on)});
   const chip=document.querySelector('#annotation-chip');
   const total=item.pose3d?.duration||item.duration||120;
-  if(chip)chip.textContent=`Coastal highway · ${Math.round(total)} s`;
+  const label=(annotationChoices.find(([,k])=>k===annotationCase)||['Example'])[0];
+  if(chip)chip.textContent=`${label} · ${Math.round(total)} s · ${(item.segments||[]).length} segments`;
   const video=document.querySelector('#annotation-video');
   if(video&&!video.src.includes(item.video)){video.src=item.video+MEDIA_V;video.poster=item.poster+MEDIA_V;video.play().catch(()=>{});}
   const controlled=document.querySelector('#annotation-controlled');

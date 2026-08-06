@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Sekai2 — long-horizon real-world video data for interactive world modeling.">
-  <title>Sekai2 — Long-Horizon Real-World Video Dataset</title>
+  <meta name="description" content="Sekai2: 128,892 real-world clips, 2,826 hours across 113 countries, each with a released camera trajectory and captions grounded at clip and segment level.">
+  <title>Sekai2: From World Exploration to Interactive World Modeling</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -33,8 +33,8 @@
       <div class="hero-shade"></div>
       <div class="hero-grid"></div>
       <div class="hero-copy reveal">
-        <p class="eyebrow"><span></span> Real data for interactive world models</p>
-        <h1>A world of motion.<br><em>Captured at length.</em></h1>
+        <p class="eyebrow"><span></span> Dataset &middot; technical report</p>
+        <h1>Sekai2: From World Exploration<br>to <em>Interactive World Modeling</em></h1>
         <p class="hero-deck">128,892 real-world clips averaging 78.9 seconds, each released with a camera trajectory and captions grounded at both the clip and the segment level.</p>
         <div class="hero-actions">
           <a class="button primary" href="#explore">Explore the dataset <span>↓</span></a>
@@ -113,6 +113,7 @@
         <div><p class="kicker">Structured semantics</p><h2>Describe the world<br>at two temporal scales.</h2></div>
         <p>Clip-level fields summarize what persists; 649,597 grounded segments — 5.04 per clip, 15 s median — describe how it changes. The levels are not restatements of one another: among the four factorized descriptions, pairwise vocabulary overlap is only 0.16, and each contributes words no other field uses.</p>
       </div>
+      <div class="annotation-tabs reveal" id="annotation-tabs" role="tablist" aria-label="Choose an annotated clip"></div>
       <div class="annotation-demo reveal">
         <div class="annotation-media">
           <span class="media-chip" id="annotation-chip">Example</span>
