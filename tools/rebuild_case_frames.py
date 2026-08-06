@@ -69,6 +69,8 @@ def pano_source(clip):
     from rebuild_panoramic_hq import signed_url, remote_size, fetch_range, duration_of
     cap = manifest()[clip].get("caption_path")
     rel = json.load(open(cap))["video_path"]
+    # NOTE: the caller must delete this when done. Keeping them cached filled a 30 GB /tmp
+    # after four masters (37.5 GB of head slices) and the fifth case died on ENOSPC.
     local = f"/tmp/case-{re.sub(r'[^A-Za-z0-9]', '_', clip)}.sparse.mp4"
     if os.path.exists(local) and os.path.getsize(local) > 0:
         return local
@@ -119,6 +121,8 @@ def main():
                 print(f"  case {c['id']} t={t}s FAILED", flush=True)
                 failed += 1
         print(f"  case {c['id']} done ({c['dataset']})", flush=True)
+        if pano and src and src.startswith("/tmp/") and os.path.exists(src):
+            os.remove(src)          # a sparse master is 4-6 GB; do not accumulate them
     print(f"frames written: {ok} | failed: {failed} | cases skipped: {skipped}", flush=True)
 
 
