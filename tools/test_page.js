@@ -22,6 +22,7 @@ async function readSource(rel) {
   vc.on('error', (...a) => errors.push('console.error: ' + a.join(' ')));
 
   const html = await readSource('index.html');
+  const cssText = (await readSource('styles.css')).replace(/\s*\n\s*/g, '');   // rules are asserted on, so normalise wrapping
   const dom = new JSDOM(html, { runScripts: 'outside-only', virtualConsole: vc,
                                 url: 'https://kangverse.github.io/sekai2-project/' });
   const { window } = dom;
@@ -88,6 +89,10 @@ async function readSource(rel) {
     ['Panoramic video src set',       !!q('#pano-case-video')?.getAttribute('src'), q('#pano-case-video')?.getAttribute('src')],
     ['Reconstruction cards',          n('#reconstruction-grid .reconstruction-card') === 12, n('#reconstruction-grid .reconstruction-card')],
     ['Motion pills',                  n('#motion-pills .pill') === 19, n('#motion-pills .pill')],
+    ['Annotation tabs scroll in one row', /\.annotation-tabs\{[^}]*flex-wrap:nowrap/.test(cssText) &&
+       /\.annotation-tabs\{[^}]*overflow-x:auto/.test(cssText), 'nowrap + overflow-x'],
+    ['Annotation frame is native 16:9', /\.annotation-media \.focus-frame\{[^}]*aspect-ratio:16\/9/.test(cssText),
+       'no cover-crop, no upscale'],
     ['Motion pills break into 2 rows', n('#motion-pills .pill-break') === 1 &&
        [...q('#motion-pills').children].findIndex(x => x.classList.contains('pill-break')) === 10,
        [...q('#motion-pills').children].findIndex(x => x.classList.contains('pill-break'))],
