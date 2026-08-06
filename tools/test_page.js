@@ -94,6 +94,7 @@ async function readSource(rel) {
     ['Attribute bars drawn',          n('#attr-chart .attr-row') >= 8, n('#attr-chart .attr-row')],
     ['Attribute totals labelled',     /distinct values/.test(q('#attr-total')?.textContent || ''), q('#attr-total')?.textContent],
     ['No report figures',             n('.figure-card') === 0, n('.figure-card')],
+    ['Hero link icons',               n('.hero-links .ico') === 4, n('.hero-links .ico')],
     ['Validation cards',              n('#validation .source-cards article') === 4, n('#validation .source-cards article')],
     ['Validation table rows',         n('#validation .val-table tbody tr') === 9, n('#validation .val-table tbody tr')],
     ['No placeholder copy',           !/can later be connected|coming soon here|Lorem/i.test(window.document.body.textContent), 'found placeholder text'],

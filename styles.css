@@ -91,3 +91,10 @@
 /* the title states an arc, so mark both ends of it: the origin in the warm tone the
    panoramic/source sections already use, the destination in the existing accent */
 .hero h1 i.from{font-style:normal;color:#f0b98a}
+
+/* ---------------- hero link icons ---------------- */
+.hero-links .button{display:inline-flex;align-items:center;gap:9px}
+.hero-links .ico{width:17px;height:17px;flex:0 0 auto;fill:none;stroke:currentColor;
+  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.hero-links .ico.solid{fill:currentColor;stroke:none}
+.hero-links .ico.emoji{font-size:16px;line-height:1;filter:saturate(1.05)}
