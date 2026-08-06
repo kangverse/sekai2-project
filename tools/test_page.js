@@ -88,6 +88,8 @@ async function readSource(rel) {
     ['Panoramic tabs',                n('#pano-case-tabs button') === 3, n('#pano-case-tabs button')],
     ['Panoramic video src set',       !!q('#pano-case-video')?.getAttribute('src'), q('#pano-case-video')?.getAttribute('src')],
     ['Reconstruction cards',          n('#reconstruction-grid .reconstruction-card') === 12, n('#reconstruction-grid .reconstruction-card')],
+    ['Real author list',             /Kang He/.test(q('#hero-authors')?.textContent || '') &&
+       !/Author One|Affiliation One/.test(html), (q('#hero-authors')?.textContent || '').slice(0, 40)],
     ['Motion pills',                  n('#motion-pills .pill') === 19, n('#motion-pills .pill')],
     ['Annotation tabs scroll in one row', /\.annotation-tabs\{[^}]*flex-wrap:nowrap/.test(cssText) &&
        /\.annotation-tabs\{[^}]*overflow-x:auto/.test(cssText), 'nowrap + overflow-x'],
