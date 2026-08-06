@@ -8,15 +8,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608052007">
-  <link rel="stylesheet" href="trajectory-viewer.css?v=202608052007">
+  <link rel="stylesheet" href="styles.css?v=202608061450">
+  <link rel="stylesheet" href="trajectory-viewer.css?v=202608061450">
 </head>
 <body>
   <nav class="nav" aria-label="Main navigation">
     <a class="brand" href="#top"><span class="brand-mark">S2</span><span>Sekai2</span></a>
     <div class="nav-links">
-      <a href="#explore">Explore</a><a href="#annotations">Annotations</a>
-      <a href="#trajectories">Trajectories</a><a href="#panoramic">Panoramic</a>
+      <a href="#attributes">Diversity</a><a href="#explore">Explore</a><a href="#annotations">Annotations</a>
+      <a href="#trajectories">Trajectories</a><a href="#validation">Validation</a>
     </div>
     <a class="nav-cta" href="#access">Get the dataset <span>↗</span></a>
   </nav>
@@ -35,7 +35,7 @@
       <div class="hero-copy reveal">
         <p class="eyebrow"><span></span> Real data for interactive world models</p>
         <h1>A world of motion.<br><em>Captured at length.</em></h1>
-        <p class="hero-deck">Sekai2 is a geographically diverse, long-horizon real-world video dataset with camera trajectories and temporally grounded structured annotations.</p>
+        <p class="hero-deck">128,892 real-world clips averaging 78.9 seconds, each released with a camera trajectory and captions grounded at both the clip and the segment level.</p>
         <div class="hero-actions">
           <a class="button primary" href="#explore">Explore the dataset <span>↓</span></a>
           <a class="button glass disabled" href="#" aria-disabled="true">Paper coming soon</a>
@@ -47,18 +47,18 @@
     <section class="numbers" aria-label="Dataset statistics">
       <div class="metric"><strong>128,892</strong><span>video clips</span></div>
       <div class="metric"><strong>2,826 h</strong><span>real-world footage</span></div>
-      <div class="metric"><strong>113</strong><span>countries</span></div>
+      <div class="metric"><strong>113</strong><span>countries and regions</span></div>
       <div class="metric"><strong>649,597</strong><span>grounded segments</span></div>
-      <div class="metric accent"><strong>120 s</strong><span>long sequences</span></div>
+      <div class="metric accent"><strong>78.9 s</strong><span>mean clip length</span></div>
     </section>
 
     <section class="composition section" id="composition">
       <div class="section-heading reveal">
-        <div><p class="kicker">What the dataset is made of</p><h2>Three sources,<br>one continuous world.</h2></div>
-        <p>Every frame below is real released footage. Each wedge is one source — reused Sekai clips, a fresh YouTube collection, and our own 360° captures — with what it contributes to the 128,892 clips and 2,826 hours.</p>
+        <div><p class="kicker">Scale and composition</p><h2>Three sources, ranked<br>differently by clips and by hours.</h2></div>
+        <p>The inherited Sekai subset supplies 37.0% of clips but 28.1% of hours, since every clip is exactly 60 s. The newly collected YouTube subset supplies 62.2% of clips and 67.7% of hours. The self-captured 360° subset is 0.8% of clips yet 4.2% of hours, because its captures average 436 s and are released uncut. Perspective clips are anchored at a two-minute cap: the clips that reach it are a third of the corpus by count but <strong>51.4% of all footage</strong>.</p>
       </div>
-      <a class="composition-figure reveal" href="assets/images/dataset-composition.jpg?v=202608052007" target="_blank" rel="noreferrer">
-        <img src="assets/images/dataset-composition.jpg?v=202608052007" alt="Sekai2 dataset composition: newly collected YouTube footage 80,211 clips / 1,911 hours spanning 18 motion types across 72 countries, reused Sekai footage 47,699 clips / 795 hours across 107 countries, self-captured Panoramic 360 982 clips / 119 hours, totalling 128,892 clips and 2,826 hours across 113 countries" loading="lazy">
+      <a class="composition-figure reveal" href="assets/images/dataset-composition.jpg?v=202608061450" target="_blank" rel="noreferrer">
+        <img src="assets/images/dataset-composition.jpg?v=202608061450" alt="Sekai2 dataset composition: newly collected YouTube footage 80,211 clips / 1,911 hours spanning 18 motion types across 72 countries, reused Sekai footage 47,699 clips / 795 hours across 107 countries, self-captured Panoramic 360 982 clips / 119 hours, totalling 128,892 clips and 2,826 hours across 113 countries" loading="lazy">
         <span>Open full size ↗</span>
       </a>
     </section>
@@ -66,14 +66,28 @@
     <section class="intro section reveal">
       <p class="kicker">One dataset, many ways to move</p>
       <h2>Real trajectories through<br>an open, changing world.</h2>
-      <p class="lead">From an eye-level walk through a crowded street to a drone climbing above a mountain ridge, Sekai2 captures the motion, scale, and visual diversity required for long-horizon world modeling.</p>
+      <p class="lead">Ground walking, driving, rail, cycling, boats, cable cars, escalators and drone flight. The demos below cover each regime, and every clip carries the same pose and caption schema regardless of how the camera moved.</p>
       <div class="pill-row" id="motion-pills"></div>
+    </section>
+
+    <section class="attributes section" id="attributes">
+      <div class="section-heading reveal">
+        <div><p class="kicker">Environment and scene diversity</p><h2>Six controlled attributes,<br>long-tailed like the real world.</h2></div>
+        <p>Every clip is labelled along country, camera motion, lighting, time of day, weather and scene type. The head is dominated — urban streets, walking, clear skies — but the minority values stay populated at scale: <strong>22.4%</strong> of clips are shot at night, <strong>41.5%</strong> under non-clear weather, <strong>34.0%</strong> under artificial or mixed lighting. Pick an attribute to see its distribution.</p>
+      </div>
+      <div class="attr-explorer reveal">
+        <div class="attr-tabs" id="attr-tabs" role="tablist" aria-label="Choose an attribute"></div>
+        <div class="attr-body">
+          <div class="attr-chart" id="attr-chart" aria-live="polite"></div>
+          <p class="attr-foot"><span id="attr-total"></span> · bar length is the share of the 128,892 clips · hover a bar for exact counts</p>
+        </div>
+      </div>
     </section>
 
     <section class="geography section" id="geography">
       <div class="section-heading reveal">
         <div><p class="kicker">Geographic diversity</p><h2>Worldwide coverage,<br>grounded in real scenes.</h2></div>
-        <p>Coverage spans 113 countries — cities, natural environments, infrastructure, and cultures worldwide. Hover any shaded country to see its clip count and preview representative footage.</p>
+        <p>113 countries and regions after alias normalization. Japan, the United Kingdom and the United States together supply about two thirds of geographically resolved clips, and 14 countries are needed to reach 90% cumulative coverage — the remaining 110 span every inhabited continent. Click any shaded country for its clip count and footage actually recorded there.</p>
       </div>
       <div class="geo-map reveal" id="geo-map">
         <div class="geo-canvas" id="geo-canvas">
@@ -88,7 +102,7 @@
     <section class="explore section" id="explore">
       <div class="section-heading reveal">
         <div><p class="kicker">Explore the collection</p><h2>Many cameras.<br>Many worlds.</h2></div>
-        <p>Browse representative data modalities. Each panel is prepared for a real video asset and can later be connected to the final selected examples.</p>
+        <p>Every card is a released clip shown with its own footage. Filter by camera regime, then open one for the full case study: sampled frames, the ViPE trajectory, the clip-level fields and every grounded segment.</p>
       </div>
       <div class="filter-row reveal" role="tablist" aria-label="Filter data types" id="filters"></div>
       <div class="dataset-grid" id="dataset-grid"></div>
@@ -97,7 +111,7 @@
     <section class="annotation section" id="annotations">
       <div class="section-heading reveal">
         <div><p class="kicker">Structured semantics</p><h2>Describe the world<br>at two temporal scales.</h2></div>
-        <p>Clip-level fields summarize persistent content and motion, while grounded segments describe how the scene evolves over time.</p>
+        <p>Clip-level fields summarize what persists; 649,597 grounded segments — 5.04 per clip, 15 s median — describe how it changes. The levels are not restatements of one another: among the four factorized descriptions, pairwise vocabulary overlap is only 0.16, and each contributes words no other field uses.</p>
       </div>
       <div class="annotation-demo reveal">
         <div class="annotation-media">
@@ -111,12 +125,16 @@
           <div class="field-list" id="field-list"></div>
         </div>
       </div>
+      <a class="figure-card reveal" href="assets/images/fig-vocab-components.jpg?v=202608061450" target="_blank" rel="noreferrer">
+        <img src="assets/images/fig-vocab-components.jpg?v=202608061450" alt="Jaccard overlap between the six caption components, word-sharing distribution, and the ten words common to all six" loading="lazy">
+        <span class="figure-cap">Do the fields repeat each other? Of the 444 distinct words in their combined head vocabulary, 51% appear in one component only and 10 in all six — and those ten are place nouns such as <em>street</em> and <em>sidewalk</em>, i.e. shared subject matter rather than shared phrasing. <em>Open full size ↗</em></span>
+      </a>
     </section>
 
     <section class="case-studies section" id="case-studies">
       <div class="section-heading reveal">
         <div><p class="kicker">Caption case studies</p><h2>See space, motion,<br>and language together.</h2></div>
-        <p>Each example connects sampled frames, a released ViPE camera trajectory, global structured fields, and temporally grounded segment descriptions.</p>
+        <p>Each example aligns sampled frames, the released ViPE trajectory, the clip-level fields and the temporally grounded segments, so a change of camera path and a change of description can be read against each other.</p>
       </div>
       <div class="caption-case-tabs reveal" id="caption-case-tabs" role="tablist" aria-label="Caption case studies"></div>
       <div class="caption-case-explorer reveal" id="caption-case-explorer" aria-live="polite"></div>
@@ -126,7 +144,7 @@
       <div class="trajectory-head reveal">
         <p class="kicker light">Camera as supervision</p>
         <h2>Every clip comes with<br>a path through 3D space.</h2>
-        <p>Released camera trajectories expose real motion patterns for trajectory-conditioned generation and long-horizon navigation.</p>
+        <p>Because every clip ships a trajectory, motion statistics cover the whole corpus rather than a sample. Newly collected clips travel about twice as far as inherited ones (median path length 123 vs 68 units) and turn more (270° vs 184°), while the 360° captures travel farthest yet rotate least.</p>
       </div>
       <div class="trajectory-stage reveal">
         <div class="trajectory-live-label"><span>RGB + 3D POSE</span><b id="trajectory-case-name">Drone</b><small>15 s synchronized window on the complete trajectory</small></div>
@@ -137,12 +155,16 @@
         <div class="trajectory-tabs" id="trajectory-tabs"></div>
         <div class="trajectory-meta"><span><i class="dot start"></i> Start</span><span><i class="star">★</i> End</span><span>Color encodes time</span><span>Interactive: orbit · pan · zoom</span></div>
       </div>
+      <a class="figure-card reveal" href="assets/images/fig-camera-motion.jpg?v=202608061450" target="_blank" rel="noreferrer">
+        <img src="assets/images/fig-camera-motion.jpg?v=202608061450" alt="Distributions of path length, cumulative rotation, camera speed and bird's-eye extent for the three sources" loading="lazy">
+        <span class="figure-cap">Pose-derived motion over all 128,892 trajectories. The 360° subset travels farthest yet rotates least — a walker covering a long looping route needs no body rotation to see in every direction. <em>Open full size ↗</em></span>
+      </a>
     </section>
 
     <section class="panoramic section" id="panoramic">
       <div class="section-heading reveal">
         <div><p class="kicker">Panoramic capture</p><h2>Return to places<br>you have already seen.</h2></div>
-        <p>Native 360° captures include long, revisiting trajectories designed to expose loop structure and support full-accumulation reconstruction.</p>
+        <p>982 self-captured 360° videos, 119 hours, averaging 436 s. Routes are walked to close: loop closures are geometrically verified and refine 1,051 of 1,283 trajectories (81.9%), which is what makes full-sequence accumulation coherent.</p>
       </div>
       <div class="pano-card reveal">
         <div class="pano-case-media">
@@ -157,27 +179,32 @@
         </div>
       </div>
       <div class="reconstruction reveal">
-        <div class="reconstruction-head"><div><span class="tag">Full-accumulation reconstruction</span><h3>Long trajectories recover coherent spatial structure.</h3></div><p>Selected panoramic sequences span sharp turns, serpentine paths, obstacles, and revisitation loops. Color encodes progression along each recovered trajectory.</p></div>
+        <div class="reconstruction-head"><div><span class="tag">Full-accumulation reconstruction</span><h3>Long trajectories recover coherent spatial structure.</h3></div><p>Observations accumulated along the loop-refined poses over a whole capture. Repeated structures align instead of forming separate copies, which is what a small residual drift would otherwise destroy. Color encodes progression along each trajectory.</p></div>
         <div class="reconstruction-filters" id="reconstruction-filters" aria-label="Filter panoramic reconstructions"></div>
         <div class="reconstruction-grid" id="reconstruction-grid"></div>
         <button class="reconstruction-more" id="reconstruction-more" type="button">Show all 40 reconstructions</button>
       </div>
     </section>
 
-    <section class="sources full-section">
-      <div class="source-copy reveal"><p class="kicker light">Three complementary sources</p><h2>Built for breadth<br>without losing depth.</h2></div>
+    <section class="sources full-section" id="validation">
+      <div class="source-copy reveal"><p class="kicker light">Validation</p><h2>Measured,<br>not asserted.</h2><p class="source-deck">Both released modalities are audited, and so is their agreement with each other. Every number below is inference-only.</p></div>
       <div class="source-cards reveal">
-        <article><span>01</span><h3>Sekai-1</h3><p>A carefully filtered inheritance of geographically diverse real-world videos.</p></article>
-        <article><span>02</span><h3>Sekai-2 New</h3><p>Newly collected, deduplicated web video emphasizing long and varied camera motion.</p></article>
-        <article><span>03</span><h3>Panoramic</h3><p>Self-captured 360° trajectories with loops, revisitation, and challenging spatial structure.</p></article>
+        <article><span>01</span><h3>0.12 px</h3><p>Median epipolar error of image correspondences against the geometry implied by the released poses. A mismatched-pose control on the same clips gives 2.46 px, so the test is sensitive rather than trivially satisfied.</p></article>
+        <article><span>02</span><h3>0.068°</h3><p>Rotation disagreement with an independently executed DROID-SLAM run over 997 stratified clips, after Sim(3) alignment. Normalized ATE is 0.014.</p></article>
+        <article><span>03</span><h3>33.1%</h3><p>Top-1 caption→clip retrieval in a 10,000-clip pool, against a 0.01% chance rate. Every caption field separates from a shuffled control.</p></article>
+        <article><span>04</span><h3>60.9%</h3><p>Preference over a conventional one-shot caption written by the same model from the same frames, scored in the presentation order that works against us.</p></article>
       </div>
+      <a class="figure-card dark reveal" href="assets/images/fig-frame-quality.jpg?v=202608061450" target="_blank" rel="noreferrer">
+        <img src="assets/images/fig-frame-quality.jpg?v=202608061450" alt="Per-clip distributions of optical flow magnitude, aesthetic score and Max-Running-LPIPS for Sekai2 and three prior corpora" loading="lazy">
+        <span class="figure-cap">Scored against MiraData, RealEstate10K and SpatialVID through one pipeline with 1,200 clips each. Per-frame quality sits in the same band as prior corpora; frame-to-frame motion is 1.4–1.8× higher. <em>Open full size ↗</em></span>
+      </a>
     </section>
 
     <section class="access section" id="access">
       <div class="access-box reveal">
         <p class="kicker">Build with Sekai2</p>
         <h2>The world is larger<br>than a short clip.</h2>
-        <p>Paper, dataset access, code, benchmark splits, and model checkpoints will appear here.</p>
+        <p>The technical report, dataset access, annotation code and benchmark splits will appear here. Every clip ships video, a ViPE camera trajectory and a hierarchical caption under one schema.</p>
         <div class="hero-actions"><a class="button dark disabled" href="#">Dataset coming soon</a><a class="button line disabled" href="#">View on GitHub</a></div>
       </div>
     </section>
@@ -194,9 +221,9 @@
   </dialog>
 
   <footer><a class="brand" href="#top"><span class="brand-mark">S2</span><span>Sekai2</span></a><p>Long-horizon real-world video data for interactive world modeling.</p><span>Project page scaffold · 2026</span></footer>
-  <script src="assets/vendor/three.min.js?v=202608052007"></script>
-  <script src="assets/vendor/OrbitControls.js?v=202608052007"></script>
-  <script src="assets/vendor/pose-viewer.js?v=202608052007"></script>
-  <script src="script.js?v=202608052007"></script>
+  <script src="assets/vendor/three.min.js?v=202608061450"></script>
+  <script src="assets/vendor/OrbitControls.js?v=202608061450"></script>
+  <script src="assets/vendor/pose-viewer.js?v=202608061450"></script>
+  <script src="script.js?v=202608061450"></script>
 </body>
 </html>

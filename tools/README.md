@@ -59,3 +59,39 @@ caption sections fill, no long-horizon leftovers).
 
 Run the published-site check after every push — a green local tree does not prove the
 deployed page works.
+
+## Re-encoding the site videos (`reencode_hq.py`)
+
+The first build shipped case previews at 640x360 / 15 fps / **CRF 30** and per-country map
+previews at 480x270 / 12 fps / **CRF 32**, from sources that are natively 1280x720 / 30 fps
+at ~4 Mb/s. CRF 30-32 is far past the point where H.264 stays visually transparent, so the
+softness was in the encode: re-compressing the published files cannot recover it, and every
+asset has to be cut again from its source.
+
+```bash
+python tools/reencode_hq.py --what all --workers 10   # cases + map previews
+python tools/reencode_hq.py --what geo --repair       # only missing/undersized outputs
+```
+
+Two ladders, because the display sizes differ by an order of magnitude:
+
+| asset | ladder | why |
+|---|---|---|
+| case previews | native 1280x720, native fps, CRF 22 | fill a card and the modal |
+| map previews | 640x360, 24 fps, CRF 24 | shown 2-3 at a time in a 250-304 px popup, ~140 px each |
+
+Encoding the map previews at native 720p was tried and cost **276 MB against 165 MB** with
+no difference visible at the size they are displayed; the gain over the old files comes from
+bitrate (~8x), not resolution.
+
+Sources are resolved by clip name through `statistic/sekai_all_final_merged.csv`, and start
+offsets come from the published payloads (`cases.json` carries `preview_start_s`; map
+previews use the 12 s / 30 s rule of `build_geo_country_previews.py`), so a re-encode shows
+the same moment as the file it replaces. Two caveats:
+
+- **Some static-supplement clips are shorter than the 30 s cut point.** Seeking past the end
+  silently writes an empty file - that is how 35 previews shipped broken the first time. The
+  script clamps `start` to `duration - seconds`; `--repair` finds any that slipped through
+  (outputs under 20 KB).
+- **The three panoramic previews are skipped**: their 8K masters live in object storage, not
+  on disk. Re-cutting them means downloading through `ossutil` first.

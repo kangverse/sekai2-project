@@ -110,8 +110,8 @@ modalVideo&&modalVideo.addEventListener('timeupdate',()=>{if(!modalPoseViewer||!
   let data={},svg=null,openName=null,hideT=null,current=null;
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   Promise.all([
-    fetch('assets/data/world.svg?v=202608052007').then(r=>r.text()),
-    fetch('assets/data/geo_countries.json?v=202608052007').then(r=>r.json())
+    fetch('assets/data/world.svg?v=202608061450').then(r=>r.text()),
+    fetch('assets/data/geo_countries.json?v=202608061450').then(r=>r.json())
   ]).then(([svgText,payload])=>{
     data=payload;hostEl.innerHTML=svgText;svg=hostEl.querySelector('svg');
     const n=Object.keys(data).length;
@@ -190,4 +190,47 @@ modalVideo&&modalVideo.addEventListener('timeupdate',()=>{if(!modalPoseViewer||!
   });}
   scan();
   new MutationObserver(scan).observe(document.body,{childList:true,subtree:true});
+})();
+
+/* ---------------- attribute explorer ----------------
+   Six controlled attributes, one bar chart each. Built from
+   assets/data/attributes.json, which is generated from the same breakdown tables
+   the technical report uses, so the page and the report cannot drift apart. */
+(function(){
+  const tabsEl=document.querySelector('#attr-tabs'),chartEl=document.querySelector('#attr-chart'),
+        totalEl=document.querySelector('#attr-total');
+  if(!tabsEl||!chartEl)return;
+  const ORDER=[['scene','Scene'],['motion','Camera motion'],['lighting','Lighting'],
+               ['time','Time of day'],['weather','Weather'],['country','Country']];
+  let data=null,active='scene';
+  const fmt=n=>n.toLocaleString('en-US');
+  function draw(key){
+    const d=data[key];if(!d)return;
+    active=key;
+    tabsEl.querySelectorAll('button').forEach(b=>{
+      const on=b.dataset.key===key;b.classList.toggle('active',on);b.setAttribute('aria-selected',on)});
+    const max=Math.max(...d.items.map(i=>i.pct));
+    chartEl.innerHTML=d.items.map((it,i)=>`
+      <div class="attr-row${/^other/i.test(it.name)?' muted':''}" style="--i:${i}" title="${fmt(it.clips)} clips">
+        <span class="attr-name">${it.name}</span>
+        <span class="attr-track"><i style="--w:${(it.pct/max*100).toFixed(1)}%"></i></span>
+        <span class="attr-val">${it.pct}%</span>
+      </div>`).join('');
+    totalEl.textContent=`${d.label} · ${d.total} distinct values`;
+    // retrigger the width transition on every tab switch (rAF is absent in jsdom, and a
+    // throw here used to be swallowed by the fetch catch below, blanking the chart)
+    const paint=()=>chartEl.querySelectorAll('.attr-track i').forEach(b=>b.classList.add('go'));
+    typeof requestAnimationFrame==='function'?requestAnimationFrame(paint):paint();
+  }
+  fetch('assets/data/attributes.json')
+    .then(r=>r.json())
+    .catch(()=>null)                       // only a fetch/parse failure blanks the section
+    .then(d=>{
+      if(!d){chartEl.innerHTML='<p class="attr-empty">Attribute distributions unavailable.</p>';return}
+      data=d;
+      tabsEl.innerHTML=ORDER.filter(([k])=>d[k]).map(([k,label],i)=>
+        `<button class="attr-tab${i===0?' active':''}" data-key="${k}" role="tab" aria-selected="${i===0}">${label}</button>`).join('');
+      tabsEl.addEventListener('click',e=>{const b=e.target.closest('button');if(b)draw(b.dataset.key)});
+      draw(ORDER.find(([k])=>d[k])[0]);
+    });
 })();
