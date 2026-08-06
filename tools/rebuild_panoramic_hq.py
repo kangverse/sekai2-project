@@ -35,7 +35,14 @@ SPECS = {   # key: (oss relative path, start seconds)  -- the windows the site a
     "panorama-serpentine": ("20260410/蛇形/lei/杭州-学校-蛇形-012.mp4", 45.0),
     "panorama-switchback": ("20260410/蛇形/clx/杭州-宿舍园区-蛇形.mp4", 15.0),
 }
-SECONDS, W, H, FPS, CRF = 15, 2560, 1280, 30, "20"
+# Per-clip ladder: 2560/CRF20 costs 98 MB on switchback (dense foliage in every direction)
+# against 36 and 24 MB for the other two, which is too much to hand a visitor for one
+# preview. That clip drops to 2048/CRF24 and lands at 39.6 MB; the pane is ~1200 CSS px, so
+# 2048 still covers a 2x display.
+SECONDS, FPS = 15, 30
+LADDER = {"panorama-meander":    (2560, 1280, "20"),
+          "panorama-serpentine": (2560, 1280, "20"),
+          "panorama-switchback": (2048, 1024, "24")}
 TAIL = 192 * 1024 * 1024          # enough for the moov of a long 8K take
 HEAD_PAD = 1.8                    # multiple of the estimated window offset to fetch
 
@@ -109,6 +116,7 @@ def build(key):
     if head > STUB:
         fetch_range(url, STUB, head - 1, local, STUB)
 
+    W, H, CRF = LADDER[key]
     cmd = [FF, "-nostdin", "-loglevel", "error", "-y", "-ss", str(start), "-i", local,
            "-t", str(SECONDS), "-an", "-vf", f"scale={W}:{H}:flags=lanczos,fps={FPS}",
            "-c:v", "libx264", "-crf", CRF, "-preset", "slow", "-profile:v", "high",
