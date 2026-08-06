@@ -74,3 +74,14 @@
 @media (max-width:1080px){.sources .source-cards{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){.sources .source-cards{grid-template-columns:1fr}
   .val-table{font-size:12.5px}.val-table th,.val-table td{padding:10px 14px}}
+
+/* ---------------- hero byline + link row ---------------- */
+.hero-authors{margin:22px 0 4px;font:500 15px/1.9 'DM Sans',system-ui,sans-serif;
+  color:rgba(255,255,255,.9)}
+.hero-authors sup{font-size:11px;opacity:.75;padding-left:1px}
+.hero-affil{margin:0 0 26px;font:400 13.5px/1.6 'DM Sans',system-ui,sans-serif;
+  color:rgba(255,255,255,.62)}
+.hero-affil sup{font-size:11px;opacity:.8}
+.hero-links{flex-wrap:wrap;gap:10px}
+.hero-links .button span{opacity:.72;font-weight:500;padding-left:6px}
+@media (max-width:720px){.hero-authors{font-size:13.5px;line-height:1.8}.hero-affil{font-size:12.5px}}
