@@ -22,6 +22,7 @@ async function readSource(rel) {
   vc.on('error', (...a) => errors.push('console.error: ' + a.join(' ')));
 
   const html = await readSource('index.html');
+  const scriptText = await readSource('script.js');
   const cssText = (await readSource('styles.css')).replace(/\s*\n\s*/g, '');   // rules are asserted on, so normalise wrapping
   const dom = new JSDOM(html, { runScripts: 'outside-only', virtualConsole: vc,
                                 url: 'https://kangverse.github.io/sekai2-project/' });
@@ -88,6 +89,8 @@ async function readSource(rel) {
     ['Panoramic tabs',                n('#pano-case-tabs button') === 3, n('#pano-case-tabs button')],
     ['Panoramic video src set',       !!q('#pano-case-video')?.getAttribute('src'), q('#pano-case-video')?.getAttribute('src')],
     ['Reconstruction cards',          n('#reconstruction-grid .reconstruction-card') === 12, n('#reconstruction-grid .reconstruction-card')],
+    ['No load-time page jump',       !/\.scrollIntoView\s*\(|scrollRestoration\s*=|window\.scrollTo\s*\(/.test(scriptText),
+       'nothing may scroll the page on load'],
     ['Real author list',             /Kang He/.test(q('#hero-authors')?.textContent || '') &&
        !/Author One|Affiliation One/.test(html), (q('#hero-authors')?.textContent || '').slice(0, 40)],
     ['Motion pills',                  n('#motion-pills .pill') === 19, n('#motion-pills .pill')],
