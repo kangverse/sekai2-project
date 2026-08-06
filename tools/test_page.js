@@ -91,6 +91,9 @@ async function readSource(rel) {
     ['Reconstruction cards',          n('#reconstruction-grid .reconstruction-card') === 12, n('#reconstruction-grid .reconstruction-card')],
     ['No load-time page jump',       !/\.scrollIntoView\s*\(|scrollRestoration\s*=|window\.scrollTo\s*\(/.test(scriptText),
        'nothing may scroll the page on load'],
+    ['Code link points at the repo', /Sekai2-Dataset/.test(q('.hero-links')?.innerHTML || '') &&
+       !/class="button glass disabled"[^>]*>\s*<svg[\s\S]{0,400}?Code /.test(html),
+       (q('.hero-links a[href*="github"]')?.getAttribute('href')) || 'missing'],
     ['Real author list',             /Kang He/.test(q('#hero-authors')?.textContent || '') &&
        !/Author One|Affiliation One/.test(html), (q('#hero-authors')?.textContent || '').slice(0, 40)],
     ['Motion pills',                  n('#motion-pills .pill') === 19, n('#motion-pills .pill')],

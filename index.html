@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608070010">
-  <link rel="stylesheet" href="trajectory-viewer.css?v=202608070010">
+  <link rel="stylesheet" href="styles.css?v=202608070120">
+  <link rel="stylesheet" href="trajectory-viewer.css?v=202608070120">
 </head>
 <body>
   <nav class="nav" aria-label="Main navigation">
@@ -41,7 +41,7 @@
           <a class="button glass disabled" href="#" aria-disabled="true" title="Link to be added">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
             Paper <span>arXiv</span></a>
-          <a class="button glass disabled" href="#" aria-disabled="true" title="Link to be added">
+          <a class="button glass" href="https://github.com/kangverse/Sekai2-Dataset" target="_blank" rel="noreferrer">
             <svg class="ico solid" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.2 4.8 18.2 5.1 18.2 5.1c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg>
             Code <span>GitHub</span></a>
           <a class="button glass disabled" href="#" aria-disabled="true" title="Link to be added">
@@ -68,8 +68,8 @@
         <div><p class="kicker">Scale and composition</p><h2>Three sources, ranked<br>differently by clips and by hours.</h2></div>
         <p>The inherited Sekai subset supplies 37.0% of clips but 28.1% of hours, since every clip is exactly 60 s. The newly collected YouTube subset supplies 62.2% of clips and 67.7% of hours. The self-captured 360° subset is 0.8% of clips yet 4.2% of hours, because its captures average 436 s and are released uncut. Perspective clips are anchored at a two-minute cap: the clips that reach it are a third of the corpus by count but <strong>51.4% of all footage</strong>.</p>
       </div>
-      <a class="composition-figure reveal" href="assets/images/dataset-composition.jpg?v=202608070010" target="_blank" rel="noreferrer">
-        <img src="assets/images/dataset-composition.jpg?v=202608070010" alt="Sekai2 dataset composition: newly collected YouTube footage 80,211 clips / 1,911 hours spanning 18 motion types across 72 countries, reused Sekai footage 47,699 clips / 795 hours across 107 countries, self-captured Panoramic 360 982 clips / 119 hours, totalling 128,892 clips and 2,826 hours across 113 countries" loading="lazy">
+      <a class="composition-figure reveal" href="assets/images/dataset-composition.jpg?v=202608070120" target="_blank" rel="noreferrer">
+        <img src="assets/images/dataset-composition.jpg?v=202608070120" alt="Sekai2 dataset composition: newly collected YouTube footage 80,211 clips / 1,911 hours spanning 18 motion types across 72 countries, reused Sekai footage 47,699 clips / 795 hours across 107 countries, self-captured Panoramic 360 982 clips / 119 hours, totalling 128,892 clips and 2,826 hours across 113 countries" loading="lazy">
         <span>Open full size ↗</span>
       </a>
     </section>
@@ -157,7 +157,7 @@
       <div class="trajectory-stage reveal">
         <div class="trajectory-live-label"><span>RGB + 3D POSE</span><b id="trajectory-case-name">Drone</b><small>15 s synchronized window on the complete trajectory</small></div>
         <div class="trajectory-sync-grid">
-          <div class="trajectory-video-pane"><video id="trajectory-video" src="assets/videos/drone.mp4?v=202608070010" poster="assets/images/drone.jpg?v=202608070010" controls autoplay muted loop playsinline></video><span>released clip · 1280&times;720</span></div>
+          <div class="trajectory-video-pane"><video id="trajectory-video" src="assets/videos/drone.mp4?v=202608070120" poster="assets/images/drone.jpg?v=202608070120" controls autoplay muted loop playsinline></video><span>released clip · 1280&times;720</span></div>
           <div class="trajectory-3d-pane"><div id="trajectory-viewer" aria-label="Interactive 3D camera trajectory visualization"></div><span>drag to orbit · scroll to zoom</span></div>
         </div>
         <div class="trajectory-tabs" id="trajectory-tabs"></div>
@@ -285,9 +285,9 @@
   </dialog>
 
   <footer><a class="brand" href="#top"><span class="brand-mark">S2</span><span>Sekai2</span></a><p>Long-horizon real-world video data for interactive world modeling.</p><span>Project page scaffold · 2026</span></footer>
-  <script src="assets/vendor/three.min.js?v=202608070010"></script>
-  <script src="assets/vendor/OrbitControls.js?v=202608070010"></script>
-  <script src="assets/vendor/pose-viewer.js?v=202608070010"></script>
-  <script src="script.js?v=202608070010"></script>
+  <script src="assets/vendor/three.min.js?v=202608070120"></script>
+  <script src="assets/vendor/OrbitControls.js?v=202608070120"></script>
+  <script src="assets/vendor/pose-viewer.js?v=202608070120"></script>
+  <script src="script.js?v=202608070120"></script>
 </body>
 </html>
