@@ -83,6 +83,7 @@ async function readSource(rel) {
     ['Attribute totals labelled',     /distinct values/.test(q('#attr-total')?.textContent || ''), q('#attr-total')?.textContent],
     ['No report figures',             n('.figure-card') === 0, n('.figure-card')],
     ['Validation cards',              n('#validation .source-cards article') === 4, n('#validation .source-cards article')],
+    ['Validation table rows',         n('#validation .val-table tbody tr') === 9, n('#validation .val-table tbody tr')],
     ['No placeholder copy',           !/can later be connected|coming soon here|Lorem/i.test(window.document.body.textContent), 'found placeholder text'],
   ];
 

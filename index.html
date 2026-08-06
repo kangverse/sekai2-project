@@ -180,12 +180,76 @@
     </section>
 
     <section class="sources full-section" id="validation">
-      <div class="source-copy reveal"><p class="kicker light">Validation</p><h2>Measured,<br>not asserted.</h2><p class="source-deck">Both released modalities are audited, and so is their agreement with each other. Every number below is inference-only.</p></div>
+      <div class="source-copy reveal"><p class="kicker light">Validation</p><h2>Measured,<br>not asserted.</h2><p class="source-deck">Both released modalities are audited on their own terms, and then against each other. Every figure below is inference-only &mdash; no model was trained to produce it &mdash; and each test is one that could have come out the other way.</p></div>
       <div class="source-cards reveal">
-        <article><span>01</span><h3>0.12 px</h3><p>Median epipolar error of image correspondences against the geometry implied by the released poses. A mismatched-pose control on the same clips gives 2.46 px, so the test is sensitive rather than trivially satisfied.</p></article>
-        <article><span>02</span><h3>0.068°</h3><p>Rotation disagreement with an independently executed DROID-SLAM run over 997 stratified clips, after Sim(3) alignment. Normalized ATE is 0.014.</p></article>
-        <article><span>03</span><h3>33.1%</h3><p>Top-1 caption→clip retrieval in a 10,000-clip pool, against a 0.01% chance rate. Every caption field separates from a shuffled control.</p></article>
+        <article><span>01</span><h3>0.12 px</h3><p>Median epipolar error of image correspondences against the geometry implied by the released poses. Pairing the same images with a shifted pose gives 2.46 px, so the test is sensitive rather than trivially satisfied.</p></article>
+        <article><span>02</span><h3>0.068&deg;</h3><p>Rotation disagreement with an independently executed DROID-SLAM run over 997 stratified clips after Sim(3) alignment. Normalized ATE is 0.014.</p></article>
+        <article><span>03</span><h3>33.1%</h3><p>Top-1 caption&rarr;clip retrieval in a 10,000-clip pool, against a 0.01% chance rate. Every caption field also separates from a shuffled control.</p></article>
         <article><span>04</span><h3>60.9%</h3><p>Preference over a conventional one-shot caption written by the same model from the same frames, scored in the presentation order that works against us.</p></article>
+      </div>
+      <div class="val-table-wrap reveal">
+        <table class="val-table">
+          <caption>Every validation result, with what it is measured against</caption>
+          <thead>
+            <tr><th scope="col">Test</th><th scope="col">What it establishes</th><th scope="col">Result</th><th scope="col">Reference point</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Pose validity</th>
+              <td>No missing or discontinuous tracks, over <em>all</em> 128,892 clips</td>
+              <td><b>1.000</b> valid ratio</td>
+              <td>median jump rate 0.00000</td>
+            </tr>
+            <tr>
+              <th scope="row">Epipolar consistency</th>
+              <td>Released poses explain the images, without ground truth or a second estimator</td>
+              <td><b>0.12 px</b> median</td>
+              <td>2.46 px with a mismatched pose</td>
+            </tr>
+            <tr>
+              <th scope="row">Cross-run agreement</th>
+              <td>An independent DROID-SLAM run recovers the same geometry</td>
+              <td><b>0.068&deg;</b> rotation</td>
+              <td>ATE 0.014 &middot; 95.9% reconstructed</td>
+            </tr>
+            <tr>
+              <th scope="row">Caption faithfulness</th>
+              <td>A VLM judge reading the frames scores coverage and per-aspect correctness</td>
+              <td><b>3.98&ndash;4.00</b> / 5</td>
+              <td>16.5% of clips flagged once</td>
+            </tr>
+            <tr>
+              <th scope="row">Caption retrieval</th>
+              <td>A caption identifies the clip it describes, not merely a plausible scene</td>
+              <td><b>33.1%</b> R@1</td>
+              <td>chance 0.01% &middot; median rank 3</td>
+            </tr>
+            <tr>
+              <th scope="row">Caption preference</th>
+              <td>The multi-field schema beats a one-shot caption from the same model</td>
+              <td><b>60.9%</b> preferred</td>
+              <td>order chosen to disfavour us</td>
+            </tr>
+            <tr>
+              <th scope="row">Cross-modal grounding</th>
+              <td>Independently produced captions and poses agree on when the camera turns</td>
+              <td><b>0.707</b> AUC</td>
+              <td>yaw 1.0&deg; &rarr; 26.5&deg; across labels</td>
+            </tr>
+            <tr>
+              <th scope="row">Frame quality</th>
+              <td>Long footage is not bought with worse images</td>
+              <td><b>5.23</b> aesthetic</td>
+              <td>MiraData 5.45 &middot; RE10K 5.20</td>
+            </tr>
+            <tr>
+              <th scope="row">Frame-to-frame motion</th>
+              <td>Sustained translation rather than slow orbits around a static scene</td>
+              <td><b>35.1</b> flow</td>
+              <td>1.4&ndash;1.8&times; the prior corpora</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
