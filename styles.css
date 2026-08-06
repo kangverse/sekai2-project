@@ -85,3 +85,7 @@
 .hero-links{flex-wrap:wrap;gap:10px}
 .hero-links .button span{opacity:.72;font-weight:500;padding-left:6px}
 @media (max-width:720px){.hero-authors{font-size:13.5px;line-height:1.8}.hero-affil{font-size:12.5px}}
+
+/* the title states an arc, so mark both ends of it: the origin in the warm tone the
+   panoramic/source sections already use, the destination in the existing accent */
+.hero h1 i.from{font-style:normal;color:#f0b98a}
