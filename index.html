@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608070145">
-  <link rel="stylesheet" href="trajectory-viewer.css?v=202608070145">
+  <link rel="stylesheet" href="styles.css?v=202608080130">
+  <link rel="stylesheet" href="trajectory-viewer.css?v=202608080130">
 </head>
 <body>
   <nav class="nav" aria-label="Main navigation">
@@ -68,8 +68,8 @@
         <div><p class="kicker">Scale and composition</p><h2>Three sources, ranked<br>differently by clips and by hours.</h2></div>
         <p>The inherited Sekai subset supplies 37.0% of clips but 28.1% of hours, since every clip is exactly 60 s. The newly collected YouTube subset supplies 62.2% of clips and 67.7% of hours. The self-captured 360° subset is 0.8% of clips yet 4.2% of hours, because its captures average 436 s and are released uncut. Perspective clips are anchored at a two-minute cap: the clips that reach it are a third of the corpus by count but <strong>51.4% of all footage</strong>.</p>
       </div>
-      <a class="composition-figure reveal" href="assets/images/dataset-composition.jpg?v=202608070145" target="_blank" rel="noreferrer">
-        <img src="assets/images/dataset-composition.jpg?v=202608070145" alt="Sekai2 dataset composition: newly collected YouTube footage 80,211 clips / 1,911 hours spanning 18 motion types across 72 countries, reused Sekai footage 47,699 clips / 795 hours across 107 countries, self-captured Panoramic 360 982 clips / 119 hours, totalling 128,892 clips and 2,826 hours across 113 countries" loading="lazy">
+      <a class="composition-figure reveal" href="assets/images/dataset-composition.jpg?v=202608080130" target="_blank" rel="noreferrer">
+        <img src="assets/images/dataset-composition.jpg?v=202608080130" alt="Sekai2 dataset composition: newly collected YouTube footage 80,211 clips / 1,911 hours spanning 18 motion types across 72 countries, reused Sekai footage 47,699 clips / 795 hours across 107 countries, self-captured Panoramic 360 982 clips / 119 hours, totalling 128,892 clips and 2,826 hours across 113 countries" loading="lazy">
         <span>Open full size ↗</span>
       </a>
     </section>
@@ -157,7 +157,7 @@
       <div class="trajectory-stage reveal">
         <div class="trajectory-live-label"><span>RGB + 3D POSE</span><b id="trajectory-case-name">Drone</b><small>15 s synchronized window on the complete trajectory</small></div>
         <div class="trajectory-sync-grid">
-          <div class="trajectory-video-pane"><video id="trajectory-video" src="assets/videos/drone.mp4?v=202608070145" poster="assets/images/drone.jpg?v=202608070145" controls autoplay muted loop playsinline></video><span>released clip · 1280&times;720</span></div>
+          <div class="trajectory-video-pane"><video id="trajectory-video" src="assets/videos/drone.mp4?v=202608080130" poster="assets/images/drone.jpg?v=202608080130" controls autoplay muted loop playsinline></video><span>released clip · 1280&times;720</span></div>
           <div class="trajectory-3d-pane"><div id="trajectory-viewer" aria-label="Interactive 3D camera trajectory visualization"></div><span>drag to orbit · scroll to zoom</span></div>
         </div>
         <div class="trajectory-tabs" id="trajectory-tabs"></div>
@@ -193,9 +193,9 @@
     <section class="sources full-section" id="validation">
       <div class="source-copy reveal"><p class="kicker light">Validation</p><h2>Measured,<br>not asserted.</h2><p class="source-deck">Both released modalities are audited on their own terms, and then against each other. Every figure below is inference-only &mdash; no model was trained to produce it &mdash; and each test is one that could have come out the other way.</p></div>
       <div class="source-cards reveal">
-        <article><span>01</span><h3>0.12 px</h3><p>Median epipolar error of image correspondences against the geometry implied by the released poses. Pairing the same images with a shifted pose gives 2.46 px, so the test is sensitive rather than trivially satisfied.</p></article>
-        <article><span>02</span><h3>0.068&deg;</h3><p>Rotation disagreement with an independently executed DROID-SLAM run over 997 stratified clips after Sim(3) alignment. Normalized ATE is 0.014.</p></article>
-        <article><span>03</span><h3>33.1%</h3><p>Top-1 caption&rarr;clip retrieval in a 10,000-clip pool, against a 0.01% chance rate. Every caption field also separates from a shuffled control.</p></article>
+        <article><span>01</span><h3>0.12 px</h3><p>Median epipolar error of image correspondences against the geometry implied by the released poses. Pairing the same images with a shifted pose gives 2.83 px, so the test is sensitive rather than trivially satisfied.</p></article>
+        <article><span>02</span><h3>0.103&deg;</h3><p>Rotation disagreement with an independently executed DROID-SLAM run after Sim(3) alignment, with intrinsics re-estimated for every subset so no source is measured under an easier protocol. Normalized ATE is 0.018.</p></article>
+        <article><span>03</span><h3>71.8%</h3><p>Of the 74,437 clips carrying both labels, the segments a caption calls <em>turn</em> rotate more than the ones it calls <em>straight</em> &mdash; each clip serving as its own control.</p></article>
         <article><span>04</span><h3>60.9%</h3><p>Preference over a conventional one-shot caption written by the same model from the same frames, scored in the presentation order that works against us.</p></article>
       </div>
       <div class="val-table-wrap reveal">
@@ -215,25 +215,19 @@
               <th scope="row">Epipolar consistency</th>
               <td>Released poses explain the images, without ground truth or a second estimator</td>
               <td><b>0.12 px</b> median</td>
-              <td>2.46 px with a mismatched pose</td>
+              <td>2.83 px with a mismatched pose</td>
             </tr>
             <tr>
               <th scope="row">Cross-run agreement</th>
-              <td>An independent DROID-SLAM run recovers the same geometry</td>
-              <td><b>0.068&deg;</b> rotation</td>
-              <td>ATE 0.014 &middot; 95.9% reconstructed</td>
+              <td>An independent DROID-SLAM run recovers the same geometry under matched intrinsics</td>
+              <td><b>0.103&deg;</b> rotation</td>
+              <td>ATE 0.018 &middot; 99.5% reconstructed</td>
             </tr>
             <tr>
               <th scope="row">Caption faithfulness</th>
-              <td>A VLM judge reading the frames scores coverage and per-aspect correctness</td>
-              <td><b>3.98&ndash;4.00</b> / 5</td>
-              <td>16.5% of clips flagged once</td>
-            </tr>
-            <tr>
-              <th scope="row">Caption retrieval</th>
-              <td>A caption identifies the clip it describes, not merely a plausible scene</td>
-              <td><b>33.1%</b> R@1</td>
-              <td>chance 0.01% &middot; median rank 3</td>
+              <td>A VLM judge reading 12 frames scores coverage and per-aspect correctness</td>
+              <td><b>4.01&ndash;4.31</b> / 5</td>
+              <td>camera behaviour scores lowest</td>
             </tr>
             <tr>
               <th scope="row">Caption preference</th>
@@ -242,10 +236,22 @@
               <td>order chosen to disfavour us</td>
             </tr>
             <tr>
+              <th scope="row">Schema complementarity</th>
+              <td>The six description views carry different words, not restatements of one another</td>
+              <td><b>0.16</b> Jaccard overlap</td>
+              <td>51% of words appear in one view only</td>
+            </tr>
+            <tr>
               <th scope="row">Cross-modal grounding</th>
               <td>Independently produced captions and poses agree on when the camera turns</td>
-              <td><b>0.707</b> AUC</td>
-              <td>yaw 1.0&deg; &rarr; 26.5&deg; across labels</td>
+              <td><b>0.709</b> AUC</td>
+              <td>yaw 1.3&deg; &rarr; 27.9&deg; across labels</td>
+            </tr>
+            <tr>
+              <th scope="row">Within-clip control</th>
+              <td>The ordering survives when each clip is its own control</td>
+              <td><b>71.8%</b> of clips</td>
+              <td>median gap 12.7&deg; &middot; 74,437 clips</td>
             </tr>
             <tr>
               <th scope="row">Frame quality</th>
@@ -285,9 +291,9 @@
   </dialog>
 
   <footer><a class="brand" href="#top"><span class="brand-mark">S2</span><span>Sekai2</span></a><p>Long-horizon real-world video data for interactive world modeling.</p><span>Project page scaffold · 2026</span></footer>
-  <script src="assets/vendor/three.min.js?v=202608070145"></script>
-  <script src="assets/vendor/OrbitControls.js?v=202608070145"></script>
-  <script src="assets/vendor/pose-viewer.js?v=202608070145"></script>
-  <script src="script.js?v=202608070145"></script>
+  <script src="assets/vendor/three.min.js?v=202608080130"></script>
+  <script src="assets/vendor/OrbitControls.js?v=202608080130"></script>
+  <script src="assets/vendor/pose-viewer.js?v=202608080130"></script>
+  <script src="script.js?v=202608080130"></script>
 </body>
 </html>

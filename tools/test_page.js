@@ -115,7 +115,9 @@ async function readSource(rel) {
     ['No report figures',             n('.figure-card') === 0, n('.figure-card')],
     ['Hero link icons',               n('.hero-links .ico') === 4, n('.hero-links .ico')],
     ['Validation cards',              n('#validation .source-cards article') === 4, n('#validation .source-cards article')],
-    ['Validation table rows',         n('#validation .val-table tbody tr') === 9, n('#validation .val-table tbody tr')],
+    ['No superseded validation numbers', !/33\.1%|0\.068|2\.46 px|95\.9%|caption.{0,3}clip retrieval/i.test(html),
+       'retrieval row and pre-matched-intrinsics figures are gone'],
+    ['Validation table rows',         n('#validation .val-table tbody tr') === 10, n('#validation .val-table tbody tr')],
     ['No placeholder copy',           !/can later be connected|coming soon here|Lorem/i.test(window.document.body.textContent), 'found placeholder text'],
   ];
 
